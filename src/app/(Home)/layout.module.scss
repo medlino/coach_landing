@@ -1,0 +1,10 @@
+.homeLayout {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  min-height: -webkit-fill-available;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  background-color: transparent;
+}

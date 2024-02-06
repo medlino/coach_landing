@@ -1,0 +1,86 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "amd": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "quotes": ["error", "single"],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/no-unknown-property": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "react/jsx-props-no-spreading": "off",
+    "prettier/prettier": ["off"],
+    "no-use-before-define": "off",
+    "eol-last": ["error", "always"],
+    "linebreak-style": 0,
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".tsx"]
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 120,
+        "ignoreStrings": true
+      }
+    ],
+    "no-shadow": "off",
+    "no-unused-vars": "off",
+    "no-param-reassign": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "react/no-unescaped-entities": "off",
+    "no-useless-escape": "off",
+    "no-underscore-dangle": "off",
+    "camelcase": "off",
+    "import/prefer-default-export": "off",
+    "react/destructuring-assignment": "off",
+    "react/require-default-props": "off",
+    "no-return-await": "off",
+    "react/no-unused-state": "warn",
+    "jsx-a11y/label-has-associated-control": "off",
+    "react-hooks/exhaustive-dep": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "no-plusplus": "off",
+    "react/no-array-index-key": "off",
+    "no-return-assign": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-nested-ternary": "off",
+    "no-unused-expressions": "off",
+    "consistent-return": "off",
+    "react/state-in-constructor": "off",
+    "default-case": "off",
+    "jsx-a11y/media-has-caption": "off",
+    "react/no-unused-prop-types": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-ts-comment": "warn",
+    "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+    "no-confusing-arrow": [
+      "error",
+      { "allowParens": true, "onlyOneSimpleParam": true }
+    ]
+  }
+}
