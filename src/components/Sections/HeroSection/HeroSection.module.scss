@@ -1,0 +1,30 @@
+.heroSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px 0;
+
+  h1 {
+    font-size: 68px;
+    margin: 0px;;
+  }
+  h5 {
+    font-size: 22px;
+    margin: 20px 0px;
+    font-style: italic;
+  }
+  button {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    text-align: center;
+    max-width: 920px;
+  }
+  img:last-child {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

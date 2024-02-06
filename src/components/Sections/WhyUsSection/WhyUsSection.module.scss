@@ -1,0 +1,32 @@
+.whyUsSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 40px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+  background: rgb(254, 243, 224);
+
+  h1 {
+    font-size: 32px;
+  }
+  button {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 20px;
+    text-align: center;
+    max-width: 920px;
+    margin-bottom: 8px;
+  }
+
+  .categoryList {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin-top: 40px;
+  }
+}
