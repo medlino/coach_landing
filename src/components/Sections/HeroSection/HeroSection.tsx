@@ -6,33 +6,26 @@ import styles from './HeroSection.module.scss';
 export const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
-      <h1>MEDITÁCIÓS</h1>
       <h1>KURZUS</h1>
-      <h5>4 hét alatt teljes átalakulás</h5>
-      <img
-        src="https://d1yei2z3i6k35z.cloudfront.net/5400183/653b798c80c3e_meditationmastery-5.png"
-        width={325}
-        height={325}
-      />
-      <Button text="JELENTKEZZ MOST" />
+      <iframe
+        className="video"
+        title="Youtube player"
+        sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
+        src={`https://youtube.com/embed/${'wPJeydzfheo'}?autoplay=0`}
+        style={{
+          height: '380px',
+          width: '650px',
+        }}
+      ></iframe>
+      <Button text="CSATLAKOZOM" />
+      <h1>Életre szóló program azoknak akik</h1>
+      <p>- Szeretnék elhagyni a régi énjüket</p>
+      <p>- Megunták a mindenapi mókuskereket</p>
+      <p>- Kíváncsiak mik a saját potenciáljuk maximuma</p>
       <p>
-        Készen állsz egy életre szóló útra a{' '}
-        <b>szabadság, belső béke és átalakulás felé?</b>
+        - Kíváncsiak arra hogyan teremtesenek a gondolataikkal a vizualizáció és
+        a manifesztáció eszközeivel
       </p>
-      <p>
-        A meditáció több, mint egy gyakorlat. Ez egy út a személyes fejlődéshez,
-        az elme újraprogramozásához és a <b>önvaló felfedezéséhez.</b>
-      </p>
-      <p>
-        Ha valaha is elgondolkodtál azon, hogyan lehetne uralkodni a
-        gondolataid, érzelmeid és cselekedeteid felett, és valóra váltani az
-        álmaidat <b>- jó helyen jársz.</b>
-      </p>
-      <img
-        src="https://d1yei2z3i6k35z.cloudfront.net/5400183/6536198de1939_meditationmastery800x500px-2.png"
-        width={470}
-        height={300}
-      />
     </section>
   );
 };
