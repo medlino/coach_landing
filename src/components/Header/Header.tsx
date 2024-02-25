@@ -6,11 +6,22 @@ export const Header = () => {
       <div className={styles.logo}>
         <img src="/logo3.svg" alt="logo" />
       </div>
-      <nav>
-        <a>About</a>
-        <a>Content</a>
-        <a>Testimonals</a>
-      </nav>
+      <div className={styles.social}>
+        <a
+          href="https://www.tiktok.com/@medlino2"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/tiktok.svg" alt="tiktok" />
+        </a>
+        <a
+          href="https://www.instagram.com/dokik__/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src="/instagram.svg" alt="instagram" />
+        </a>
+      </div>
     </header>
   );
 };
