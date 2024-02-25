@@ -1,0 +1,24 @@
+.header {
+  background-color: #051d2c;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .logo {
+    img {
+      height: 50px;
+    }
+  }
+  nav {
+    display: flex;
+    gap: 1rem;
+    a {
+      color: #fff;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

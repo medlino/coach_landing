@@ -18,14 +18,6 @@ export const HeroSection = () => {
         }}
       ></iframe>
       <Button text="CSATLAKOZOM" />
-      <h1>Életre szóló program azoknak akik</h1>
-      <p>- Szeretnék elhagyni a régi énjüket</p>
-      <p>- Megunták a mindenapi mókuskereket</p>
-      <p>- Kíváncsiak mik a saját potenciáljuk maximuma</p>
-      <p>
-        - Kíváncsiak arra hogyan teremtesenek a gondolataikkal a vizualizáció és
-        a manifesztáció eszközeivel
-      </p>
     </section>
   );
 };

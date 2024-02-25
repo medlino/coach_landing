@@ -1,3 +1,4 @@
+import { Header } from '@/components/Header/Header';
 import styles from './layout.module.scss';
 
 export default function HomeLayout({
@@ -7,6 +8,7 @@ export default function HomeLayout({
 }) {
   return (
     <div className={styles.homeLayout}>
+      <Header />
       <main>{children}</main>
     </div>
   );

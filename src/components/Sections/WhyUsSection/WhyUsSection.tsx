@@ -2,45 +2,29 @@
 'use client';
 
 import { Button } from '../../Button';
-import { CategoryItem } from './CategoryItem';
+import { CategoryItem } from './CategoryItem/CategoryItem';
 import styles from './WhyUsSection.module.scss';
 
 const categories = [
   {
     imgSrc:
       'https://d1yei2z3i6k35z.cloudfront.net/5400183/6538c81806a96_Untitleddesign-68.png',
-    title: 'Tudományosan alátámasztott',
-    desc: 'Ötvözöm a meditáció ősi bölcsességét a kortárs tudományos, neurológiai és pszichológiai szemlélettel.',
-  },
-  {
-    imgSrc:
-      'https://d1yei2z3i6k35z.cloudfront.net/5400183/6538ccb2ec5c9_Untitleddesign-70.png',
-    title: 'Modern megközelítés',
-    desc: 'A meditációs technikák dogmával, ősi rituálékkal vagy spirituális hitrendszerekkel járnak - az én megközelítésem más, modern és mindenkinek szól.',
-  },
-  {
-    imgSrc:
-      'https://d1yei2z3i6k35z.cloudfront.net/5400183/6538ce9ccb4d7_Untitleddesign-71.png',
-    title: 'Élő meditációk',
-    desc: 'Minden élő óra egy tanulásból és gyakorlásból álló keverék. Ott leszek veled, végigvezetlek a folyamaton és válaszolok a kérdéseidre.',
-  },
-  {
-    imgSrc:
-      'https://d1yei2z3i6k35z.cloudfront.net/5400183/653a032899162_Untitleddesign-74.png',
-    title: 'Házi feladatok és gyakorlatok',
-    desc: 'Az utazásod nem ér véget egy óra végén. Házi feladatokat és tevékenységeket kapsz, amelyekkel minden héten foglalkozni fogsz.',
-  },
-  {
-    imgSrc:
-      'https://d1yei2z3i6k35z.cloudfront.net/5400183/653a09c3df261_Untitleddesign-81.png',
-    title: 'Bizonyított sikerek',
-    desc: 'Ez a kurzus nem kísérlet. Számtalan ügyfelem sikerén és évekig tartó saját kutatásomon és gyakorlatomon alapul.',
+    desc: 'Rendszeres élő beszélgetések, webinarok, ahol felteheted kérdéseidet, megoszthatod tapasztalataidat, végig kisérünk az úton, lépésről-lépésre.',
   },
   {
     imgSrc:
       'https://d1yei2z3i6k35z.cloudfront.net/5400183/653a08ac3fc4d_Untitleddesign-77.png',
-    title: 'Támogató közeg',
-    desc: 'Jelentkezz be a kurzusra, és üdvözöllek a privát online közösségemben, ahol életre szóló támogatást és kapcsolatokat találsz.',
+    desc: 'Csatlakozz egy támogató és összetartó közösséghez ahol hasonló gondolkodásmódú embereket ismerhetsz meg, akik együtt fejlődnek.',
+  },
+  {
+    imgSrc:
+      'https://d1yei2z3i6k35z.cloudfront.net/5400183/6538ccb2ec5c9_Untitleddesign-70.png',
+    desc: 'Tudományos és modern megközelítés: érthetően és átlátható kutatásokkal alátámasztva.',
+  },
+  {
+    imgSrc:
+      'https://d1yei2z3i6k35z.cloudfront.net/5400183/6538ce9ccb4d7_Untitleddesign-71.png',
+    desc: 'Gyakorlatok a tudásod megerősítésére, amelyek elvégzésével valóban napról-napra érezheted a változást.',
   },
 ];
 
@@ -53,7 +37,7 @@ export const WhyUsSection = () => {
           <CategoryItem key={index} {...category} />
         ))}
       </div>
-      <Button text="JELENTKEZZ MOST" />
+      <Button text="CSATLAKOZOM" />
     </section>
   );
 };

@@ -7,14 +7,16 @@ import {
 import { Footer } from '@/components/Footer/Footer';
 
 import styles from './page.module.scss';
+import { AboutProgSection } from '@/components/Sections/AboutProgSection/AboutProgSection';
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <>
       <HeroSection />
+      <AboutProgSection />
       <WhyUsSection />
       <TestimonialSection />
       <Footer />
-    </main>
+    </>
   );
 }
