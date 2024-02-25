@@ -75,8 +75,7 @@ export const TestimonialSection = () => {
                   padding: '2rem',
                   background: 'white',
                   borderRadius: '1rem',
-                  border: '1px solid black',
-                  boxShadow: '0 0 1rem 0 rgba(0, 0, 0, 0.1)',
+                  border: '1px solid rgba(0, 0, 0, 0.2)',
                   maxWidth: '300px',
                 }}
               >
