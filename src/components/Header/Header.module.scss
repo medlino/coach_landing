@@ -21,4 +21,11 @@
       }
     }
   }
+  .social {
+    display: flex;
+    gap: 16px;
+    img {
+      width: 28px;
+    }
+  }
 }
