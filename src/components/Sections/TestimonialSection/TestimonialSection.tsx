@@ -75,7 +75,7 @@ export const TestimonialSection = () => {
                   padding: '2rem',
                   background: 'white',
                   borderRadius: '1rem',
-                  border: '1px solid #e5e5e5',
+                  border: '1px solid black',
                   boxShadow: '0 0 1rem 0 rgba(0, 0, 0, 0.1)',
                   maxWidth: '300px',
                 }}
@@ -88,7 +88,7 @@ export const TestimonialSection = () => {
         </Swiper>
       </div>
 
-      <Button text="READ MORE" />
+      <Button text="CSATLAKOZOM" />
     </section>
   );
 };
