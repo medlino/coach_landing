@@ -31,7 +31,7 @@ const categories = [
 export const WhyUsSection = () => {
   return (
     <section className={styles.whyUsSection}>
-      <h1>Mit sajátíthatsz el a programban</h1>
+      <h1>Mit sajátíthatsz el a programban?</h1>
       <div className={styles.categoryList}>
         {categories.map((category, index) => (
           <CategoryItem key={index} {...category} />

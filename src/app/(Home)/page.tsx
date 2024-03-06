@@ -2,12 +2,13 @@ import {
   HeroSection,
   TestimonialSection,
   WhyUsSection,
+  WhatInProgSection,
+  AboutProgSection,
 } from '@/components/Sections';
 
 import { Footer } from '@/components/Footer/Footer';
 
 import styles from './page.module.scss';
-import { AboutProgSection } from '@/components/Sections/AboutProgSection/AboutProgSection';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
       <HeroSection />
       <AboutProgSection />
       <WhyUsSection />
+      <WhatInProgSection />
       <TestimonialSection />
       <Footer />
     </>

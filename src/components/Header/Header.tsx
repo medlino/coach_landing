@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 export const Header = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      {/* <div className={styles.logo}>
         <img src="/logo3.svg" alt="logo" />
       </div>
       <div className={styles.social}>
@@ -21,7 +21,7 @@ export const Header = () => {
         >
           <img src="/instagram.svg" alt="instagram" />
         </a>
-      </div>
+      </div> */}
     </header>
   );
 };
