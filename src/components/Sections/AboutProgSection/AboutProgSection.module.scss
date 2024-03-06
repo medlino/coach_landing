@@ -3,13 +3,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #e3e3e5;
+  background-color: #effbff;;
   color: #0c2e47;
+  font-family: var(--font-bellefair);
+  padding: 40px 0px;
 
   h1 {
     font-size: 50px;
     margin-top: 28px;
     margin-bottom: 40px;
+    font-weight: 400;
+    font-family: var(--font-kanit);
+    border-bottom: 2px solid black;
+    padding-bottom: 12px;
   }
   .textList {
     display: flex;
@@ -17,14 +23,31 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 12px;
+    ul {
+      list-style-type: none;
+      div {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
     li {
-      font-size: 22px;
-      max-width: 500px;
+      font-size: 30px;
+      max-width: 800px;
       text-align: left;
     }
   }
   button {
+    color: white;
+    background-color: rgba(20,55,77, 0.9);
     margin-top: 60px;
     margin-bottom: 40px;
+    &:hover {
+      background-color: rgba(20,55,77, 1);
+    }
   }
 }

@@ -1,6 +1,6 @@
 .button {
   display: flex;
-  background-color: #84ceed;
+  background-color: rgba(255, 255, 255, 0.9);
   font-weight: 600;
   line-height: 42px;
   border-radius: 60px;
@@ -15,4 +15,11 @@
   cursor: pointer;
   opacity: 1;
   word-break: break-word;
+  font-weight: 400;
+  font-family: var(--font-bellefair);
+  color: #0c2e47;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
 }

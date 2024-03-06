@@ -8,7 +8,7 @@ export default function HomeLayout({
 }) {
   return (
     <div className={styles.homeLayout}>
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
     </div>
   );

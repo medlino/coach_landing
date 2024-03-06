@@ -17,7 +17,10 @@ export const AboutProgSection = () => {
       <div className={styles.textList}>
         {texts.map((text, index) => (
           <ul key={index}>
-            <li>{text}</li>
+            <div>
+              <img src="/check.svg" alt="check" />
+              <li>{text}</li>
+            </div>
           </ul>
         ))}
       </div>
