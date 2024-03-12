@@ -1,5 +1,7 @@
 'use client';
 
+import { stripeCheckout } from '@/clientAPI/checkout';
+
 import { Button } from '../../Button';
 import styles from './HeroSection.module.scss';
 
@@ -23,7 +25,7 @@ export const HeroSection = () => {
           borderRadius: '10px',
         }}
       ></iframe>
-      <Button text="CSATLAKOZOM" />
+      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );
 };
