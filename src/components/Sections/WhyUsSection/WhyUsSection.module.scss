@@ -38,4 +38,16 @@
       min-width: 320px;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 40px;
+      line-height: 34px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    button {
+      margin-bottom: 20px;
+    }
+  }
 }
