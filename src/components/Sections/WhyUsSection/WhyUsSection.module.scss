@@ -32,11 +32,10 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    max-width: 800px;
     margin-top: 40px;
     gap: 30px;
     div {
-      min-width: 300px;
+      min-width: 320px;
     }
   }
 }
