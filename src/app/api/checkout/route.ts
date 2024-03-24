@@ -28,5 +28,5 @@ export async function POST() {
 }
 
 export async function GET(_request: any) {
-  return new Response('Hello, Next.js!');
+  return new Response('Hello, Next.js!!');
 }
