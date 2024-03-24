@@ -1,4 +1,5 @@
 import '../styles/globals.scss';
+import '../styles/variables.scss';
 
 import clsx from 'clsx';
 import { Bellefair } from 'next/font/google';
