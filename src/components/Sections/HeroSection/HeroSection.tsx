@@ -12,18 +12,13 @@ import { Button } from '../../Button';
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
-<<<<<<< Updated upstream
-=======
   const [showVolumeIcon, setShowVolumeIcon] = useState(true);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
->>>>>>> Stashed changes
   const isSmallDevice = useMediaQuery(
     `only screen and ${getBreakpoints().maxSm}`
   );
 
-<<<<<<< Updated upstream
-=======
   const volumeUp = () => {
     if (videoRef.current) {
       videoRef.current.volume = 0.5;
@@ -32,7 +27,6 @@ export const HeroSection = () => {
     setShowVolumeIcon(false);
   };
 
->>>>>>> Stashed changes
   return (
     <section className={styles.heroSection}>
       <h1>
@@ -40,22 +34,6 @@ export const HeroSection = () => {
         <br />
         Hogyan teremtsd meg saját sikered gondolataiddal és szokásaiddal?
       </h1>
-<<<<<<< Updated upstream
-      <iframe
-        className="video"
-        title="Youtube player"
-        sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
-        src={`https://youtube.com/embed/${'wPJeydzfheo'}?autoplay=0`}
-        style={{
-          height: '100%',
-          width: '100%',
-          maxHeight: isSmallDevice ? '98%' : '500px',
-          maxWidth: isSmallDevice ? '98%' : '800px',
-          border: '4px white solid',
-          borderRadius: '10px',
-        }}
-      ></iframe>
-=======
 
       <div className={styles.videoWrapper}>
         {showVolumeIcon && (
@@ -85,7 +63,6 @@ export const HeroSection = () => {
         </video>
       </div>
 
->>>>>>> Stashed changes
       <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );

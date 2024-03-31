@@ -4,10 +4,7 @@ import { Button } from '../../Button';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
-<<<<<<< Updated upstream
-=======
 import { stripeCheckout } from '@/clientAPI/checkout';
->>>>>>> Stashed changes
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { getBreakpoints } from '@/styles/breakpoints';
 
