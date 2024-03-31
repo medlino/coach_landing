@@ -36,7 +36,7 @@ export const HeroSection = () => {
       </h1>
 
       <div className={styles.videoWrapper}>
-        {showVolumeIcon && (
+        {showVolumeIcon && !isSmallDevice && (
           <img
             src="/icons/volume-mute-fill.svg"
             alt="volume"
@@ -49,8 +49,8 @@ export const HeroSection = () => {
           autoPlay
           muted
           playsInline
-          width={isSmallDevice ? 296 : 316}
-          height={isSmallDevice ? 525 : 560}
+          width={isSmallDevice ? 254 : 316}
+          height={isSmallDevice ? 450 : 560}
           style={{
             border: '1px white solid',
           }}
