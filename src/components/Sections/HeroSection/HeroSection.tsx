@@ -53,7 +53,7 @@ export const HeroSection = () => {
         )}
         {!firstLoad && (
           <>
-            {showVolumeIcon && (
+            {showVolumeIcon && !isSmallDevice && (
               <img
                 src="/icons/volume-mute-fill.svg"
                 alt="volume"
@@ -63,9 +63,9 @@ export const HeroSection = () => {
             <video
               ref={videoRef}
               controls
-              autoPlay
-              muted
-              playsInline
+              autoPlay={!isSmallDevice}
+              muted={!isSmallDevice}
+              playsInline={!isSmallDevice}
               width={isSmallDevice ? 254 : 316}
               height={isSmallDevice ? 450 : 560}
               style={{
