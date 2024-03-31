@@ -34,7 +34,12 @@
     max-width: 920px;
   }
   .videoWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
+    width: 316px;
+    height: 560px;
     img {
       cursor: pointer;
       width: 200px;
@@ -48,6 +53,10 @@
 
 
   @media screen and (max-width: 768px) {
+    .videoWrapper {
+      width: 254px;
+      height: 450px;
+    }
     h1 {
       font-size: 30px;
       line-height: 30px;
