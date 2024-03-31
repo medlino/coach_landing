@@ -20,8 +20,14 @@ export async function POST() {
       },
     ],
     mode: 'payment',
-    success_url: 'http://localhost:3000',
-    cancel_url: 'http://localhost:3000',
+    success_url:
+      process.env.ENV === 'dev'
+        ? 'http://localhost:3000?success=true'
+        : 'https://elmeereje.hu?success=true',
+    cancel_url:
+      process.env.ENV === 'dev'
+        ? 'http://localhost:3000?canceled=true'
+        : 'https://elmeereje.hu',
   });
 
   return NextResponse.json(session);

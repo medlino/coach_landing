@@ -20,8 +20,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.2",
     "react-loader-spinner": "^5.3.4",
-    "react-notifications": "^1.7.4",
     "react-redux": "^8.1.1",
+    "react-toastify": "^10.0.5",
     "stripe": "^14.20.0",
     "swiper": "^11.0.6",
     "yup": "^1.2.0"

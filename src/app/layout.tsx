@@ -1,4 +1,4 @@
-import 'react-notifications/lib/notifications.css';
+import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.scss';
 import '../styles/variables.scss';
 
