@@ -2,14 +2,15 @@ import { useEffect, useState } from 'react';
 
 export function useMediaQuery(query: string): boolean {
   const getMatches = (query: string): boolean => {
-    // Prevents SSR issues
+    // Prevents SSR (Server-Side Rendering) issues
     if (typeof window !== 'undefined') {
       return window.matchMedia(query).matches;
     }
     return false;
   };
 
-  const [matches, setMatches] = useState<boolean>(true);
+  // Initialize 'matches' state based on the actual match result of the media query.
+  const [matches, setMatches] = useState<boolean>(getMatches(query));
 
   function handleChange() {
     setMatches(getMatches(query));
@@ -18,16 +19,15 @@ export function useMediaQuery(query: string): boolean {
   useEffect(() => {
     const matchMedia = window.matchMedia(query);
 
-    // Triggered at the first client-side load and if query changes
-    handleChange();
-
-    // Listen matchMedia
+    // Listen to matchMedia changes
     if (matchMedia.addListener) {
+      // For compatibility with older browsers
       matchMedia.addListener(handleChange);
     } else {
       matchMedia.addEventListener('change', handleChange);
     }
 
+    // Cleanup function to remove the event listener
     return () => {
       if (matchMedia.removeListener) {
         matchMedia.removeListener(handleChange);

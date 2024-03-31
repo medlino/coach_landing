@@ -1,4 +1,3 @@
-import Stripe from 'stripe';
 import {
   HeroSection,
   TestimonialSection,

@@ -1,3 +1,4 @@
+import 'react-notifications/lib/notifications.css';
 import '../styles/globals.scss';
 import '../styles/variables.scss';
 

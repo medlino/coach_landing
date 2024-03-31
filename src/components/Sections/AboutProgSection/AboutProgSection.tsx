@@ -1,6 +1,9 @@
 'use client';
 
 import { Button } from '../../Button';
+
+import { stripeCheckout } from '@/clientAPI/checkout';
+
 import styles from './AboutProgSection.module.scss';
 
 const texts = [
@@ -18,13 +21,13 @@ export const AboutProgSection = () => {
         {texts.map((text, index) => (
           <ul key={index}>
             <div>
-              <img src="/check.svg" alt="check" />
+              <img src="/icons/check.svg" alt="check" />
               <li>{text}</li>
             </div>
           </ul>
         ))}
       </div>
-      <Button text="CSATLAKOZOM" />
+      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );
 };

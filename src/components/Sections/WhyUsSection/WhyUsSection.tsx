@@ -3,23 +3,30 @@
 
 import { Button } from '../../Button';
 import { CategoryItem } from './CategoryItem/CategoryItem';
+
+import { stripeCheckout } from '@/clientAPI/checkout';
+
 import styles from './WhyUsSection.module.scss';
 
 const categories = [
   {
-    imgSrc: '/laptop.png',
+    id: 'laptop',
+    imgSrc: '/icons/laptop.png',
     desc: 'Rendszeres élő beszélgetések, webinarok, ahol felteheted kérdéseidet, megoszthatod tapasztalataidat, végig kisérünk az úton, lépésről-lépésre.',
   },
   {
-    imgSrc: '/atom.png',
+    id: 'atom',
+    imgSrc: '/icons/atom.png',
     desc: 'Tudományos és modern megközelítés: érthetően és átlátható kutatásokkal alátámasztva.',
   },
   {
-    imgSrc: '/mind.png',
+    id: 'mind',
+    imgSrc: '/icons/mind.png',
     desc: 'Csatlakozz egy támogató és összetartó közösséghez ahol hasonló gondolkodásmódú embereket ismerhetsz meg, akik együtt fejlődnek.',
   },
   {
-    imgSrc: '/monk.png',
+    id: 'monk',
+    imgSrc: '/icons/monk.png',
     desc: 'Gyakorlatok a tudásod megerősítésére, amelyek elvégzésével valóban napról-napra érezheted a változást.',
   },
 ];
@@ -29,11 +36,11 @@ export const WhyUsSection = () => {
     <section className={styles.whyUsSection}>
       <h1>Mit sajátíthatsz el a programban?</h1>
       <div className={styles.categoryList}>
-        {categories.map((category, index) => (
-          <CategoryItem key={index} {...category} />
+        {categories.map((category) => (
+          <CategoryItem key={category.id} {...category} />
         ))}
       </div>
-      <Button text="CSATLAKOZOM" />
+      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );
 };
