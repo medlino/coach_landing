@@ -1,0 +1,45 @@
+.inProgItem {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  border: 1px solid black;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  padding: 20px 24px 6px 24px;
+
+  img {
+    height: 200px;
+    width: 220px;
+  }
+  .textWrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 500;
+    margin-left: 30px;
+
+    h3 {
+      font-size: 24px;
+      font-family: var(--font-kanit);
+      font-weight: 300;
+      margin: 0;
+    }
+    p {
+      font-size: 20px;
+      text-align: left;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    border: none;
+    img {
+      display: none;
+    }
+  }
+}
+
+.creation {
+  img {
+    order: 2;
+  }
+}
