@@ -21,10 +21,6 @@ export async function POST() {
       },
     ],
     mode: 'payment',
-    automatic_tax: {
-      enabled: true,
-      liability: undefined,
-    },
     billing_address_collection: 'required',
     success_url:
       process.env.ENV === 'dev'
