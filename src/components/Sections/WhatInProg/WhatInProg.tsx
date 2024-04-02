@@ -11,7 +11,7 @@ const inProgItems = [
   {
     id: 'mentality',
     imgSrc: '/icons/mentality.png',
-    title: 'I. Gondolkozásmód',
+    title: 'I. Gondolkodásmód',
     desc: (
       <p>
         Bevezetés az elme és a gondolat jelentésébe.

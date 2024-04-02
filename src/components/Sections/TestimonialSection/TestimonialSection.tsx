@@ -150,6 +150,17 @@ export const TestimonialSection = () => {
         </Swiper>
       </div>
 
+      <h1 className={styles.bTitle}>Garancia</h1>
+      <p className={styles.bonus}>
+        Természetesen nem szeretnénk olyan diákokat a programba, akik
+        elégedetlenek vagy úgy érzik olyan dolgot vásároltak, amire valójában
+        nincs is szükségük, vagy nem segíti őket az előrelépésben. Éppen ezért
+        úgy döntöttünk hogy a vásárlást követő első 30 napban bármikor
+        elállhatsz a vásárlástól és visszafizetjük a teljes összeget. A
+        visszaigényléshez kérlek írj egy emailt (info@medlino.hu) címre és a
+        pénzt pár napon belül újra a számládon találod. Nincsenek tesztkérdések!
+        :)
+      </p>
       <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );
