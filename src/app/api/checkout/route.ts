@@ -10,8 +10,8 @@ export async function POST() {
   // const id = prices.data[0]?.id;
   const id =
     process.env.ENV === 'dev'
-      ? 'price_1P0sLaLFpYtzSWrXqf6da8eb'
-      : 'price_1P1EAwLFpYtzSWrX5qIWNPdl';
+      ? 'price_1P1C4hLFpYtzSWrXNXCma1rx'
+      : 'price_1OyaE0LFpYtzSWrXfpx25Zcb';
   if (!id) {
     throw new Error('No price found!');
   }
