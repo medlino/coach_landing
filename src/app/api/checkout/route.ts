@@ -8,7 +8,10 @@ export async function POST() {
   // });
 
   // const id = prices.data[0]?.id;
-  const id = 'price_1P0sLaLFpYtzSWrXqf6da8eb';
+  const id =
+    process.env.ENV === 'dev'
+      ? 'price_1P0sLaLFpYtzSWrXqf6da8eb'
+      : 'price_1OyaE0LFpYtzSWrXfpx25Zcb';
   if (!id) {
     throw new Error('No price found!');
   }
