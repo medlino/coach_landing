@@ -152,14 +152,21 @@ export const TestimonialSection = () => {
 
       <h1 className={styles.bTitle}>Garancia</h1>
       <p className={styles.bonus}>
-        Természetesen nem szeretnénk olyan diákokat a programba, akik
+        Természetesen nem szeretnénk olyan diákokat a programban, akik
         elégedetlenek vagy úgy érzik olyan dolgot vásároltak, amire valójában
-        nincs is szükségük, vagy nem segíti őket az előrelépésben. Éppen ezért
-        úgy döntöttünk hogy a vásárlást követő első 30 napban bármikor
-        elállhatsz a vásárlástól és visszafizetjük a teljes összeget. A
-        visszaigényléshez kérlek írj egy emailt (info@medlino.hu) címre és a
-        pénzt pár napon belül újra a számládon találod. Nincsenek tesztkérdések!
-        :)
+        nincs is szükségük.{' '}
+        <span style={{ textDecoration: 'underline' }}>
+          Biztosak vagyunk abban, hogy ha lelkiismeretesen végig csinálod a
+          programot, akkor megváltozik az életed.
+        </span>{' '}
+        Éppen ezért úgy döntöttünk hogy a vásárlást követő első 30 napban
+        bármikor elállhatsz a vásárlástól és visszafizetjük a teljes összeget. A
+        visszaigényléshez kérlek írj egy emailt info@medlino.hu címre és a pénzt
+        pár napon belül újra a számládon találod. Nincsenek tesztkérdések!
+      </p>
+      <p className={styles.price}>
+        Most <span style={{ color: 'green' }}>22,500 Ft</span> 04.08-ig
+        <br /> Eredeti ár 29,900 Ft
       </p>
       <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
