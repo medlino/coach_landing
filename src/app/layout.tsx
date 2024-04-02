@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { Bellefair } from 'next/font/google';
 
 export const metadata = {
-  title: 'Medlino',
+  title: 'Az Elme Ereje',
 };
 
 const bellefair = Bellefair({
