@@ -3,11 +3,12 @@ import Stripe from 'stripe';
 
 export async function POST() {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  const prices = await stripe.prices.list({
-    limit: 4,
-  });
+  // const prices = await stripe.prices.list({
+  //   limit: 4,
+  // });
 
-  const id = prices.data[0]?.id;
+  // const id = prices.data[0]?.id;
+  const id = 'price_1P0sLaLFpYtzSWrXqf6da8eb';
   if (!id) {
     throw new Error('No price found!');
   }
