@@ -7,6 +7,9 @@ import { Bellefair } from 'next/font/google';
 
 export const metadata = {
   title: 'Az Elme Ereje',
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
 const bellefair = Bellefair({
