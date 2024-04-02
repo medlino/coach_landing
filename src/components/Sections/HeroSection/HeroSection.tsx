@@ -40,48 +40,20 @@ export const HeroSection = () => {
         <br />
         Hogyan teremtsd meg saját sikered gondolataiddal és szokásaiddal?
       </h1>
-
-      <div className={styles.videoWrapper}>
-        {firstLoad && (
-          <RotatingLines
-            visible={true}
-            width="96"
-            strokeColor="white"
-            strokeWidth="5"
-            animationDuration="0.75"
-          />
-        )}
-        {!firstLoad && (
-          <>
-            {showVolumeIcon && !isSmallDevice && (
-              <img
-                src="/icons/volume-mute-fill.svg"
-                alt="volume"
-                onClick={volumeUp}
-              />
-            )}
-            <video
-              ref={videoRef}
-              controls
-              autoPlay={!isSmallDevice}
-              muted={!isSmallDevice}
-              playsInline={!isSmallDevice}
-              width={isSmallDevice ? 254 : 316}
-              height={isSmallDevice ? 450 : 560}
-              style={{
-                border: '1px white solid',
-              }}
-            >
-              <source
-                src="https://medlino-salonic.s3.eu-central-1.amazonaws.com/VSLJ%C3%93.mp4"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </>
-        )}
-      </div>
-
+      <iframe
+        className="video"
+        title="Az Elme Ereje"
+        sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
+        src={`https://youtube.com/embed/${'USt73BzZiX4'}?autoplay=0`}
+        style={{
+          maxHeight: '500px',
+          maxWidth: '800px',
+          width: '100%',
+          height: '100%',
+          border: '4px white solid',
+          borderRadius: '10px',
+        }}
+      ></iframe>
       <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );
