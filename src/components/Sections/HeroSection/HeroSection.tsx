@@ -13,25 +13,9 @@ import { Button } from '../../Button';
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
-  const [firstLoad, setFirstLoad] = useState(true);
-  const [showVolumeIcon, setShowVolumeIcon] = useState(true);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
   const isSmallDevice = useMediaQuery(
     `only screen and ${getBreakpoints().maxSm}`
   );
-
-  useEffect(() => {
-    setFirstLoad(false);
-  }, []);
-
-  const volumeUp = () => {
-    if (videoRef.current) {
-      videoRef.current.volume = 0.5;
-      videoRef.current.muted = false;
-    }
-    setShowVolumeIcon(false);
-  };
 
   return (
     <section className={styles.heroSection}>
@@ -43,6 +27,8 @@ export const HeroSection = () => {
       <iframe
         className="video"
         title="Az Elme Ereje"
+        allowFullScreen
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share”"
         sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
         src={`https://youtube.com/embed/${'USt73BzZiX4'}?autoplay=0`}
         style={{

@@ -16,22 +16,21 @@ import styles from './TestimonialSection.module.scss';
 const testimonials = [
   {
     name: 'Kiss Bence',
-    title:
-      '3x-os magyar street workout bajnok, vállalkozó, online marketing ügynokség CEO',
+    title: 'Többszörös magyar street workout bajnok, online vállalkozó',
     img: '/testimonials/be_test.png',
-    desc: 'A sport kapcsán találkoztam előszür a teremtéssel  és a gondolkodásmóddal és gyakoroltam tanultam is de mindig is szerettem ezekben a témákban tanulni, uj információt gyűjteni így ugy dontottem hogy csatlakozom a programhoz. Ilyen megközlítésben még nem hallottam sehol tudást ebben a témakörben és amilyen gyakorlatiasan és struktúráltan össze van szedve rendkívül fogyasztható és rengeteget segített nekem a mindennapi életben. Hálásan köszönöm a srácoknak!',
+    desc: 'A sport kapcsán találkoztam először a teremtéssel és a gondolkodásmóddal, viszont ilyen megközelítésben még nem hallottam sehol. A tudás maga és,  amilyen gyakorlatiasan és strukturáltan össze van szedve rendkívül fogyasztható és rengeteget segített nekem a mindennapi életben. Hálásan köszönöm a srácoknak!',
   },
   {
     name: 'Brezowski Péter',
-    title: 'Mérnök, masszázs terapeuta',
+    title: 'Masszázs terapeuta',
     img: '/testimonials/b_test.jpg',
-    desc: 'Régóta küszködtem azzal, hogy felelősséget vállaljak, meghúzzam a határaimat, és a saját akarom szerint alakítsam az életemet. A tudás, amit kaptam és a gyakorlatba helyezett szokások, amiket kialakítottam ráébresztett egy belső erőre. Elkezdtem a kezembe venni a saját életem irányítását és legyőzni a belső gátakat ezáltal a külső gátak is ledőltek a környezetemben, pont, ahogy mondtátok. Köszönöm!',
+    desc: 'Véleményem szerint ez egy teljes értékű program, két jól informált, segítőkész fiatal felnőtt előadásában. Bátran ajánlom mindenkinek: a kihívást és célokat keresőknek, a gyógyulni és fejlődni vágyóknak, testi, szellemi, lelki szinten egyaránt. A tudás, amit kaptam és a gyakorlatba helyezett szokások, amiket kialakítottam ráébresztett egy belső erőre. Köszönöm srácok!',
   },
   {
     name: 'Nagy Tamás',
-    title: 'IT Projekt Manager',
+    title: 'IT Project Manager',
     img: '/testimonials/t_test.png',
-    desc: 'Annyi mindent tanultam az agy működéséről! Ez tényleg segített megérteni, hogy miként befolyásolják a gondolataim az életemet. Ez egy hatalmas dolog volt számomra, amiért először is nagyon hálás vagyok. De nem álltam meg itt! Megtanultam pár trükköt, szokást, hogy újraformáljam az agyamat. Ez segített abban, hogy jobban boldoguljak a munkahelyemen és más területeken is az életemben.',
+    desc: 'Annyi mindent tanultam az agy működéséről, ami segített megérteni, hogy miként befolyásolják a gondolataim az életemet. Ez egy hatalmas dolog volt számomra, amiért először is nagyon hálás vagyok nektek srácok. Megtanultam pár trükköt, szokást, hogy újra formáljam az agyamat. Ez segített abban, hogy jobban boldoguljak a munkahelyemen és az életem összes többi területén is.',
   },
 
   {
@@ -42,15 +41,15 @@ const testimonials = [
   },
   {
     name: 'Kovács Gergely',
-    title: 'Brandomenal Media CEO, GEM CEO ',
+    title: 'Brandomenal Media Ügyvezető',
     img: '/testimonials/g_test.png',
-    desc: 'Mindig is érdekelt a spiritualitás, manifesztáció vonzzás törvénye és sokmindent hallottam már ezekkel kapcsolatban de ilyen modern megközelítést és ilyen tudományos alátámasztást még nem ami nagyon hitelessé tette számomra  a programot. Nem is gonodltam volna azt hogy a ezek a fizikai szokások mennyire meg tudják erősíteni az elmémet és a többi mentális gyakorlat is ki tud teljesedni ez által. Felnyitották a szemem a srácok.',
+    desc: 'Mindig is érdekelt a spiritualitás, manifesztáció vonzás törvénye és sok mindent hallottam már ezekkel kapcsolatban de ilyen modern megközelítést és ilyen tudományos alátámasztást még nem, ami nagyon hitelessé tette számomra a tanultakat. Pezsgős hangulatú a képzés, a srácok jól tartják a figyelmet, emiatt élvezettel tanultam végig.',
   },
   {
     name: 'Tálas Balázs',
     title: 'Multimilliomos online vállalkozó',
     img: '/testimonials/ba_test.png',
-    desc: 'Nem is gondoltam volna hogy ha elkezdem megfigyelni gondolataim mennyi negativ gondolatom van egy nap és ezek hogy felul tudnak kerekedni rajtam. A program ráébresztett arra hogy mennyire fontos hogy megfigyeljük a gondolatainkat és tudatposítsuk, valamit átprogramozzuk őket így egy sokkal pozitívabb hétköznapi életet teremtsek magamnak ami minden más sikeremhez is hozzájárult. Nagyon sokat segített nekem ebben Younes és Kristóf amiért hálás vagyok.',
+    desc: 'Nem is gondoltam volna hogy ha elkezdem megfigyelni gondolataim mennyi negativ gondolatom van egy nap és ezek hogy felul tudnak kerekedni rajtam. A srácok ráébresztettek arra hogy mennyire fontos megfigyelnem a gondolataimat és tudatosítanom, valamit átprogramoznom őket így egy sokkal pozitívabb hétköznapi életet teremtsek magamnak ami minden más sikeremhez is hozzájárult. Nagyon sokat segített nekem ebben Younes és Kristóf amiért hálás vagyok.',
   },
 ];
 

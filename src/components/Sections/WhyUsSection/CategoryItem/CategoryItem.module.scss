@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
   max-width: 380px;
   background-color: rgba(255, 255, 255, 0.1);
   border-radius: 20px;
@@ -15,6 +14,7 @@
     width: 500px;
   }
   p {
+    position: absolute;
     bottom: 0px;
     position: absolute;
     font-size: 18px;
@@ -32,5 +32,14 @@
 .mind {
   img {
     top: -65px;
+  }
+  p {
+    margin: 0px;
+    bottom: 55px
+  }
+}
+.atom {
+  p {
+    bottom: 28px;
   }
 }
