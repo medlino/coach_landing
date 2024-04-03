@@ -1,22 +1,14 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import { RotatingLines } from 'react-loader-spinner';
+import React from 'react';
 
 import { stripeCheckout } from '@/clientAPI/checkout';
-
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { getBreakpoints } from '@/styles/breakpoints';
 
 import { Button } from '../../Button';
 
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
-  const isSmallDevice = useMediaQuery(
-    `only screen and ${getBreakpoints().maxSm}`
-  );
-
   return (
     <section className={styles.heroSection}>
       <h1>
