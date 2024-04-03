@@ -14,13 +14,9 @@ export async function GET(_req: NextRequest) {
           backgroundImage: 'url(https://elmeereje.hu/og-bg.png)',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
+          backgroundPosition: 'center center',
         }}
       />
-    ),
-    // ImageResponse options
-    {
-      width: 1024,
-      height: 1024,
-    }
+    )
   );
 }
