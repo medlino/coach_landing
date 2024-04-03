@@ -10,6 +10,22 @@ export const metadata = {
   icons: {
     icon: '/favicon.png',
   },
+  openGraph: {
+    title: 'Az Elme Ereje',
+    description:
+      'Hogyan teremtsd meg saját sikered gondolataiddal és szokásaiddal?',
+    url: 'https://elmereje.hu',
+    siteName: 'Az Elme Ereje',
+    images: [
+      {
+        url: 'https://elmereje.hu/api/og?title=Az%20Elme%20Ereje',
+        width: 1024,
+        height: 1024,
+      },
+    ],
+    locale: 'en_HU',
+    type: 'website',
+  },
 };
 
 const bellefair = Bellefair({
