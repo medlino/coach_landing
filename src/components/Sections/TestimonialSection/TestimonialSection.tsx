@@ -18,38 +18,38 @@ const testimonials = [
     name: 'Kiss Bence',
     title: 'Többszörös magyar street workout bajnok, online vállalkozó',
     img: '/testimonials/be_test.png',
-    desc: 'A sport kapcsán találkoztam először a teremtéssel és a gondolkodásmóddal, viszont ilyen megközelítésben még nem hallottam sehol. A tudás maga és,  amilyen gyakorlatiasan és strukturáltan össze van szedve rendkívül fogyasztható és rengeteget segített nekem a mindennapi életben. Hálásan köszönöm a srácoknak!',
+    desc: 'A sport kapcsán találkoztam először a teremtéssel és a gondolkodásmóddal, viszont ilyen megközelítésben még nem hallottam sehol. A tudás amilyen gyakorlatiasan és strukturáltan össze van szedve rendkívül fogyasztható és rengeteget segített nekem a mindennapi életben. Hálásan köszönöm a srácoknak!',
   },
   {
     name: 'Brezowski Péter',
     title: 'Masszázs terapeuta',
     img: '/testimonials/b_test.jpg',
-    desc: 'Véleményem szerint ez egy teljes értékű program, két jól informált, segítőkész fiatal felnőtt előadásában. Bátran ajánlom mindenkinek: a kihívást és célokat keresőknek, a gyógyulni és fejlődni vágyóknak, testi, szellemi, lelki szinten egyaránt. A tudás, amit kaptam és a gyakorlatba helyezett szokások, amiket kialakítottam ráébresztett egy belső erőre. Köszönöm srácok!',
+    desc: 'Véleményem szerint ez egy teljes értékű program, két jól informált, segítőkész fiatal felnőtt előadásában. Bátran ajánlom mindenkinek: a kihívást és célokat keresőknek, a gyógyulni és fejlődni vágyóknak. Testi, szellemi, lelki szinten egyaránt. A tudás, amit kaptam és a gyakorlatba helyezett szokások, amiket kialakítottam ráébresztettek egy belső erőre. Köszönöm nektek!',
   },
   {
     name: 'Nagy Tamás',
     title: 'IT Project Manager',
     img: '/testimonials/t_test.png',
-    desc: 'Annyi mindent tanultam az agy működéséről, ami segített megérteni, hogy miként befolyásolják a gondolataim az életemet. Ez egy hatalmas dolog volt számomra, amiért először is nagyon hálás vagyok nektek srácok. Megtanultam pár trükköt, szokást, hogy újra formáljam az agyamat. Ez segített abban, hogy jobban boldoguljak a munkahelyemen és az életem összes többi területén is.',
+    desc: 'Rengeteget tanultam az agy működéséről, ami segített megérteni, hogy miként befolyásolják a gondolataim az életemet. Ez egy hatalmas dolog volt számomra, amiért először is nagyon hálás vagyok nektek srácok. Megtanultam pár trükköt, szokást, hogy újra formáljam a tudatomat. Ez segített abban, hogy jobban boldoguljak a munkahelyemen és az életem összes többi területén is.',
   },
 
   {
     name: 'Kecze Zsófia',
     title: 'Művészeti menedzser, kurátor',
     img: '/testimonials/zs_test.png',
-    desc: 'Szeretettel ajánlom ezt a programot azoknak, akik készek arra, hogy lépéseket tegyenek valódi önmaguk megismerése felé. Azoknak, akik elkezdtek feltenni maguknak nehéz kérdéseket, azoknak, akik ezekre keresik a válaszokat, és alig várják, hogy rátaláljanak. Sokszor nagyon nehéz, sokszor nagyon megpróbáltató, de annál izgalmasabb és kifizetődőbb. Köszönöm Nektek, hogy a program segítségével nyerhettem bizonyosságot arról, hogy képes vagyok a változásra és a változtatásra.',
+    desc: 'Szeretettel ajánlom ezt a programot azoknak, akik készek arra, hogy lépéseket tegyenek valódi önmaguk megismerése felé. Azoknak, akik elkezdtek feltenni maguknak nehéz kérdéseket, azoknak, akik ezekre keresik a válaszokat, és alig várják, hogy rátaláljanak. Sokszor nagyon nehéz, sokszor nagyon megpróbáltató, de annál izgalmasabb és kifizetődőbb. Köszönöm nektek, hogy a program segítségével nyerhettem bizonyosságot arról, hogy képes vagyok a változtatásra és ezáltal a változásra.',
   },
   {
     name: 'Kovács Gergely',
     title: 'Brandomenal Media Ügyvezető',
     img: '/testimonials/g_test.png',
-    desc: 'Mindig is érdekelt a spiritualitás, manifesztáció vonzás törvénye és sok mindent hallottam már ezekkel kapcsolatban de ilyen modern megközelítést és ilyen tudományos alátámasztást még nem, ami nagyon hitelessé tette számomra a tanultakat. Pezsgős hangulatú a képzés, a srácok jól tartják a figyelmet, emiatt élvezettel tanultam végig.',
+    desc: 'Mindig is érdekelt a spiritualitás, a manifesztáció, a vonzás törvénye és sok mindent hallottam már ezekkel kapcsolatban de ilyen modern megközelítést és ilyen tudományos alátámasztást még nem, ami nagyon hitelessé tette számomra a tanultakat. Pezsgős hangulatú a képzés, a srácok jól tartják a figyelmet, emiatt élvezettel tanultam végig.',
   },
   {
     name: 'Tálas Balázs',
     title: 'Multimilliomos online vállalkozó',
     img: '/testimonials/ba_test.png',
-    desc: 'Nem is gondoltam volna hogy ha elkezdem megfigyelni gondolataim mennyi negativ gondolatom van egy nap és ezek hogy felul tudnak kerekedni rajtam. A srácok ráébresztettek arra hogy mennyire fontos megfigyelnem a gondolataimat és tudatosítanom, valamit átprogramoznom őket így egy sokkal pozitívabb hétköznapi életet teremtsek magamnak ami minden más sikeremhez is hozzájárult. Nagyon sokat segített nekem ebben Younes és Kristóf amiért hálás vagyok.',
+    desc: 'Nem is gondoltam volna, hogy ha elkezdem megfigyelni gondolataim mennyi negativ gondolatom van egy nap és ezek hogy felül tudnak kerekedni rajtam. A srácok ráébresztettek arra, hogy mennyire fontos megfigyelnem a gondolataimat és tudatosítanom, valamit átprogramoznom őket így egy sokkal pozitívabb hétköznapi életet teremtsek magamnak ami minden más sikeremhez is hozzájárult. Nagyon sokat segített nekem ebben Younes és Kristóf amiért hálás vagyok.',
   },
 ];
 

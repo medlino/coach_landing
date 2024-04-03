@@ -43,7 +43,7 @@ const inProgItems = [
         A teremtésről dokiktól, akik kezdetben szkeptikusok voltak.
         <br />
         Hogyan kapcsolódik a gondolkodás és a képzelet a valóságod
-        megteremtéséhez.
+        megteremtéséhez?
         <br />A saját történeted megteremtése.
       </p>
     ),
@@ -54,7 +54,7 @@ const inProgItems = [
     title: 'III. Szokások',
     desc: (
       <p>
-        Hogyan alakíts ki olyan szokásokat, amik egy életen át szolgálnak?
+        Hogyan alakíts ki olyan szokásokat, amik egy életen át elkísérnek?
         <br />
         Mi az akaraterő és miért fontos?
         <br />
@@ -67,7 +67,7 @@ const inProgItems = [
         <br />
         Hidegterápia - Az egyik legjobb gyógymód, hogy egészséges maradj.
         <br />
-        Mik a lelki és biológiai következményei ezekek a szokásoknak?
+        Mik a lelki és biológiai következményei ezeknek a szokásoknak?
       </p>
     ),
   },
@@ -82,7 +82,7 @@ export const WhatInProgSection = () => {
         dolog, amit irányíthatsz, az az elméd. Megtanítunk az elméd
         átprogramozására, hogy hogyan alakíts ki új idegpályákat a céljaid
         elérése érdekében. Amikor megérted az elméd működését, akkor lehetőséged
-        nyílik megteremteni azt a valóságot, amit szeretnél. Esélyt kapsz arra,
+        nyílik megteremteni azt a valóságot amire vágysz. Esélyt kapsz arra,
         hogy túllépj a múltbeli tapasztalataid korlátain és szabadon alakítsd a
         saját jövőd.
       </p>

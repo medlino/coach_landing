@@ -12,7 +12,7 @@ const categories = [
   {
     id: 'laptop',
     imgSrc: '/icons/laptop.png',
-    desc: 'Rendszeres élő beszélgetések, webinarok, ahol felteheted kérdéseidet, megoszthatod tapasztalataidat, végigkísérünk az úton, lépésről-lépésre.',
+    desc: 'Rendszeres élő beszélgetések, webinarok, ahol felteheted kérdéseidet, megoszthatod tapasztalataidat. Végigkísérünk az úton, lépésről-lépésre.',
   },
   {
     id: 'atom',

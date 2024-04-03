@@ -7,8 +7,8 @@ import { stripeCheckout } from '@/clientAPI/checkout';
 import styles from './AboutProgSection.module.scss';
 
 const texts = [
-  'szeretnéd elhagyni a régi énedet és a vele járó szokásokat, amik egy bizonytalan élethez vezettek. ',
-  'meguntad a mindennapi céltalan mókuskereket. ',
+  'szeretnél egy szabadabb és biztonságosabb életet teremteni magadnak. ',
+  'szeretnéd, hogy az életed a kiteljesedésedről és a megbecsülésről szóljon.',
   'a saját kezedbe szeretnéd venni az életed irányítását.',
   'szeretnéd megvalósítani a benned rejlő potenciált.',
   'kiváncsi vagy arra, hogyan tudsz egy sikeres életet megteremteni a vizualizáció, a neurobiológia és a teremtés eszközeivel.',
@@ -17,7 +17,7 @@ const texts = [
 export const AboutProgSection = () => {
   return (
     <section className={styles.aboutProgSection}>
-      <h1>Életre szóló program Neked, amennyiben</h1>
+      <h1>Életre szóló program NEKED, ha</h1>
       <div className={styles.textList}>
         {texts.map((text, index) => (
           <ul key={index}>
