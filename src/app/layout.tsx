@@ -18,7 +18,7 @@ export const metadata = {
     siteName: 'Az Elme Ereje',
     images: [
       {
-        url: 'https://elmeereje.hu/api/og?title=Az%20Elme%20Ereje',
+        url: 'https://elmeereje.hu/api/og',
         width: 1024,
         height: 1024,
       },

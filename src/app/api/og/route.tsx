@@ -4,10 +4,7 @@ import { NextRequest } from 'next/server';
 // Route segment config
 export const runtime = 'edge';
 
-export async function GET(req: NextRequest) {
-  const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get('title');
-
+export async function GET(_req: NextRequest) {
   return new ImageResponse(
     (
       <div
@@ -19,25 +16,10 @@ export async function GET(req: NextRequest) {
           alignItems: 'flex-start',
           justifyContent: 'center',
           backgroundImage: 'url(https://elmeereje.hu/og-bg.png)',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
         }}
-      >
-        <div
-          style={{
-            marginLeft: 190,
-            marginRight: 190,
-            display: 'flex',
-            fontSize: 140,
-            fontFamily: 'Outfit',
-            letterSpacing: '-0.05em',
-            fontStyle: 'normal',
-            color: 'white',
-            lineHeight: '120px',
-            whiteSpace: 'pre-wrap',
-          }}
-        >
-          {postTitle}
-        </div>
-      </div>
+      />
     ),
     // ImageResponse options
     {
