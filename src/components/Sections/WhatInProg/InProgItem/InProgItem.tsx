@@ -20,9 +20,12 @@ export const InProgItem: FunctionComponent<InProgItemProps> = ({
 }) => {
   return (
     <div className={clsx(styles.inProgItem, styles[id])}>
-      <img src={imgSrc} />
+      <img className={styles.desktopImg} src={imgSrc} />
       <div className={styles.textWrapper}>
-        <h3>{title}</h3>
+        <div>
+          <img className={styles.mobileImg} src={imgSrc} />
+          <h3>{title}</h3>
+        </div>
         {desc}
       </div>
     </div>
