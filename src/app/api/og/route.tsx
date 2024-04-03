@@ -11,10 +11,6 @@ export async function GET(_req: NextRequest) {
         style={{
           height: '100%',
           width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
           backgroundImage: 'url(https://elmeereje.hu/og-bg.png)',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -23,8 +19,8 @@ export async function GET(_req: NextRequest) {
     ),
     // ImageResponse options
     {
-      width: 1920,
-      height: 1080,
+      width: 1024,
+      height: 1024,
     }
   );
 }
