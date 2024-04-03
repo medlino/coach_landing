@@ -6,6 +6,7 @@ import clsx from 'clsx';
 import { Bellefair } from 'next/font/google';
 
 export const metadata = {
+  metadataBase: new URL('https://elmeereje.hu'),
   title: 'Az Elme Ereje',
   icons: {
     icon: '/favicon.png',
@@ -18,7 +19,7 @@ export const metadata = {
     siteName: 'Az Elme Ereje',
     images: [
       {
-        url: 'https://elmeereje.hu/api/og',
+        url: '/api/og',
         width: 1024,
         height: 1024,
       },
