@@ -14,11 +14,11 @@ export const metadata = {
     title: 'Az Elme Ereje',
     description:
       'Hogyan teremtsd meg saját sikered gondolataiddal és szokásaiddal?',
-    url: 'https://elmereje.hu',
+    url: 'https://elmeereje.hu',
     siteName: 'Az Elme Ereje',
     images: [
       {
-        url: 'https://elmereje.hu/api/og?title=Az%20Elme%20Ereje',
+        url: 'https://elmeereje.hu/api/og?title=Az%20Elme%20Ereje',
         width: 1024,
         height: 1024,
       },
