@@ -77,7 +77,7 @@ export const WhatInProgSection = () => {
   return (
     <section className={styles.whatInProgSection}>
       <h1>Mit tartalmaz a program?</h1>
-      <p>
+      <p className={styles.mainDesc}>
         Amit a legkevesebben tudnak irányítani az az elme, viszont az egyetlen
         dolog, amit irányíthatsz, az az elméd. Megtanítunk az elméd
         átprogramozására, hogy hogyan alakíts ki új idegpályákat a céljaid
