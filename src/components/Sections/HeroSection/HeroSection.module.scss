@@ -7,7 +7,20 @@
   background-size: cover;
   background-position: center;
   color: #0c2e47;
-  h1 {
+  .promo {
+    color: white;
+    width: 100%;
+    font-size: 42px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    line-height: 50px;
+    text-align: center;
+    font-family: var(--font-bellefair);
+    background-color: rgba(22, 128, 10  , 0.75);
+    padding: 10px 0px;
+    font-weight: 400;
+  }
+  .title {
     width: 100%;
     font-size: 42px;
     margin-top: 0px;
@@ -43,7 +56,11 @@
       width: 254px;
       height: 450px;
     }
-    h1 {
+    .promo {
+      font-size: 30px;
+      line-height: 30px;
+    }
+    .title {
       font-size: 30px;
       line-height: 30px;
       margin-bottom: 20px;
