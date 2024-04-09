@@ -3,15 +3,11 @@ import Stripe from 'stripe';
 
 export async function POST() {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  // const prices = await stripe.prices.list({
-  //   limit: 4,
-  // });
 
-  // const id = prices.data[0]?.id;
   const id =
     process.env.ENV === 'dev'
       ? 'price_1P1C4hLFpYtzSWrXNXCma1rx'
-      : 'price_1OyaE0LFpYtzSWrXfpx25Zcb';
+      : 'price_1P3YskLFpYtzSWrXywduRFHh';
   if (!id) {
     throw new Error('No price found!');
   }
@@ -35,7 +31,7 @@ export async function POST() {
     cancel_url:
       process.env.ENV === 'dev'
         ? 'http://localhost:3000?canceled=true'
-        : 'https://elmeereje.hu',
+        : 'https://elmeereje.hu?canceled=true',
   });
 
   return NextResponse.json(session);

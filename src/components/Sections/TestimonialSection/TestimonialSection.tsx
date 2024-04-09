@@ -164,10 +164,6 @@ export const TestimonialSection = () => {
         visszaigényléshez kérlek írj egy emailt info@medlino.hu címre és a pénzt
         pár napon belül újra a számládon találod. Nincsenek tesztkérdések!
       </p>
-      <p className={styles.price}>
-        Most <span style={{ color: 'green' }}>22,500 Ft</span> 04.08-ig
-        <br /> Eredeti ár 29,900 Ft
-      </p>
       <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
     </section>
   );

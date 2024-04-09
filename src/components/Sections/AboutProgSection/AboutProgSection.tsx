@@ -11,7 +11,7 @@ const texts = [
   'szeretnéd, hogy az életed a kiteljesedésedről és a megbecsülésről szóljon.',
   'a saját kezedbe szeretnéd venni az életed irányítását.',
   'szeretnéd megvalósítani a benned rejlő potenciált.',
-  'kiváncsi vagy arra, hogyan tudsz egy sikeres életet megteremteni a vizualizáció, a neurobiológia és a teremtés eszközeivel.',
+  'kiváncsi vagy arra, hogy hogyan tudsz egy sikeres életet megteremteni a vizualizáció, a neurobiológia és a teremtés eszközeivel.',
 ];
 
 export const AboutProgSection = () => {
