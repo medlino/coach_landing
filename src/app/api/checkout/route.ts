@@ -30,8 +30,8 @@ export async function POST() {
         : 'https://elmeereje.hu?success=true',
     cancel_url:
       process.env.ENV === 'dev'
-        ? 'http://localhost:3000?canceled=true'
-        : 'https://elmeereje.hu?canceled=true',
+        ? 'http://localhost:3000?cancel=true'
+        : 'https://elmeereje.hu?cancel=true',
   });
 
   return NextResponse.json(session);

@@ -22,8 +22,9 @@ function Toaster() {
     }
     if (cancel) {
       window.history.replaceState(null, '', '/');
-      toast.error(`Sikertelen fizetés!
-      Írj az info@medlino.hu-ra és segítünk!`);
+      toast.error(
+        'Sikertelen fizetés! Amennyiben segítségre van szükséged, írj az info@medlino.hu-ra és segítünk!'
+      );
     }
   }, [success, cancel]);
 
