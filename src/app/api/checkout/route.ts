@@ -23,6 +23,7 @@ export async function POST() {
     automatic_tax: {
       enabled: true,
     },
+    allow_promotion_codes: true,
     billing_address_collection: 'required',
     success_url:
       process.env.ENV === 'dev'
