@@ -86,6 +86,10 @@ export const WhatInProgSection = () => {
         hogy túllépj a múltbeli tapasztalataid korlátain és szabadon alakítsd a
         saját jövőd.
       </p>
+      <p className={styles.timeText}>
+        A program időtartalma 4 hét, és a kurzus anyaga egy életre szólón a
+        tiéd.
+      </p>
       <div className={styles.inProgList}>
         {inProgItems.map((iP) => (
           <InProgItem key={iP.id} {...iP} />

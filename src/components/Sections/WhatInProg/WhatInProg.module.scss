@@ -37,7 +37,9 @@
     margin-left: 12px;
     margin-right: 12px;
   }
-
+  .timeText {
+    text-decoration: underline;
+  }
   @media screen and (max-width: 768px) {
     margin-bottom: 40px;
 
