@@ -12,8 +12,7 @@ export const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
       <h1 className={styles.promo}>
-        Számodra nincs mit veszíteni: 30 napig feltétel nélküli
-        pénzvisszafizetés!
+        30 napig feltétel nélküli pénzvisszafizetés!
       </h1>
       <h1 className={styles.title}>
         AZ ELME EREJE
