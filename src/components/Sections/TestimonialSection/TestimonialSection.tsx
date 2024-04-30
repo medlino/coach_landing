@@ -156,7 +156,7 @@ export const TestimonialSection = () => {
         elégedetlenek vagy úgy érzik olyan dolgot vásároltak, amire valójában
         nincs is szükségük.{' '}
         <span style={{ textDecoration: 'underline' }}>
-          Biztosak vagyunk abban, hogy ha lelkiismeretesen végig csinálod a
+          Biztosak vagyunk abban, hogy ha lelkiismeretesen végigcsinálod a
           programot, akkor megváltozik az életed.
         </span>{' '}
         Éppen ezért úgy döntöttünk hogy a vásárlást követő első 30 napban
