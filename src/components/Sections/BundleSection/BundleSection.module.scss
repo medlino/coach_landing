@@ -1,0 +1,39 @@
+.bundleSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px 40px 0;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+  background: linear-gradient(90deg, #7d9faa, #14374d 94%);
+  font-family: var(--font-bellefair);
+  color: white;
+  padding: 40px 0px 80px 0px;
+
+  h1 {
+    font-weight: 400;
+    font-size: 60px;
+    margin-top: 28px;
+    margin-bottom: 40px;
+    font-family: var(--font-kanit);
+  }
+  .productList {
+    display: flex;
+    gap: 16px;
+    margin-top: 60px;
+  }
+
+  @media screen and (max-width: 768px) {
+    h1 {
+      font-size: 40px;
+      line-height: 34px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .productList {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+}

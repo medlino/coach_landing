@@ -1,0 +1,61 @@
+.bundleCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  border-top: 8px solid rgba(92,159,202, 0.9);
+  border-bottom: 8px solid rgba(92,159,202, 0.9);
+  padding: 1.5rem;
+  width: 100%;
+  margin: 0.5rem;
+  max-width: 28rem;
+  color: #0c2e47;
+  transition: 0.2s ease-in-out;
+
+  h5 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    margin-top: 0;
+  }
+  .price {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 0;
+  }
+  p {
+    font-size: 16px;
+    margin: 0px;
+  }
+  ul {
+    margin: 12px 0px 18px 0px;
+    padding: 0;
+    li {
+      display: flex;
+      text-align: right;
+      gap: 8px;
+      list-style-type: none;
+      margin: 8px 0px;
+      p {
+        margin: 0px;
+      }
+    }
+  }
+  button {
+    color: white;
+    background-color: rgba(53,118,159, 0.9);
+    margin-top: auto;
+    font-size: 24px;
+    padding: 12px 40px;
+    &:hover {
+      background-color: rgba(22, 107, 159, 0.9);
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 33.333%;
+  }
+}

@@ -1,13 +1,15 @@
 .desktopHeader {
   position: absolute;
-  padding: 10px 10px 10px 10px;
+  padding: 10px 10px 6px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.509);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   color: #0c2e47;
+  font-family: var(--font-bellefair);
+  font-size: 18px;
 
   nav {
     display: flex;
@@ -38,12 +40,17 @@
   }
   .actions {
     display: flex;
+    align-items: center;
     gap: 16px;
     button {
-      font-size: 18px;
-      padding: 4px 20px;
+      display: flex;
+      align-items: center;
+      font-size: 17px;
+      padding: 0px 20px;
     }
-
+    p {
+      margin: 0px;
+    }
   }
 }
 
@@ -51,7 +58,7 @@
   position: fixed;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 1);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   button {
     border: 1px solid black;
   }

@@ -6,8 +6,9 @@
   align-items: center;
   width: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.509);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   color: #0c2e47;
+  font-family: var(--font-bellefair);
 
   p {
     margin: 0px;
@@ -103,7 +104,7 @@
   position: fixed;
   z-index: 1000;
   background-color: rgba(255, 255, 255, 1);
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
   button {
     border: 1px solid black;
   }

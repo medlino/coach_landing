@@ -1,8 +1,14 @@
 import Stripe from 'stripe';
 
-export async function stripeCheckout() {
+export async function stripeCheckout(options?: {
+  type: 'recurring' | 'one_time';
+  priceId: string;
+}) {
   try {
-    const response = await fetch('/api/checkout', { method: 'POST' });
+    const response = await fetch('/api/checkout', {
+      method: 'POST',
+      body: JSON.stringify(options),
+    });
     if (!response.ok) {
       console.error('Something is not ok!', JSON.stringify(response));
     }

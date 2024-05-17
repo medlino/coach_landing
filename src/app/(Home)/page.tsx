@@ -4,6 +4,7 @@ import {
   WhyUsSection,
   WhatInProgSection,
   AboutProgSection,
+  BundleSection,
 } from '@/components/Sections';
 import { Footer } from '@/components/Footer/Footer';
 
@@ -16,6 +17,7 @@ export default async function Home() {
       <AboutProgSection />
       <WhyUsSection />
       <WhatInProgSection />
+      <BundleSection />
       <TestimonialSection />
       <Footer />
     </main>

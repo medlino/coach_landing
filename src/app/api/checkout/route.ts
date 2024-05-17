@@ -1,13 +1,16 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-export async function POST() {
+export async function POST(req: Request) {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
+  const res = await req.json();
+
   const id =
-    process.env.ENV === 'dev'
+    res.priceId ||
+    (process.env.ENV === 'dev'
       ? 'price_1P1C4hLFpYtzSWrXNXCma1rx'
-      : 'price_1PGiEaLFpYtzSWrXK835KTaN';
+      : 'price_1PGiEaLFpYtzSWrXK835KTaN');
   if (!id) {
     throw new Error('No price found!');
   }
@@ -19,10 +22,10 @@ export async function POST() {
         quantity: 1,
       },
     ],
-    mode: 'payment',
-    automatic_tax: {
+    mode: res.type === 'recurring' ? 'subscription' : 'payment',
+    /*     automatic_tax: {
       enabled: true,
-    },
+    }, */
     allow_promotion_codes: true,
     billing_address_collection: 'required',
     success_url:
