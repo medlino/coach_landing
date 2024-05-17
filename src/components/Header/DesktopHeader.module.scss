@@ -1,4 +1,4 @@
-.header {
+.desktopHeader {
   position: absolute;
   padding: 10px 10px 10px 10px;
   display: flex;
@@ -44,16 +44,6 @@
       padding: 4px 20px;
     }
 
-  }
-
-
-
-  @media screen and (max-width: 768px) {
-    .title {
-      font-size: 30px;
-      line-height: 30px;
-      margin-bottom: 20px;
-    }
   }
 }
 
