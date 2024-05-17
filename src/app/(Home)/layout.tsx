@@ -2,8 +2,9 @@
 
 import React, { useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-
 import { ToastContainer, toast } from 'react-toastify';
+
+import { Header } from '@/components/Header/Header';
 
 import styles from './layout.module.scss';
 
@@ -50,8 +51,8 @@ export default function HomeLayout({
 }) {
   return (
     <div className={styles.homeLayout}>
-      {/* <Header /> */}
-      <main>{children}</main>
+      <Header />
+      {children}
       <Suspense>
         <Toaster />
       </Suspense>

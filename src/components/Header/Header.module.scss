@@ -1,20 +1,28 @@
 .header {
-  background-color: #051d2c;
-  color: #fff;
-  padding: 1rem;
+  position: absolute;
+  padding: 10px 10px 10px 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  .logo {
-    img {
-      height: 50px;
-    }
-  }
+  width: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.509);
+  transition: 0.3s ease-in-out;
+  color: #0c2e47;
+
   nav {
     display: flex;
+    align-items: center;
     gap: 1rem;
+    .logo {
+      cursor: pointer;
+      img {
+        height: 45px;
+        border-radius: 50%;
+      }
+    }
     a {
-      color: #fff;
+      cursor: pointer;
+      color: black;
       text-decoration: none;
       &:hover {
         text-decoration: underline;
@@ -27,5 +35,34 @@
     img {
       width: 28px;
     }
+  }
+  .actions {
+    display: flex;
+    gap: 16px;
+    button {
+      font-size: 18px;
+      padding: 4px 20px;
+    }
+
+  }
+
+
+
+  @media screen and (max-width: 768px) {
+    .title {
+      font-size: 30px;
+      line-height: 30px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.scrolled {
+  position: fixed;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 1);
+  transition: 0.3s ease-in-out;
+  button {
+    border: 1px solid black;
   }
 }

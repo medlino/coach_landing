@@ -11,9 +11,6 @@ import styles from './HeroSection.module.scss';
 export const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
-      <h1 className={styles.promo}>
-        30 napig feltétel nélküli pénzvisszafizetés!
-      </h1>
       <h1 className={styles.title}>
         AZ ELME EREJE
         <br />

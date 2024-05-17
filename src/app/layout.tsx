@@ -5,6 +5,8 @@ import '../styles/variables.scss';
 import clsx from 'clsx';
 import { Bellefair } from 'next/font/google';
 
+import { SessionWrapper } from '@/components/SessionWrapper/SessionWrapper';
+
 export const metadata = {
   metadataBase: new URL('https://elmeereje.hu'),
   title: 'Az Elme Ereje',
@@ -44,7 +46,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="hun" className={clsx(bellefair.variable)}>
-      <body>{children}</body>
+      <SessionWrapper>
+        <body>{children}</body>
+      </SessionWrapper>
     </html>
   );
 }
