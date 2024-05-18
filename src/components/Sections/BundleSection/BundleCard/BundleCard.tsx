@@ -32,7 +32,7 @@ export const BundleCard = ({
           </li>
         ))}
       </ul>
-      <Button text="MEGVESZEM" onClick={onClick} />
+      <Button text="AKAROM, KELL!" onClick={onClick} />
     </div>
   );
 };
