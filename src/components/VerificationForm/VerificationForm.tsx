@@ -4,7 +4,8 @@ import { signIn, useSession } from 'next-auth/react';
 
 import { isDiscordMember } from '@/clientAPI/isDiscordMember';
 import { getDiscordRoles } from '@/clientAPI/getDiscordRoles';
-import { getPaymentStatus } from '@/clientAPI/getPaymentStatus';
+import { setDiscordRole } from '@/clientAPI/setDiscordRole';
+import { hasPaid } from '@/clientAPI/hasPaid';
 
 import { Button } from '../Button';
 import { Stepper } from '../Stepper/Stepper';
@@ -15,7 +16,7 @@ export const VerificationForm = () => {
   const { data: session } = useSession();
   const [isMember, setIsMember] = useState(false);
   const [roles, setRoles] = useState<string[]>([]);
-  const [payment, setPayment] = useState<any>({}); //TODO: Define payment type
+  const [hasUserPaid, setHasUserPaid] = useState(false);
 
   const inviteLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
   const vipRoleId = process.env.NEXT_PUBLIC_DISCORD_VIP_ROLE_ID;
@@ -48,8 +49,8 @@ export const VerificationForm = () => {
         getDiscordRoles().then((roles) => {
           setRoles(roles);
         }),
-        getPaymentStatus().then((payment) => {
-          setPayment(payment);
+        hasPaid().then((p) => {
+          setHasUserPaid(p);
         }),
       ]);
     }
@@ -80,8 +81,11 @@ export const VerificationForm = () => {
           <div key="roles">
             {isVip ? (
               <p>Már VIP vagy te-teee!</p>
-            ) : payment ? (
-              <p>Látom be vagy fizetve, de még nincs meg a rolod!</p>
+            ) : hasUserPaid ? (
+              <>
+                <p>Látom be vagy fizetve, de még nincs meg a rolod!</p>
+                <Button text="Kérem a VIP rolomat" onClick={setDiscordRole} />
+              </>
             ) : (
               <p>Még nem vagy VIP</p>
             )}

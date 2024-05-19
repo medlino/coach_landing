@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
+
+import { authMiddleware } from '@/middlewares/auth';
 
 export async function GET(req: NextRequest) {
   const authKey = process.env.NEXTAUTH_SECRET;
@@ -10,15 +11,9 @@ export async function GET(req: NextRequest) {
     throw new Error('Invalid request!');
   }
 
-  let session;
-  try {
-    session = await getToken({ req, secret: authKey });
-  } catch (error) {
-    console.error(error);
-    throw new Error('Unauthorized');
-  }
-
+  const session = await authMiddleware(req);
   const userId = session?.uid;
+
   const url = `https://discord.com/api/v9/guilds/${guildId}/members/${userId}`;
   const headers = {
     Authorization: `Bot ${discordToken}`,

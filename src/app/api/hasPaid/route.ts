@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getToken } from 'next-auth/jwt';
 
+import { authMiddleware } from '@/middlewares/auth';
 import clientPromise from '../../../lib/mongodb';
 
+// TODO: An additional stripe check would be great
 async function getPaymentByEmail(email: string) {
   const client = await clientPromise;
   const db = client.db();
@@ -12,24 +13,12 @@ async function getPaymentByEmail(email: string) {
 }
 
 export async function GET(req: NextRequest) {
-  const authKey = process.env.NEXTAUTH_SECRET;
-
-  if (!authKey) {
-    throw new Error('Invalid request!');
-  }
-
-  let session;
-  try {
-    session = await getToken({ req, secret: authKey });
-  } catch (error) {
-    console.error(error);
-    throw new Error('Unauthorized');
-  }
+  const session = await authMiddleware(req);
+  const email = session?.email;
 
   try {
-    const email = session?.email;
     const payment = await getPaymentByEmail(email as string);
-    return NextResponse.json(payment);
+    return NextResponse.json(!!payment);
   } catch (error) {
     console.error('Failed to fetch payment status:', error);
     throw error;

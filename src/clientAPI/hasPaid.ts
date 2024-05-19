@@ -1,6 +1,6 @@
-export async function getPaymentStatus() {
+export async function hasPaid() {
   try {
-    const response = await fetch('/api/getPaymentStatus', {
+    const response = await fetch('/api/hasPaid', {
       method: 'GET',
       credentials: 'include',
     });
