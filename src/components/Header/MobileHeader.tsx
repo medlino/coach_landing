@@ -8,7 +8,11 @@ import { Button } from '../Button';
 
 import styles from './MobileHeader.module.scss';
 
-export const MobileHeader = () => {
+interface MobileHeaderProps {
+  className?: string;
+}
+
+export const MobileHeader = ({ className }: MobileHeaderProps) => {
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -45,7 +49,11 @@ export const MobileHeader = () => {
   return (
     <>
       <header
-        className={clsx(styles.mobileHeader, scrolled ? styles.scrolled : '')}
+        className={clsx(
+          styles.mobileHeader,
+          scrolled ? styles.scrolled : '',
+          className
+        )}
       >
         <div className={styles.logo}>
           <img src="/og-bg.png" alt="logo" />

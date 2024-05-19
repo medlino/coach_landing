@@ -1,0 +1,83 @@
+.stepperContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.95);
+  min-width: 600px;
+  min-height: 300px;
+
+  .stepIndicatorContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+  }
+
+  .stepWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  .stepWrapper:last-of-type {
+    width: unset;
+  }
+
+
+  .stepNumber {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ddd;
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+
+      &.active {
+          background-color: #007bff;
+          color: white;
+      }
+  }
+
+  .stepLine {
+      flex-grow: 1;
+      height: 2px;
+      background-color: #ddd;
+      margin: 0 5px;
+
+      &.activeLine {
+          background-color: #007bff;
+      }
+  }
+
+  .stepperControls {
+      display: flex;
+      justify-content: space-between;
+      margin-top: auto;
+  }
+
+  .stepperButton {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 4px;
+
+      &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+      }
+  }
+
+  .stepContent {
+      margin-bottom: 20px;
+      font-size: 16px;
+  }
+}

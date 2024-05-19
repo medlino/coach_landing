@@ -20,10 +20,10 @@ export const BundleCard = ({
     <div className={styles.bundleCard}>
       <h5>{name}</h5>
       <p className={styles.price}>
-        {price.unit_amount / 100}
-        {price.currency.toLocaleUpperCase()}
+        {price && price.unit_amount / 100}
+        {price && price.currency.toLocaleUpperCase()}
       </p>
-      <p>{price.type === 'recurring' ? 'Havi' : 'Egyszeri'}</p>
+      <p>{price?.type === 'recurring' ? 'Havi' : 'Egyszeri'}</p>
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>

@@ -7,7 +7,11 @@ import { Button } from '../Button/Button';
 import styles from './DesktopHeader.module.scss';
 import { throttle } from '@/utils/throttle';
 
-export const DesktopHeader = () => {
+interface DesktopHeaderProps {
+  className?: string;
+}
+
+export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
 
@@ -38,7 +42,11 @@ export const DesktopHeader = () => {
 
   return (
     <header
-      className={clsx(styles.desktopHeader, scrolled ? styles.scrolled : '')}
+      className={clsx(
+        styles.desktopHeader,
+        scrolled ? styles.scrolled : '',
+        className
+      )}
     >
       <nav>
         <div className={styles.logo}>

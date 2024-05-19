@@ -79,6 +79,7 @@ async function genPaymentData(
 }
 
 function genEmail(data: any) {
+  //TODO mail
   const msg = {
     to: 'commonlevi.cl@gmail.com',
     from: 'hellomedlino@gmail.com',

@@ -5,6 +5,7 @@ import { useSearchParams } from 'next/navigation';
 import { ToastContainer, toast } from 'react-toastify';
 
 import { Header } from '@/components/Header/Header';
+import { Footer } from '@/components/Footer/Footer';
 
 import styles from './layout.module.scss';
 
@@ -56,6 +57,7 @@ export default function HomeLayout({
       <Suspense>
         <Toaster />
       </Suspense>
+      <Footer />
     </div>
   );
 }

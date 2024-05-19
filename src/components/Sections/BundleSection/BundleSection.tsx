@@ -6,7 +6,6 @@ import { SanitizedProduct, getStripeProducts } from '@/clientAPI/product';
 import { stripeCheckout } from '@/clientAPI/checkout';
 
 import { BundleCard } from './BundleCard/BundleCard';
-import { Button } from '../../Button';
 
 import styles from './BundleSection.module.scss';
 

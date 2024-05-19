@@ -4,7 +4,11 @@ import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { MobileHeader } from './MobileHeader';
 import { DesktopHeader } from './DesktopHeader';
 
-export const Header = () => {
+interface HeaderProps {
+  className?: string;
+}
+
+export const Header = ({ className }: HeaderProps) => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const [clientSide, setClientSide] = useState(false);
 
@@ -17,5 +21,13 @@ export const Header = () => {
     return null;
   }
 
-  return <>{isMobile ? <MobileHeader /> : <DesktopHeader />}</>;
+  return (
+    <>
+      {isMobile ? (
+        <MobileHeader className={className} />
+      ) : (
+        <DesktopHeader className={className} />
+      )}
+    </>
+  );
 };

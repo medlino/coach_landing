@@ -13,6 +13,24 @@ const handler = NextAuth({
       authorization: { params: { scope: 'identify email' } },
     }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
+  session: {
+    strategy: 'jwt',
+  },
+  callbacks: {
+    session: async ({ session, token }) => {
+      if (session?.user) {
+        session.user.id = token.uid as string;
+      }
+      return session;
+    },
+    jwt: async ({ token, account }) => {
+      if (account) {
+        token.uid = account.providerAccountId;
+      }
+      return token;
+    },
+  },
 });
 
 export { handler as GET, handler as POST };
