@@ -5,11 +5,11 @@ import jwt from 'jsonwebtoken';
 import clientPromise from '../../../lib/mongodb';
 
 //TODO DRY - new layer for db would be great
-async function getPaymentByEmail(email: string) {
+async function getPayment(checkoutId: string, email: string) {
   const client = await clientPromise;
   const db = client.db();
   const collection = db.collection('payments');
-  const query = { email };
+  const query = { checkoutId, email };
   return collection.findOne(query);
 }
 
@@ -26,7 +26,11 @@ export async function POST(req: NextRequest) {
 
   try {
     const session = await authMiddleware(req);
-    const payment = await getPaymentByEmail(session?.email as string); //TODO: Fix this type
+
+    const body = await req.json();
+    const { checkoutId } = body;
+
+    const payment = await getPayment(checkoutId, session?.email as string); //TODO: Fix this type
     jwt.verify(payment?.token as string, paymentKey);
 
     const userId = session?.uid;

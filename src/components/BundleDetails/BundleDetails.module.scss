@@ -1,0 +1,51 @@
+.bundleDetails {
+  font-family: var(--font-bellefair);
+
+  .roles, .bundles, .rights {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-size: 20px;
+  }
+  .roles {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .paymentWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    .title {
+      font-size: 24px;
+    }
+    .payment {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #ddd;
+      padding: 10px;
+      .bundles {
+        p {
+          margin: 0;
+        }
+      }
+      .rights {
+        p {
+          margin: 0;
+        }
+      }
+      button {
+        max-width: 200px;
+        font-size: 22px;
+        padding: 0px;
+        background-color: #78b8fc;
+        border-radius: 0px;
+        margin-top: 12px;
+        &:hover {
+          background-color: #6ab1fc;
+        }
+      }
+    }
+  }
+}

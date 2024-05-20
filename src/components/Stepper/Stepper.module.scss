@@ -9,10 +9,10 @@
   min-height: 300px;
 
   .stepIndicatorContainer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
   }
 
   .stepWrapper {
@@ -27,56 +27,56 @@
 
 
   .stepNumber {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: #ddd;
-      color: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
 
-      &.active {
-          background-color: #78b8fc;
-          color: white;
-      }
+    &.active {
+        background-color: #78b8fc;
+        color: white;
+    }
   }
 
   .stepLine {
-      flex-grow: 1;
-      height: 2px;
-      background-color: #ddd;
-      margin: 0 5px;
+    flex-grow: 1;
+    height: 2px;
+    background-color: #ddd;
+    margin: 0 5px;
 
-      &.activeLine {
-          background-color: #78b8fc;
-      }
+    &.activeLine {
+        background-color: #78b8fc;
+    }
   }
 
   .stepperControls {
-      display: flex;
-      justify-content: space-between;
-      margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
   }
 
   .stepperButton {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      border: none;
-      background-color: #78b8fc;
-      color: white;
-      border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #78b8fc;
+    color: white;
+    border-radius: 4px;
 
-      &:disabled {
-          background-color: #ccc;
-          cursor: not-allowed;
-      }
+    &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }
   }
 
   .stepContent {
-      margin-bottom: 20px;
-      font-size: 16px;
+    margin-bottom: 40px;
+    font-size: 16px;
   }
 }

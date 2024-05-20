@@ -3,6 +3,9 @@ import Stripe from 'stripe';
 import jwt from 'jsonwebtoken';
 import sgMail from '@sendgrid/mail';
 
+import { productRoleMap } from '@/constants/product';
+import { dedupArr } from '@/utils/dedupArray';
+import { PaymentStatus } from '@/interfaces/payment';
 import clientPromise from '../../../lib/mongodb';
 
 async function insertPayment(data: any) {
@@ -29,9 +32,16 @@ async function retrievePaymentProductDetails(
     });
 
     const products = await Promise.all(productPromises);
-    return products.map((p) => p.name);
+    return products.map((p) => ({
+      id: p.id,
+      name: p.name,
+      type: p.type,
+      desc: p.description,
+      defaultPrice: p.default_price,
+    }));
   } catch (error) {
     console.error('Error retrieving payment product details:', error);
+    return [];
   }
 }
 
@@ -48,9 +58,15 @@ async function retrieveSubProductDetails(stripe: Stripe, subscription: string) {
     });
 
     const products = await Promise.all(productPromises);
-    return products.map((p) => p.name);
+    return products.map((p) => ({
+      id: p.id,
+      name: p.name,
+      type: p.type,
+      defaultPrice: p.default_price,
+    }));
   } catch (error) {
     console.error('Error retrieving subscription product details:', error);
+    return [];
   }
 }
 
@@ -66,6 +82,19 @@ async function genPaymentData(
       ? await retrieveSubProductDetails(stripe, session.subscription as string)
       : await retrievePaymentProductDetails(stripe, session.id);
 
+  let dupedRoles = products
+    .map((p) => productRoleMap[p.id])
+    .flat()
+    .filter((r) => r);
+  if (!dupedRoles.length && process.env.ENV === 'dev') {
+    dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }];
+  } else if (!dupedRoles.length && process.env.ENV === 'prod') {
+    throw new Error('No roles found for product');
+  }
+
+  const dedupedRoles = dedupArr(dupedRoles, 'id');
+  const roles = dedupArr(dedupedRoles, 'id');
+
   const data = {
     email,
     amount: session.amount_total,
@@ -75,6 +104,8 @@ async function genPaymentData(
     checkoutId: session.id,
     payment_intent: session.payment_intent,
     subscription: session.subscription,
+    status: PaymentStatus.ROLE_ADD_PENDING,
+    roles,
     products,
   };
 

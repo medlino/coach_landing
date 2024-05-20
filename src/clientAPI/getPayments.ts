@@ -1,4 +1,4 @@
-import { MPayment } from '@/app/api/getPayments/route';
+import { MPayment } from '@/interfaces/payment';
 
 export async function getPayments(): Promise<MPayment[]> {
   try {

@@ -1,31 +1,34 @@
 'use client';
-import { useState, useEffect, useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { ColorRing } from 'react-loader-spinner';
 
-import { MPayment } from '@/app/api/getPayments/route';
-import { getPayments } from '@/clientAPI/getPayments';
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
+import { roleMap } from '@/constants/roles';
+import { PaymentStatus } from '@/interfaces/payment';
 
 import styles from './ProfileForm.module.scss';
+import { Button } from '../Button';
+import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 
 export const ProfileForm = () => {
-  const { session, isMember, isVip, promiseLoading, sessionLoading } =
+  const { session, isMember, payments, roles, promiseLoading, sessionLoading } =
     useDiscordMember();
-  const [payments, setPayments] = useState<MPayment[]>([]);
-  const [paymentLoading, setPaymentLoading] = useState(true);
 
   const inviteLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
 
-  useEffect(() => {
-    getPayments()
-      .then((payments) => {
-        setPayments(payments);
-      })
-      .finally(() => {
-        setPaymentLoading(false);
-      });
-  }, []);
+  const roleAddPendingPayments = useMemo(
+    () =>
+      payments.filter(
+        (payment) => payment.status === PaymentStatus.ROLE_ADD_PENDING
+      ),
+    [payments]
+  );
+
+  const activePayments = useMemo(
+    () => payments.filter((payment) => payment.status === PaymentStatus.ACTIVE),
+    [payments]
+  );
 
   const Loading = useCallback(() => {
     return (
@@ -46,23 +49,19 @@ export const ProfileForm = () => {
       <h1>Profil információk</h1>
       {session ? (
         <>
-          <div className={styles.section}>
-            <h5>Jogusultság:</h5>
-            {promiseLoading ? (
-              <Loading />
-            ) : (
-              <>
+          {promiseLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <div className={styles.section}>
                 {isMember ? (
-                  isVip ? (
-                    <div className={styles.detailContainer}>
-                      <p>VIP vagy, eléred a fizetett tartalmaid</p>
+                  <div className={styles.detailContainer}>
+                    <div className={styles.roles}>
+                      <p>Jogusultságaid:&nbsp;</p>
+                      <span>{roles.map((r) => roleMap[r]).join(', ')}</span>
                     </div>
-                  ) : (
-                    <div className={styles.detailContainer}>
-                      <p>Vendég</p>
-                      <Link href="/#csomagok">Elérhető csomagok</Link>
-                    </div>
-                  )
+                    <Link href="/#csomagok">Elérhető csomagok</Link>
+                  </div>
                 ) : (
                   <div className={styles.detailContainer}>
                     <p>Még nem vagy tagja a discord közzöségnek</p>
@@ -75,39 +74,59 @@ export const ProfileForm = () => {
                     </a>
                   </div>
                 )}
-              </>
-            )}
-          </div>
-          <div className={styles.section}>
-            <h5>Előfizetések:</h5>
-            {paymentLoading ? (
-              <Loading />
-            ) : (
-              <>
-                {payments.length ? (
-                  <div className={styles.detailContainer}>
-                    {payments.map((payment, i) => (
-                      <div key={i} className={styles.payment}>
-                        <p>
-                          {payment.type === 'payment'
-                            ? 'Egyszeri előzfizetés'
-                            : 'Havei előfizetés'}
-                        </p>
+              </div>
+
+              <div className={styles.section}>
+                {payments.length === 0 && <p>Nincs előfizetésed</p>}
+                {activePayments.length > 0 && (
+                  <div className={styles.contentWrapper}>
+                    <p className={styles.title}>Aktív tartalmak</p>
+                    {activePayments.map((p) => (
+                      <div key={p.checkoutId} className={styles.payment}>
                         <div className={styles.bundles}>
-                          <span>Csomagok:&nbsp;</span>
-                          {payment.products.map((product: string) => (
-                            <p key={product}>{product}</p>
+                          <p>Megvásárolt csomagok:&nbsp;</p>
+                          {p.products.map((product) => (
+                            <span key={product.id}>{product.name}</span>
+                          ))}
+                        </div>
+                        <div className={styles.rights}>
+                          <p>A következő jogokkal jár:&nbsp;</p>
+                          {p.roles.map((role) => (
+                            <span key={role.id}>{role.name}</span>
                           ))}
                         </div>
                       </div>
                     ))}
                   </div>
-                ) : (
-                  <p>Nincs előfizetésed</p>
                 )}
-              </>
-            )}
-          </div>
+                {roleAddPendingPayments.length > 0 && (
+                  <div className={styles.contentWrapper}>
+                    <p className={styles.title}>Nem aktivált tartalmak</p>
+                    {roleAddPendingPayments.map((p) => (
+                      <div key={p.checkoutId} className={styles.payment}>
+                        <div className={styles.bundles}>
+                          <p>Megvásárolt csomagok:&nbsp;</p>
+                          {p.products.map((product) => (
+                            <span key={product.id}>{product.name}</span>
+                          ))}
+                        </div>
+                        <div className={styles.rights}>
+                          <p>A következő jogokat fogod megkapni:&nbsp;</p>
+                          {p.roles.map((role) => (
+                            <span key={role.id}>{role.name}</span>
+                          ))}
+                        </div>
+                        <Button
+                          text="Aktiválás"
+                          onClick={() => setDiscordRole(p.checkoutId)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </>
+          )}
         </>
       ) : (
         <>{sessionLoading ? <Loading /> : <p>Bejelentkezés szükséges!</p>}</>

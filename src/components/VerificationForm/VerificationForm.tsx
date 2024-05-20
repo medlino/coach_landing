@@ -1,25 +1,19 @@
 'use client';
+import { useCallback, useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
+import { ColorRing } from 'react-loader-spinner';
 
-import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
 
-import { ColorRing } from 'react-loader-spinner';
 import { Button } from '../Button';
 import { Stepper } from '../Stepper/Stepper';
 
 import styles from './VerificationForm.module.scss';
-import { useCallback, useEffect, useState } from 'react';
+import { BundleDetails } from '../BundleDetails/BundleDetails';
 
 export const VerificationForm = () => {
-  const {
-    session,
-    isMember,
-    isVip,
-    hasUserPaid,
-    sessionLoading,
-    promiseLoading,
-  } = useDiscordMember();
+  const { session, isMember, roles, payments, sessionLoading, promiseLoading } =
+    useDiscordMember();
   const [stepLoading, setStepLoading] = useState(true);
   const [startStep, setStartStep] = useState(1);
 
@@ -72,18 +66,7 @@ export const VerificationForm = () => {
                 </a>
               )}
             </div>,
-            <div key="roles">
-              {isVip ? (
-                <p>Már VIP vagy te-teee!</p>
-              ) : hasUserPaid ? (
-                <>
-                  <p>Látom be vagy fizetve, de még nincs meg a rolod!</p>
-                  <Button text="Kérem a VIP rolomat" onClick={setDiscordRole} />
-                </>
-              ) : (
-                <p>Még nem vagy VIP</p>
-              )}
-            </div>,
+            <BundleDetails key="bundles" payments={payments} roles={roles} />,
           ]}
         />
       )}

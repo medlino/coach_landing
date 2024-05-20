@@ -1,25 +1,22 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useSession } from 'next-auth/react';
 
 import { isDiscordMember } from '@/clientAPI/isDiscordMember';
 import { getDiscordRoles } from '@/clientAPI/getDiscordRoles';
-import { hasPaid } from '@/clientAPI/hasPaid';
+import { getPayments } from '@/clientAPI/getPayments';
+import { MPayment } from '@/interfaces/payment';
 
+//TODO refactor loading states
 export const useDiscordMember = () => {
   const { data: session, status } = useSession();
   const [isMember, setIsMember] = useState(false);
   const [roles, setRoles] = useState<string[]>([]);
-  const [hasUserPaid, setHasUserPaid] = useState(false);
+  const [payments, setPayments] = useState<MPayment[]>([]);
   const [sessionLoading, setSessionLoading] = useState(true);
   const [isMemberLoading, setIsMemberLoading] = useState(true);
   const [rolesIsLoading, setIsRoleLoading] = useState(true);
-
-  const vipRoleId = process.env.NEXT_PUBLIC_DISCORD_VIP_ROLE_ID;
-
-  const isVip = useMemo(() => {
-    return vipRoleId ? roles.includes(vipRoleId) : false;
-  }, [roles, vipRoleId]);
+  const [paymmentIsLoadin, setPaymentIsLoading] = useState(true);
 
   useEffect(() => {
     if (status !== 'loading' && status === 'unauthenticated') {
@@ -54,20 +51,23 @@ export const useDiscordMember = () => {
           .finally(() => {
             setIsRoleLoading(false);
           }),
-        hasPaid().then((p) => {
-          setHasUserPaid(p);
-        }),
+        getPayments()
+          .then((payments) => {
+            setPayments(payments);
+          })
+          .finally(() => {
+            setPaymentIsLoading(false);
+          }),
       ]);
     }
   }, [isMember]);
 
   return {
     isMember,
+    payments,
     roles,
-    hasUserPaid,
-    isVip,
     session,
     sessionLoading,
-    promiseLoading: isMemberLoading || rolesIsLoading,
+    promiseLoading: isMemberLoading || rolesIsLoading || paymmentIsLoadin,
   };
 };

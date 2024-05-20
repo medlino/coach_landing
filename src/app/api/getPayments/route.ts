@@ -3,13 +3,31 @@ import { NextRequest, NextResponse } from 'next/server';
 import { authMiddleware } from '@/middlewares/auth';
 import clientPromise from '../../../lib/mongodb';
 
+export interface MRole {
+  id: string;
+  name: string;
+}
+
+export interface MProduct {
+  id: string;
+  name: string;
+  type: string;
+  desc: string;
+  defaultPrice: string | null;
+}
+
 export interface MPayment {
   email: string;
   amount: number;
   date: Date;
   type: 'subscription' | 'payment';
   token: string;
-  products: string[];
+  checkoutId: string;
+  payment_intent: string | null;
+  subscription: string | null;
+  products: MProduct[];
+  status: string;
+  roles: MRole[];
 }
 
 async function getPaymentsByEmail(email: string) {
