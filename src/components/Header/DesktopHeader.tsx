@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 import clsx from 'clsx';
+
+import { throttle } from '@/utils/throttle';
 
 import { Button } from '../Button/Button';
 
 import styles from './DesktopHeader.module.scss';
-import { throttle } from '@/utils/throttle';
 
 interface DesktopHeaderProps {
   className?: string;
@@ -14,6 +16,8 @@ interface DesktopHeaderProps {
 export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
+
+  const discordLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -50,13 +54,16 @@ export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
     >
       <nav>
         <div className={styles.logo}>
-          <img src="/og-bg.png" alt="logo" />
+          <Link href="/">
+            <img src="/og-bg.png" alt="logo" />
+          </Link>
         </div>
-        <a>Közösség</a>
-        <a>Tartalom</a>
-        <a>Csomagok</a>
-        <a>Garancia</a>
-        <a>Testimoniálok</a>
+        <a href={discordLink} target="_blank" rel="noopener noreferrer">
+          Közösség
+        </a>
+        <Link href="/#tartalom">Tartalom</Link>
+        <Link href="/#csomagok">Csomagok</Link>
+        <Link href="/#garancia">Garancia</Link>
       </nav>
       <div className={styles.actions}>
         {!session ? (

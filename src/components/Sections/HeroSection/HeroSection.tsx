@@ -1,14 +1,15 @@
 'use client';
 
 import React from 'react';
-
-import { stripeCheckout } from '@/clientAPI/checkout';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '../../Button';
 
 import styles from './HeroSection.module.scss';
 
 export const HeroSection = () => {
+  const router = useRouter();
+
   return (
     <section className={styles.heroSection}>
       <h1 className={styles.title}>
@@ -32,7 +33,7 @@ export const HeroSection = () => {
           borderRadius: '10px',
         }}
       ></iframe>
-      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
+      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
     </section>
   );
 };

@@ -1,4 +1,5 @@
 import {
+  AssuranceSection,
   HeroSection,
   TestimonialSection,
   WhyUsSection,
@@ -18,6 +19,7 @@ export default async function Home() {
       <WhatInProgSection />
       <BundleSection />
       <TestimonialSection />
+      <AssuranceSection />
     </main>
   );
 }

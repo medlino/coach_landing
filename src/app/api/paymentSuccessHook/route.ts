@@ -85,7 +85,7 @@ function genEmail(data: any) {
     from: 'hellomedlino@gmail.com',
     subject: 'Sending with Twilio SendGrid is Fun',
     text: 'and easy to do anywhere, even with Node.js',
-    html: '<strong>and easy to do anywhere, even with Node.js <a href="http://localhost:3000/verify/" target="_blank" rel="noopener noreferrer">Verify</a></strong>',
+    html: '<strong>and easy to do anywhere, even with Node.js <a href="http://localhost:3000/aktivalas/" target="_blank" rel="noopener noreferrer">Verify</a></strong>',
   };
 
   return msg;

@@ -2,7 +2,7 @@
 
 import { Button } from '../../Button';
 
-import { stripeCheckout } from '@/clientAPI/checkout';
+import { useRouter } from 'next/navigation';
 
 import styles from './AboutProgSection.module.scss';
 
@@ -15,8 +15,10 @@ const texts = [
 ];
 
 export const AboutProgSection = () => {
+  const router = useRouter();
+
   return (
-    <section className={styles.aboutProgSection}>
+    <section id="neked-szolo-program" className={styles.aboutProgSection}>
       <h1>Életre szóló program NEKED, ha</h1>
       <div className={styles.textList}>
         {texts.map((text, index) => (
@@ -28,7 +30,7 @@ export const AboutProgSection = () => {
           </ul>
         ))}
       </div>
-      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
+      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
     </section>
   );
 };

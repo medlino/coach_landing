@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import { throttle } from '@/utils/throttle';
@@ -16,6 +17,8 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
   const { data: session } = useSession();
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const discordLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -70,30 +73,32 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
       {menuOpen && (
         <div className={styles.fullscreenMenu}>
           <div className={styles.menuActions}>
-            <div className={styles.logo}>
+            <Link href="/">
               <img src="/og-bg.png" alt="logo" />
-            </div>
+            </Link>
             <div className={styles.closeButton} onClick={toggleMenu}>
               ×
             </div>
           </div>
 
           <nav>
-            <a href="#home" onClick={toggleMenu}>
+            <a
+              href={discordLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={toggleMenu}
+            >
               Közösség
             </a>
-            <a href="#about" onClick={toggleMenu}>
+            <Link href="/#tartalom" onClick={toggleMenu}>
               Tartalom
-            </a>
-            <a href="#contact" onClick={toggleMenu}>
+            </Link>
+            <Link href="/#csomagok" onClick={toggleMenu}>
               Csomagok
-            </a>
-            <a href="#contact" onClick={toggleMenu}>
+            </Link>
+            <Link href="/#garancia" onClick={toggleMenu}>
               Garancia
-            </a>
-            <a href="#contact" onClick={toggleMenu}>
-              Testimonálok
-            </a>
+            </Link>
           </nav>
 
           <div className={styles.actions}>

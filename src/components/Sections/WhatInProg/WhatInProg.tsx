@@ -1,11 +1,11 @@
 'use client';
 
-import { Button } from '../../Button';
+import { useRouter } from 'next/navigation';
 
-import { stripeCheckout } from '@/clientAPI/checkout';
+import { Button } from '../../Button';
+import { InProgItem } from './InProgItem/InProgItem';
 
 import styles from './WhatInProg.module.scss';
-import { InProgItem } from './InProgItem/InProgItem';
 
 const inProgItems = [
   {
@@ -74,8 +74,10 @@ const inProgItems = [
 ];
 
 export const WhatInProgSection = () => {
+  const router = useRouter();
+
   return (
-    <section className={styles.whatInProgSection}>
+    <section id="tartalom" className={styles.whatInProgSection}>
       <h1>Mit tartalmaz a program?</h1>
       <p className={styles.mainDesc}>
         Amit a legkevesebben tudnak irányítani az az elme, viszont az egyetlen
@@ -95,7 +97,7 @@ export const WhatInProgSection = () => {
           <InProgItem key={iP.id} {...iP} />
         ))}
       </div>
-      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
+      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
     </section>
   );
 };

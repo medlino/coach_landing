@@ -1,10 +1,9 @@
 /* eslint-disable quotes */
 'use client';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '../../Button';
 import { CategoryItem } from './CategoryItem/CategoryItem';
-
-import { stripeCheckout } from '@/clientAPI/checkout';
 
 import styles from './WhyUsSection.module.scss';
 
@@ -32,15 +31,17 @@ const categories = [
 ];
 
 export const WhyUsSection = () => {
+  const router = useRouter();
+
   return (
-    <section className={styles.whyUsSection}>
+    <section id="miert-csatlakozz" className={styles.whyUsSection}>
       <h1>Mit kínál számodra a program? </h1>
       <div className={styles.categoryList}>
         {categories.map((category) => (
           <CategoryItem key={category.id} {...category} />
         ))}
       </div>
-      <Button text="CSATLAKOZOM" onClick={stripeCheckout} />
+      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
     </section>
   );
 };

@@ -19,7 +19,7 @@ export const BundleSection = () => {
   }, []);
 
   return (
-    <section className={styles.bundleSection}>
+    <section id="csomagok" className={styles.bundleSection}>
       <h1>Itt vannak a Bündlék, hogy miiii? A bündléééK? na neee </h1>
       <div className={styles.productList}>
         {products.map((product) => (
