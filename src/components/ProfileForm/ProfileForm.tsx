@@ -1,17 +1,22 @@
 'use client';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 import Link from 'next/link';
 
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
+import { cancelPayment } from '@/clientAPI/cancelPayment';
 import { roleMap } from '@/constants/roles';
 import { PaymentStatus } from '@/interfaces/payment';
+
 import { Loading } from '../Loading/Loading';
+import { Button } from '../Button/Button';
 
 import styles from './ProfileForm.module.scss';
 
 export const ProfileForm = () => {
   const { session, isMember, payments, roles, promiseLoading, sessionLoading } =
     useDiscordMember();
+  const [cancelLoading, setCancelLoading] = useState(false);
 
   const inviteLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
 
@@ -27,6 +32,23 @@ export const ProfileForm = () => {
     () => payments.filter((payment) => payment.status === PaymentStatus.ACTIVE),
     [payments]
   );
+
+  const areAllPaymentsCancelled = useMemo(
+    () => payments.every((p) => p.status === PaymentStatus.CANCELED),
+    [payments]
+  );
+
+  const handleCancelPayment = async (subscriptionId: string) => {
+    try {
+      setCancelLoading(true);
+      await cancelPayment(subscriptionId);
+      window.location.reload();
+    } catch (error) {
+      toast.error('Hiba történt a leiratkozás során!');
+    } finally {
+      setCancelLoading(false);
+    }
+  };
 
   return (
     <div className={styles.profileForm}>
@@ -61,12 +83,34 @@ export const ProfileForm = () => {
               </div>
 
               <div className={styles.section}>
-                {payments.length === 0 && <p>Nincs előfizetésed</p>}
+                {(payments.length === 0 || areAllPaymentsCancelled) && (
+                  <p className={styles.announceTitle}>Nincs előfizetésed</p>
+                )}
                 {activePayments.length > 0 && (
                   <div className={styles.contentWrapper}>
                     <p className={styles.title}>Aktív tartalmak</p>
                     {activePayments.map((p) => (
                       <div key={p.checkoutId} className={styles.payment}>
+                        <div className={styles.type}>
+                          <p>
+                            Típus:&nbsp;
+                            {p.type === 'payment' ? 'Egyszeri' : 'Előfizetés'}
+                          </p>
+                        </div>
+                        {p.type === 'subscription' && (
+                          <>
+                            {cancelLoading ? (
+                              <Loading />
+                            ) : (
+                              <Button
+                                text="Leiratkozás"
+                                onClick={() =>
+                                  handleCancelPayment(p.subscription!)
+                                }
+                              />
+                            )}
+                          </>
+                        )}
                         <div className={styles.bundles}>
                           <p>Megvásárolt csomagok:&nbsp;</p>
                           {p.products.map((product) => (
@@ -121,7 +165,13 @@ export const ProfileForm = () => {
           )}
         </>
       ) : (
-        <>{sessionLoading ? <Loading /> : <p>Bejelentkezés szükséges!</p>}</>
+        <>
+          {sessionLoading ? (
+            <Loading />
+          ) : (
+            <p className={styles.announceTitle}>Bejelentkezés szükséges!</p>
+          )}
+        </>
       )}
     </div>
   );

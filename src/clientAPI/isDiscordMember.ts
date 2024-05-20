@@ -5,7 +5,7 @@ export async function isDiscordMember() {
       credentials: 'include',
     });
     if (!response.ok) {
-      console.error('Something is not ok!', JSON.stringify(response));
+      throw new Error(`Error: ${JSON.stringify(response)}`);
     }
 
     const isMember = await response.json();

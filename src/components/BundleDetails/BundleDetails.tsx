@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import clsx from 'clsx';
 
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
@@ -8,6 +8,8 @@ import { Button } from '../Button/Button';
 
 import styles from './BundleDetails.module.scss';
 import { roleMap } from '@/constants/roles';
+import { Loading } from '../Loading/Loading';
+import { toast } from 'react-toastify';
 
 interface BundleDetailsProps {
   className?: string;
@@ -20,6 +22,8 @@ export const BundleDetails = ({
   payments,
   roles,
 }: BundleDetailsProps) => {
+  const [loading, setLoading] = useState(false);
+
   const roleAddPendingPayments = useMemo(
     () =>
       payments.filter(
@@ -27,6 +31,20 @@ export const BundleDetails = ({
       ),
     [payments]
   );
+
+  const handleSetDiscordRole = async (checkoutId: string) => {
+    setLoading(true);
+    try {
+      await setDiscordRole(checkoutId);
+      window.location.reload();
+    } catch (error) {
+      toast.error(
+        'Hiba történt az aktiválás során! Kérlek írj az info@medlino.hu címre!'
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className={clsx(styles.bundleDetails, className)}>
@@ -56,10 +74,14 @@ export const BundleDetails = ({
                     <span key={role.id}>{role.name}</span>
                   ))}
                 </div>
-                <Button
-                  text="Aktiválás"
-                  onClick={() => setDiscordRole(p.checkoutId)}
-                />
+                {loading ? (
+                  <Loading />
+                ) : (
+                  <Button
+                    text="Aktiválás"
+                    onClick={() => handleSetDiscordRole(p.checkoutId)}
+                  />
+                )}
               </div>
             ))}
           </>

@@ -10,6 +10,10 @@
   font-family: var(--font-bellefair);
   margin-bottom: 100px;
 
+  .announceTitle {
+    font-size: 28px;
+  }
+
   .roles, .bundles, .rights {
     display: flex;
     align-items: center;
@@ -38,7 +42,6 @@
       font-size: 24px;
     }
 
-
     .contentWrapper {
       display: flex;
       flex-direction: column;
@@ -53,12 +56,22 @@
         flex-direction: column;
         border: 1px solid #ddd;
         padding: 10px;
+        .type {
+          p {
+            font-size: 20px;
+            margin: 0;
+          }
+        }
         .bundles {
+          margin-top: 24px;
+          margin-bottom: 0;
           p {
             margin: 0;
           }
         }
         .rights {
+          margin-top: 24px;
+          margin-bottom: 0;
           p {
             margin: 0;
           }

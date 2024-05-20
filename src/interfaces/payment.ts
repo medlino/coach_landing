@@ -19,4 +19,5 @@ export interface MPayment {
   products: MProduct[];
   status: string;
   roles: MRole[];
+  userId?: string;
 }

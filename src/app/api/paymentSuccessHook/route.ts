@@ -87,7 +87,7 @@ async function genPaymentData(
     .flat()
     .filter((r) => r);
   if (!dupedRoles.length && process.env.ENV === 'dev') {
-    dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }];
+    dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }]; // dev mock
   } else if (!dupedRoles.length && process.env.ENV === 'prod') {
     throw new Error('No roles found for product');
   }

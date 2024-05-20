@@ -6,9 +6,10 @@ export async function setDiscordRole(checkoutId: string) {
       body: JSON.stringify({ checkoutId }),
     });
     if (!response.ok) {
-      console.error('Something is not ok!', JSON.stringify(response));
+      throw new Error(`Error: ${JSON.stringify(response)}`);
     }
   } catch (error) {
     console.error('Something went wrong!', JSON.stringify(error));
+    throw new Error('Something went wrong!');
   }
 }

@@ -24,7 +24,7 @@ export async function getStripeProducts() {
   try {
     const response = await fetch('/api/product', { method: 'GET' });
     if (!response.ok) {
-      console.error('Something is not ok!', JSON.stringify(response));
+      throw new Error(`Error: ${JSON.stringify(response)}`);
     }
 
     const products = await response.json();
