@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { Button } from '../../Button';
+import { Button } from '../../Button/Button';
 import { InProgItem } from './InProgItem/InProgItem';
 
 import styles from './WhatInProg.module.scss';

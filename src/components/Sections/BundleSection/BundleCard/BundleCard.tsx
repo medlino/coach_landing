@@ -1,4 +1,4 @@
-import { Button } from '@/components/Button';
+import { Button } from '@/components/Button/Button';
 import { SanitizedPrice } from '@/clientAPI/product';
 
 import styles from './BundleCard.module.scss';

@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 import { MPayment, PaymentStatus } from '@/interfaces/payment';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 
 import styles from './BundleDetails.module.scss';
 import { roleMap } from '@/constants/roles';
@@ -31,7 +31,7 @@ export const BundleDetails = ({
   return (
     <div className={clsx(styles.bundleDetails, className)}>
       <div className={styles.roles}>
-        <p>Eddigi roljaid:&nbsp;</p>
+        <p>Jogosultságaid:&nbsp;</p>
         <span>{roles.map((r) => roleMap[r]).join(', ')}</span>
       </div>
 

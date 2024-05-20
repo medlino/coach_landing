@@ -1,15 +1,15 @@
 'use client';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { ColorRing } from 'react-loader-spinner';
 
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 import { Stepper } from '../Stepper/Stepper';
+import { BundleDetails } from '../BundleDetails/BundleDetails';
+import { Loading } from '../Loading/Loading';
 
 import styles from './VerificationForm.module.scss';
-import { BundleDetails } from '../BundleDetails/BundleDetails';
 
 export const VerificationForm = () => {
   const { session, isMember, roles, payments, sessionLoading, promiseLoading } =
@@ -25,20 +25,6 @@ export const VerificationForm = () => {
       setStartStep(!session ? 1 : !isMember ? 2 : 3);
     }
   }, [sessionLoading, promiseLoading]);
-
-  const Loading = useCallback(() => {
-    return (
-      <div className={styles.loading}>
-        <ColorRing
-          visible
-          height="80"
-          width="80"
-          ariaLabel="color-ring-loading"
-          colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-        />
-      </div>
-    );
-  }, []);
 
   return (
     <div className={styles.verificationForm}>

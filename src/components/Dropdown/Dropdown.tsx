@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import clsx from 'clsx';
 
 import styles from './Dropdown.module.scss';
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 
 interface DropdownProps {
   text: string;

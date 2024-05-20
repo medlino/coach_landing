@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Triangle } from 'react-loader-spinner';
 import { useRouter } from 'next/navigation';
 
-import { Button } from '../../Button';
+import { Button } from '../../Button/Button';
 
 import styles from './HeroSection.module.scss';
 

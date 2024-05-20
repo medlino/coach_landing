@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import { throttle } from '@/utils/throttle';
 
-import { Button } from '../Button';
+import { Button } from '../Button/Button';
 
 import styles from './MobileHeader.module.scss';
 

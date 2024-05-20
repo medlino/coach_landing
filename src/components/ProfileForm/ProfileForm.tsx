@@ -1,15 +1,13 @@
 'use client';
-import { useCallback, useMemo } from 'react';
+import { useMemo } from 'react';
 import Link from 'next/link';
-import { ColorRing } from 'react-loader-spinner';
 
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
 import { roleMap } from '@/constants/roles';
 import { PaymentStatus } from '@/interfaces/payment';
+import { Loading } from '../Loading/Loading';
 
 import styles from './ProfileForm.module.scss';
-import { Button } from '../Button';
-import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 
 export const ProfileForm = () => {
   const { session, isMember, payments, roles, promiseLoading, sessionLoading } =
@@ -29,20 +27,6 @@ export const ProfileForm = () => {
     () => payments.filter((payment) => payment.status === PaymentStatus.ACTIVE),
     [payments]
   );
-
-  const Loading = useCallback(() => {
-    return (
-      <div className={styles.loading}>
-        <ColorRing
-          visible
-          height="80"
-          width="80"
-          ariaLabel="color-ring-loading"
-          colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
-        />
-      </div>
-    );
-  }, []);
 
   return (
     <div className={styles.profileForm}>
@@ -101,6 +85,14 @@ export const ProfileForm = () => {
                 )}
                 {roleAddPendingPayments.length > 0 && (
                   <div className={styles.contentWrapper}>
+                    <p className={styles.title}>
+                      Vannak nem aktivált tartalmaid
+                    </p>
+                    <Link href="/aktivalas">Tovább az aktiváláshoz</Link>
+                  </div>
+                )}
+                {/*  {roleAddPendingPayments.length > 0 && (
+                  <div className={styles.contentWrapper}>
                     <p className={styles.title}>Nem aktivált tartalmak</p>
                     {roleAddPendingPayments.map((p) => (
                       <div key={p.checkoutId} className={styles.payment}>
@@ -123,7 +115,7 @@ export const ProfileForm = () => {
                       </div>
                     ))}
                   </div>
-                )}
+                )} */}
               </div>
             </>
           )}
