@@ -133,7 +133,7 @@ export async function POST(req: Request) {
   const sig = req.headers.get('stripe-signature');
 
   if (!stripeKey || !stripeApiKey || !sig || !sendGridApiKey || !paymentKey) {
-    return NextResponse.json({ error: 'Invalid request' });
+    throw new Error('Invalid request');
   }
 
   let event;
@@ -144,7 +144,7 @@ export async function POST(req: Request) {
     event = stripe.webhooks.constructEvent(reqPayload, sig, stripeApiKey!);
   } catch (err) {
     console.error(`Webhook error: ${err}`);
-    return NextResponse.json({ error: 'Something wen wrong!' });
+    throw new Error(`Something went wrong! - ${err}`);
   }
 
   switch (event.type) {
@@ -160,6 +160,7 @@ export async function POST(req: Request) {
         await sgMail.send(email);
       } catch (error) {
         console.error(error);
+        throw new Error(`Something went wrong! - ${error}`);
       }
       break;
     }
