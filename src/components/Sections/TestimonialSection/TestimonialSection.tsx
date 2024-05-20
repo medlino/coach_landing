@@ -3,9 +3,6 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
 
-import { useMediaQuery } from '@/hooks/useMediaQuery';
-import { getBreakpoints } from '@/styles/breakpoints';
-
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -61,20 +58,10 @@ const multipleTestimonials = [
 ];
 
 export const TestimonialSection = () => {
-  const isSmallDevice = useMediaQuery(
-    `only screen and ${getBreakpoints().maxSm}`
-  );
-
   return (
     <section id="velemenyek" className={styles.testimonialSection}>
       <h1>Rólunk mondtátok</h1>
-      <div
-        style={{
-          maxWidth: '1000px',
-          marginTop: isSmallDevice ? '5px' : '30px',
-          marginBottom: isSmallDevice ? '5px' : '50px',
-        }}
-      >
+      <div className={styles.swiperContainer}>
         <Swiper
           effect={'coverflow'}
           grabCursor={true}

@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react';
+import { createMedia } from '@artsy/fresnel';
 
-import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { MobileHeader } from './MobileHeader';
 import { DesktopHeader } from './DesktopHeader';
+
+const { MediaContextProvider, Media } = createMedia({
+  breakpoints: {
+    sm: 0,
+    md: 768,
+    lg: 1024,
+    xl: 1192,
+  },
+});
 
 interface HeaderProps {
   className?: string;
 }
 
 export const Header = ({ className }: HeaderProps) => {
-  const isMobile = useMediaQuery('(max-width: 768px)');
   const [clientSide, setClientSide] = useState(false);
 
   useEffect(() => {
@@ -22,12 +30,13 @@ export const Header = ({ className }: HeaderProps) => {
   }
 
   return (
-    <>
-      {isMobile ? (
+    <MediaContextProvider>
+      <Media lessThan="md">
         <MobileHeader className={className} />
-      ) : (
+      </Media>
+      <Media greaterThanOrEqual="md">
         <DesktopHeader className={className} />
-      )}
-    </>
+      </Media>
+    </MediaContextProvider>
   );
 };

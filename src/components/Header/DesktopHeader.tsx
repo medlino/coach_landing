@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { signIn, signOut, useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import clsx from 'clsx';
 
 import { throttle } from '@/utils/throttle';
 
 import { Button } from '../Button/Button';
+import { Dropdown } from '../Dropdown/Dropdown';
 
 import styles from './DesktopHeader.module.scss';
 
@@ -14,6 +16,7 @@ interface DesktopHeaderProps {
 }
 
 export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
+  const router = useRouter();
   const { data: session } = useSession();
   const [scrolled, setScrolled] = useState(false);
 
@@ -69,10 +72,10 @@ export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
         {!session ? (
           <Button text="Bejelentkezés" onClick={() => signIn('discord')} />
         ) : (
-          <>
-            <p>Isten hozott, {session.user?.name}!</p>
-            <Button text="Kijelentkezés" onClick={() => signOut()} />
-          </>
+          <Dropdown text={session.user.name!}>
+            <button onClick={() => router.push('/profil')}>Profilom</button>
+            <button onClick={() => signOut()}>Kijelentkezés</button>
+          </Dropdown>
         )}
       </div>
     </header>
