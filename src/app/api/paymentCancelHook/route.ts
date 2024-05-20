@@ -24,7 +24,7 @@ async function cancelPayment(id: string) {
 }
 
 export async function POST(req: Request) {
-  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  const stripeKey = process.env.STRIPE_PAYMENT_CANCELED_HOOK_KEY;
   const stripeApiKey = process.env.STRIPE_API_KEY;
   const discordToken = process.env.DISCORD_BOT_KEY;
   const guildId = process.env.DISCORD_GUILD_ID;

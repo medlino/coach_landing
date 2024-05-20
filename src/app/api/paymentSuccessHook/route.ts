@@ -126,7 +126,7 @@ function genEmail(data: any) {
 }
 
 export async function POST(req: Request) {
-  const stripeKey = process.env.STRIPE_SECRET_KEY;
+  const stripeKey = process.env.STRIPE_PAYMENT_SUCCESS_HOOK_KEY;
   const stripeApiKey = process.env.STRIPE_API_KEY;
   const sendGridApiKey = process.env.SENDGRID_API_KEY;
   const paymentKey = process.env.PAYMENT_KEY;
