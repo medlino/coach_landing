@@ -24,25 +24,25 @@ async function cancelPayment(id: string) {
 }
 
 export async function POST(req: Request) {
-  const stripeKey = process.env.STRIPE_PAYMENT_CANCELED_HOOK_KEY;
-  const stripeApiKey = process.env.STRIPE_API_KEY;
+  const stripeHookKey = process.env.STRIPE_PAYMENT_CANCELED_HOOK_KEY;
+  const stripeApiKey = process.env.STRIPE_SECRET_KEY;
   const discordToken = process.env.DISCORD_BOT_KEY;
   const guildId = process.env.DISCORD_GUILD_ID;
   const sig = req.headers.get('stripe-signature');
 
-  if (!stripeKey || !stripeApiKey || !sig || !discordToken || !guildId) {
-    return NextResponse.json({ error: 'Invalid request' });
+  if (!stripeApiKey || !stripeHookKey || !sig || !discordToken || !guildId) {
+    throw new Error('Invalid request');
   }
 
   let event;
-  const stripe = new Stripe(stripeKey!);
+  const stripe = new Stripe(stripeApiKey!);
   const reqPayload = await req.text();
 
   try {
-    event = stripe.webhooks.constructEvent(reqPayload, sig, stripeApiKey!);
+    event = stripe.webhooks.constructEvent(reqPayload, sig, stripeHookKey!);
   } catch (err) {
     console.error(`Webhook error: ${err}`);
-    return NextResponse.json({ error: 'Something wen wrong!' });
+    throw new Error(`Something went wrong! - ${err}`);
   }
 
   switch (event.type) {
@@ -77,10 +77,10 @@ export async function POST(req: Request) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
           }
         });
-        const cancelled = await cancelPayment(session.id);
-        console.log(cancelled);
+        await cancelPayment(session.id);
       } catch (error) {
         console.error(error);
+        throw new Error(`Something went wrong! - ${error}`);
       }
       break;
     }
