@@ -26,7 +26,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-form-stepper": "^2.0.3",
-    "react-loader-spinner": "^5.4.5",
+    "react-loader-spinner": "^6.1.6",
     "react-toastify": "^10.0.5",
     "stripe": "^14.20.0",
     "swiper": "^11.0.6"

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { Triangle } from 'react-loader-spinner';
+import { RotatingTriangles } from 'react-loader-spinner';
 import { useRouter } from 'next/navigation';
 
 import { Button } from '../../Button/Button';
@@ -56,11 +56,10 @@ export const HeroSection = () => {
             backgroundColor: 'rgba(255, 255, 255, 0.5)',
           }}
         >
-          <Triangle
+          <RotatingTriangles
             visible={true}
             height="80"
             width="80"
-            color="black"
             ariaLabel="triangle-loading"
             wrapperStyle={{}}
             wrapperClass=""
