@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
 import clsx from 'clsx';
 
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
@@ -9,7 +10,6 @@ import { Button } from '../Button/Button';
 import styles from './BundleDetails.module.scss';
 import { roleMap } from '@/constants/roles';
 import { Loading } from '../Loading/Loading';
-import { toast } from 'react-toastify';
 
 interface BundleDetailsProps {
   className?: string;
