@@ -1,0 +1,11 @@
+.profileLayout {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  overflow-x: hidden;
+
+  .header {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+}

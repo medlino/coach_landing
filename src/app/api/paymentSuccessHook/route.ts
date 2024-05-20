@@ -72,6 +72,9 @@ async function genPaymentData(
     date: new Date(),
     type: session.mode as string,
     token: jwt.sign({ email }, paymentKey!),
+    checkoutId: session.id,
+    payment_intent: session.payment_intent,
+    subscription: session.subscription,
     products,
   };
 

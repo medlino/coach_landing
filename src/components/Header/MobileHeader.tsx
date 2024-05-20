@@ -73,7 +73,7 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
       {menuOpen && (
         <div className={styles.fullscreenMenu}>
           <div className={styles.menuActions}>
-            <Link href="/">
+            <Link href="/" className={styles.logo}>
               <img src="/og-bg.png" alt="logo" />
             </Link>
             <div className={styles.closeButton} onClick={toggleMenu}>

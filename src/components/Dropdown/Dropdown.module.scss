@@ -16,11 +16,14 @@
     width: 200px;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: none;
     flex-direction: column;
+    transition: all 0.2s ease-in-out;
+    opacity: 0;
+    visibility: hidden;
 
     &.show {
-      display: flex;
+      visibility: visible;
+      opacity: 1;
     }
 
     button {

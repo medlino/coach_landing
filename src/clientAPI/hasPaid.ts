@@ -8,8 +8,8 @@ export async function hasPaid() {
       console.error('Something is not ok!', JSON.stringify(response));
     }
 
-    const payment = await response.json();
-    return payment;
+    const paid = await response.json();
+    return paid;
   } catch (error) {
     console.error('Something went wrong!', JSON.stringify(error));
   }

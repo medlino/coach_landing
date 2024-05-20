@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { createMedia } from '@artsy/fresnel';
+import clsx from 'clsx';
 
 import { MobileHeader } from './MobileHeader';
 import { DesktopHeader } from './DesktopHeader';
+
+import style from './Header.module.scss';
 
 const { MediaContextProvider, Media } = createMedia({
   breakpoints: {
@@ -24,18 +27,17 @@ export const Header = ({ className }: HeaderProps) => {
     setClientSide(true);
   }, []);
 
-  // Use a consistent placeholder during the server render and the initial client render
-  if (!clientSide) {
-    return null;
-  }
-
   return (
     <MediaContextProvider>
-      <Media lessThan="md">
-        <MobileHeader className={className} />
-      </Media>
       <Media greaterThanOrEqual="md">
-        <DesktopHeader className={className} />
+        <DesktopHeader
+          className={clsx(className, clientSide ? style.show : '')}
+        />
+      </Media>
+      <Media lessThan="md">
+        <MobileHeader
+          className={clsx(className, clientSide ? style.show : '')}
+        />
       </Media>
     </MediaContextProvider>
   );

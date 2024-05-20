@@ -1,0 +1,51 @@
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  min-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: var(--font-bellefair);
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    font-weight: 400;
+  }
+  .section {
+    width: 100%;
+    border-bottom: 1px solid #a3a2a2;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+
+    h5 {
+      font-size: 24px;
+      font-weight: 400;
+      margin: 0;
+    }
+  }
+  .section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .detailContainer {
+    margin-left: 0px;
+  }
+  .payment {
+    border: 1px solid #ccc;
+    margin-bottom: 4px;
+    padding: 12px;
+    p {
+      margin-top: 0;
+      margin-bottom: 8px;
+    }
+  }
+  .bundles {
+    display: flex;
+    p {
+      margin: 0;
+    }
+  }
+}

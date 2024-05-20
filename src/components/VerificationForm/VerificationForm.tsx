@@ -1,11 +1,8 @@
 'use client';
-import { useState, useEffect, useMemo } from 'react';
-import { signIn, useSession } from 'next-auth/react';
+import { signIn } from 'next-auth/react';
 
-import { isDiscordMember } from '@/clientAPI/isDiscordMember';
-import { getDiscordRoles } from '@/clientAPI/getDiscordRoles';
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
-import { hasPaid } from '@/clientAPI/hasPaid';
+import { useDiscordMember } from '@/hooks/useDiscrodMember';
 
 import { Button } from '../Button';
 import { Stepper } from '../Stepper/Stepper';
@@ -13,17 +10,9 @@ import { Stepper } from '../Stepper/Stepper';
 import styles from './VerificationForm.module.scss';
 
 export const VerificationForm = () => {
-  const { data: session } = useSession();
-  const [isMember, setIsMember] = useState(false);
-  const [roles, setRoles] = useState<string[]>([]);
-  const [hasUserPaid, setHasUserPaid] = useState(false);
+  const { session, isMember, isVip, hasUserPaid } = useDiscordMember();
 
   const inviteLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
-  const vipRoleId = process.env.NEXT_PUBLIC_DISCORD_VIP_ROLE_ID;
-
-  const isVip = useMemo(() => {
-    return vipRoleId ? roles.includes(vipRoleId) : false;
-  }, [roles, vipRoleId]);
 
   /*   const startStep = useMemo(() => {
     if (!session) {
@@ -34,27 +23,6 @@ export const VerificationForm = () => {
     }
     return 3;
   }, [session, isMember]); */
-
-  useEffect(() => {
-    if (session) {
-      isDiscordMember().then((isMember) => {
-        setIsMember(isMember);
-      });
-    }
-  }, [session]);
-
-  useEffect(() => {
-    if (session && isMember) {
-      Promise.all([
-        getDiscordRoles().then((roles) => {
-          setRoles(roles);
-        }),
-        hasPaid().then((p) => {
-          setHasUserPaid(p);
-        }),
-      ]);
-    }
-  }, [isMember]);
 
   return (
     <div className={styles.verificationForm}>
