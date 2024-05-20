@@ -74,6 +74,7 @@ export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
         ) : (
           <Dropdown text={session.user.name!}>
             <button onClick={() => router.push('/profil')}>Profilom</button>
+            <button onClick={() => router.push('/aktivalas')}>Aktiválás</button>
             <button onClick={() => signOut()}>Kijelentkezés</button>
           </Dropdown>
         )}

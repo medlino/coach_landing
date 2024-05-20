@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { ColorRing } from 'react-loader-spinner';
 
@@ -27,7 +27,7 @@ export const ProfileForm = () => {
       });
   }, []);
 
-  const Loading = () => {
+  const Loading = useCallback(() => {
     return (
       <div className={styles.loading}>
         <ColorRing
@@ -39,7 +39,7 @@ export const ProfileForm = () => {
         />
       </div>
     );
-  };
+  }, []);
 
   return (
     <div className={styles.profileForm}>

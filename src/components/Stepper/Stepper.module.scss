@@ -1,11 +1,10 @@
 .stepperContainer {
   display: flex;
   flex-direction: column;
-  margin: 20px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: transparent;
   min-width: 600px;
   min-height: 300px;
 
@@ -39,7 +38,7 @@
       font-weight: bold;
 
       &.active {
-          background-color: #007bff;
+          background-color: #78b8fc;
           color: white;
       }
   }
@@ -51,7 +50,7 @@
       margin: 0 5px;
 
       &.activeLine {
-          background-color: #007bff;
+          background-color: #78b8fc;
       }
   }
 
@@ -66,7 +65,7 @@
       font-size: 16px;
       cursor: pointer;
       border: none;
-      background-color: #007bff;
+      background-color: #78b8fc;
       color: white;
       border-radius: 4px;
 
