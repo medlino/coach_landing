@@ -2,45 +2,38 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 export async function POST(req: Request) {
-  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
+  const redirectUrl = process.env.CHECKOUT_REDIRECT_URL;
+  const stripeApiKey = process.env.STRIPE_SECRET_KEY;
 
   const res = await req.json();
 
-  const id =
-    res.priceId ||
-    (process.env.ENV === 'dev'
-      ? 'price_1P1C4hLFpYtzSWrXNXCma1rx'
-      : 'price_1PGiEaLFpYtzSWrXK835KTaN');
-  if (!id) {
-    throw new Error('No price found!');
+  if (!res.priceId || !redirectUrl || !stripeApiKey) {
+    throw new Error('Invalid request');
   }
 
-  const session = await stripe.checkout.sessions.create({
-    line_items: [
-      {
-        price: id,
-        quantity: 1,
+  try {
+    const stripe = new Stripe(stripeApiKey);
+
+    const session = await stripe.checkout.sessions.create({
+      line_items: [
+        {
+          price: res.priceId,
+          quantity: 1,
+        },
+      ],
+      mode: res.type === 'recurring' ? 'subscription' : 'payment',
+      automatic_tax: {
+        enabled: process.env.ENV === 'prod',
       },
-    ],
-    mode: res.type === 'recurring' ? 'subscription' : 'payment',
-    /*     automatic_tax: {
-      enabled: true,
-    }, */
-    allow_promotion_codes: true,
-    billing_address_collection: 'required',
-    success_url:
-      process.env.ENV === 'dev'
-        ? 'http://localhost:3000?success=true'
-        : 'https://elmeereje.hu?success=true',
-    cancel_url:
-      process.env.ENV === 'dev'
-        ? 'http://localhost:3000?cancel=true'
-        : 'https://elmeereje.hu?cancel=true',
-  });
+      allow_promotion_codes: true,
+      billing_address_collection: 'required',
+      success_url: `${redirectUrl}?success=true`,
+      cancel_url: `${redirectUrl}?canceled=true`,
+    });
 
-  return NextResponse.json(session);
-}
-
-export async function GET(_request: any) {
-  return new Response('Hello, Next.js!');
+    return NextResponse.json(session);
+  } catch (error) {
+    console.error('Failed to create checkout session:', error);
+    throw new Error(`Failed to create checkout session: ${error}`);
+  }
 }
