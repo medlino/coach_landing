@@ -29,6 +29,6 @@ export async function GET() {
     return NextResponse.json(mappedProducts);
   } catch (error) {
     console.error('Failed to get products:', error);
-    return [];
+    return NextResponse.json([]);
   }
 }

@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react';
 
-import { SanitizedProduct, getStripeProducts } from '@/clientAPI/product';
+import { getStripeProducts } from '@/clientAPI/product';
 import { stripeCheckout } from '@/clientAPI/checkout';
+import { SanitizedProduct } from '@/interfaces/product';
 
 import { BundleCard } from './BundleCard/BundleCard';
 import { Loading } from '@/components/Loading/Loading';

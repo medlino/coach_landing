@@ -1,5 +1,6 @@
+import { SanitizedPrice } from '@/interfaces/product';
+
 import { Button } from '@/components/Button/Button';
-import { SanitizedPrice } from '@/clientAPI/product';
 
 import styles from './BundleCard.module.scss';
 

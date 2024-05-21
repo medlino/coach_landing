@@ -1,4 +1,4 @@
-import { MProduct } from './produtc';
+import { MProduct } from './product';
 import { MRole } from './role';
 
 export enum PaymentStatus {
