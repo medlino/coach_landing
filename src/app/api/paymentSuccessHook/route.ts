@@ -147,7 +147,7 @@ export async function POST(req: Request) {
   const reqPayload = await req.text();
 
   try {
-    event = stripe.webhooks.constructEvent(reqPayload, sig, stripeApiKey!);
+    event = stripe.webhooks.constructEvent(reqPayload, sig, stripeHookKey!);
   } catch (err) {
     console.error(`Webhook error: ${err}`);
     throw new Error(`Something went wrong! - ${err}`);
