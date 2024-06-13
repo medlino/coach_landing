@@ -18,7 +18,7 @@ function Toaster() {
   useEffect(() => {
     if (success) {
       toast.success(
-        'Gratulálunk, hogy sikeresen megtetted az első fontos és talán legnehezebb lépést egy örömtelibb, szabadabb és sikeresebb élet felé. Izgalmas utazás lesz, őrizd meg kitartásod és lelkesedésed! A program indulásának időpontja 04.08. Április 08. Hétfő 18.00. Kérdés esetén írj az info@medlino.hu címre!'
+        'Gratulálunk, hogy beléptél a közösségbe. Minden további információt a kiküldött köszöntő emailben találsz! Nézd meg kérlek a spam mappát is!'
       );
       window.history.replaceState(null, '', '/');
     }

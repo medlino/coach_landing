@@ -5,6 +5,7 @@ import {
   WhyUsSection,
   WhatInProgSection,
   AboutProgSection,
+  AboutCommunitySection,
   BundleSection,
 } from '@/components/Sections';
 
@@ -17,6 +18,7 @@ export default async function Home() {
       <AboutProgSection />
       <WhyUsSection />
       <WhatInProgSection />
+      <AboutCommunitySection />
       <BundleSection />
       <TestimonialSection />
       <AssuranceSection />

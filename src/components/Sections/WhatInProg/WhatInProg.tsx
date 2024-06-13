@@ -97,7 +97,7 @@ export const WhatInProgSection = () => {
           <InProgItem key={iP.id} {...iP} />
         ))}
       </div>
-      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
+      {/* <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />{} */}
     </section>
   );
 };
