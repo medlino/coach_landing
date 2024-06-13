@@ -34,31 +34,48 @@ export const VerificationForm = () => {
     <div className={styles.verificationForm}>
       <Stepper
         startStep={startStep}
-        disableNext={!session || !isMember}
-        stepsContent={[
-          <div className={styles.loginContainer} key="login">
-            <p>Kérlek először jelentkezz be a Discordon keresztül!</p>
-            {session ? (
-              <p>Már be vagy jelentkezve.</p>
-            ) : (
-              <Button
-                className={styles.loginBtn}
-                text="Bejelentkezés"
-                onClick={signIn}
-              />
-            )}
-          </div>,
-          <div className={styles.joinContainer} key="join">
-            <p>Kérlek csatlakozz a discord közösségünkhöz!</p>
-            {isMember ? (
-              <p>Már csatlakoztál a közösséghez.</p>
-            ) : (
-              <a href={inviteLink} target="_blank" rel="noopener noreferrer">
-                Csatlakozom a közösséghez
-              </a>
-            )}
-          </div>,
-          <BundleDetails key="bundles" payments={payments} roles={roles} />,
+        steps={[
+          {
+            disable: !session,
+            content: (
+              <div className={styles.loginContainer} key="login">
+                <p>Kérlek először jelentkezz be a Discordon keresztül!</p>
+                {session ? (
+                  <p>Már be vagy jelentkezve.</p>
+                ) : (
+                  <Button
+                    className={styles.loginBtn}
+                    text="Bejelentkezés"
+                    onClick={signIn}
+                  />
+                )}
+              </div>
+            ),
+          },
+          {
+            disable: !isMember,
+            content: (
+              <div className={styles.joinContainer} key="join">
+                <p>Kérlek csatlakozz a discord közösségünkhöz!</p>
+                {isMember ? (
+                  <p>Már csatlakoztál a közösséghez.</p>
+                ) : (
+                  <a
+                    href={inviteLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Csatlakozom a közösséghez
+                  </a>
+                )}
+              </div>
+            ),
+          },
+          {
+            content: (
+              <BundleDetails key="bundles" payments={payments} roles={roles} />
+            ),
+          },
         ]}
       />
     </div>
