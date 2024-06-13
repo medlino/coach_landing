@@ -23,6 +23,7 @@ export const useDiscordMember = () => {
       setSessionLoading(false);
       setIsMemberLoading(false);
       setIsRoleLoading(false);
+      setPaymentIsLoading(false);
     }
     if (status !== 'loading' && status === 'authenticated') {
       setSessionLoading(false);
@@ -60,7 +61,7 @@ export const useDiscordMember = () => {
           }),
       ]);
     }
-  }, [isMember]);
+  }, [session, isMember]);
 
   return {
     isMember,

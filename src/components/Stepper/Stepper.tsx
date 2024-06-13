@@ -41,9 +41,14 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
 interface StepperProps {
   stepsContent: React.ReactNode[];
   startStep?: number;
+  disableNext?: boolean;
 }
 
-export const Stepper = ({ stepsContent, startStep }: StepperProps) => {
+export const Stepper = ({
+  stepsContent,
+  startStep,
+  disableNext,
+}: StepperProps) => {
   const totalSteps = stepsContent.length;
   const [activeStep, setActiveStep] = useState<number>(startStep || 1);
 
@@ -83,7 +88,7 @@ export const Stepper = ({ stepsContent, startStep }: StepperProps) => {
         <button
           className={styles.stepperButton}
           onClick={handleNext}
-          disabled={activeStep === totalSteps}
+          disabled={activeStep === totalSteps || disableNext}
         >
           Következő
         </button>

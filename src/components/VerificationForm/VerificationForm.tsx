@@ -26,36 +26,37 @@ export const VerificationForm = () => {
     }
   }, [sessionLoading, promiseLoading]);
 
+  if (sessionLoading || promiseLoading || stepLoading) {
+    return <Loading />;
+  }
+
   return (
     <div className={styles.verificationForm}>
-      {sessionLoading || promiseLoading || stepLoading ? (
-        <Loading />
-      ) : (
-        <Stepper
-          startStep={startStep}
-          stepsContent={[
-            <div key="login">
-              <p>Kérlek először jelentkezz be a Discordon keresztül!</p>
-              {session ? (
-                <p>Már be vagy jelentkezve</p>
-              ) : (
-                <Button text="Bejelentkezés" onClick={signIn} />
-              )}
-            </div>,
-            <div key="join">
-              <p>Kérlek csatlakozz a discord közösségünkhöz!</p>
-              {isMember ? (
-                <p>Már csatlakoztál a közösséghez</p>
-              ) : (
-                <a href={inviteLink} target="_blank" rel="noopener noreferrer">
-                  Csatlakozom a közösséghez
-                </a>
-              )}
-            </div>,
-            <BundleDetails key="bundles" payments={payments} roles={roles} />,
-          ]}
-        />
-      )}
+      <Stepper
+        startStep={startStep}
+        disableNext={!session || !isMember}
+        stepsContent={[
+          <div key="login">
+            <p>Kérlek először jelentkezz be a Discordon keresztül!</p>
+            {session ? (
+              <p>Már be vagy jelentkezve</p>
+            ) : (
+              <Button text="Bejelentkezés" onClick={signIn} />
+            )}
+          </div>,
+          <div key="join">
+            <p>Kérlek csatlakozz a discord közösségünkhöz!</p>
+            {isMember ? (
+              <p>Már csatlakoztál a közösséghez</p>
+            ) : (
+              <a href={inviteLink} target="_blank" rel="noopener noreferrer">
+                Csatlakozom a közösséghez
+              </a>
+            )}
+          </div>,
+          <BundleDetails key="bundles" payments={payments} roles={roles} />,
+        ]}
+      />
     </div>
   );
 };
