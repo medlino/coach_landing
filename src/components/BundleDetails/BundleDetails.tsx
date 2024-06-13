@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
+import Link from 'next/link';
 import clsx from 'clsx';
 
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
@@ -37,6 +38,7 @@ export const BundleDetails = ({
     try {
       await setDiscordRole(checkoutId);
       window.location.reload();
+      toast.success('Sikeres aktiválás! A Discordon eléred a tartalmakat!');
     } catch (error) {
       toast.error(
         'Hiba történt az aktiválás során! Kérlek írj az info@medlino.hu címre!'
@@ -48,32 +50,40 @@ export const BundleDetails = ({
 
   return (
     <div className={clsx(styles.bundleDetails, className)}>
-      <div className={styles.roles}>
+      {/*       <div className={styles.roles}>
         <p>Jogosultságaid:&nbsp;</p>
         <span>{roles.map((r) => roleMap[r]).join(', ')}</span>
-      </div>
+      </div> */}
 
       <div className={styles.paymentWrapper}>
         {roleAddPendingPayments.length === 0 && (
-          <p className={styles.title}>Nincs aktiválandó tartalmad</p>
+          <>
+            <p className={styles.title}>
+              Jelenleg nincs új aktiválandó tartalmad.
+            </p>
+            <p className={styles.title}>
+              A megvásárolt csomagjaid megtalálod a{' '}
+              <Link href="/profil">profilodban.</Link>
+            </p>
+          </>
         )}
         {roleAddPendingPayments.length > 0 && (
           <>
-            <p className={styles.title}>Nem aktivált tartalmak</p>
+            <p className={styles.title}>Aktiválandó tartalmak</p>
             {roleAddPendingPayments.map((p) => (
               <div key={p.checkoutId} className={styles.payment}>
                 <div className={styles.bundles}>
-                  <p>Megvásárolt csomagok:&nbsp;</p>
+                  <p>Megvásárolt csomag:&nbsp;</p>
                   {p.products.map((product) => (
                     <span key={product.id}>{product.name}</span>
                   ))}
                 </div>
-                <div className={styles.rights}>
+                {/*               <div className={styles.rights}>
                   <p>A következő jogokat fogod megkapni:&nbsp;</p>
                   {p.roles.map((role) => (
                     <span key={role.id}>{role.name}</span>
                   ))}
-                </div>
+                </div> */}
                 {loading ? (
                   <Loading />
                 ) : (

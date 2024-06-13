@@ -10,7 +10,7 @@ import { MPayment } from '@/interfaces/payment';
 //TODO refactor loading states
 export const useDiscordMember = () => {
   const { data: session, status } = useSession();
-  const [isMember, setIsMember] = useState(false);
+  const [isMember, setIsMember] = useState<boolean | null>(false);
   const [roles, setRoles] = useState<string[]>([]);
   const [payments, setPayments] = useState<MPayment[]>([]);
   const [sessionLoading, setSessionLoading] = useState(true);
@@ -43,6 +43,11 @@ export const useDiscordMember = () => {
   }, [session]);
 
   useEffect(() => {
+    if (isMember === null) {
+      setIsMemberLoading(false);
+      setIsRoleLoading(false);
+      setPaymentIsLoading(false);
+    }
     if (session && isMember) {
       Promise.all([
         getDiscordRoles()

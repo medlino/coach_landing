@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
   try {
     const res = await fetch(url, { headers });
     const data = await res.json();
-    return NextResponse.json(!!data.user.id);
+    return NextResponse.json(!!data?.user?.id || null);
   } catch (error) {
     console.error('Failed to fetch isDiscordMember:', error);
     throw error;

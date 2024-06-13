@@ -11,7 +11,7 @@ const texts = [
   'Szeretnél élőben is kapcsolódni a közösség tagjaival.',
   'Szeretnél egy valós közösséghez tartozni, ahol mérvadó a véleményed. ',
   'Szeretnéd lebontani azokat a korlátozó hiedelmeket, amelyeket a társadalom, média, és a múlt poros rendszerei építettek a tudatalattidba. ',
-  'Szeretnél olyan tudáshoz hozzájutni, amely érthetően megfogalmazott és tudományosan alátámasztott és ráébreszt, megtanít arra, mire képes a tested és elméd a természettel összehangolva.',
+  'Szeretnél olyan tudáshoz hozzájutni, amely érthetően megfogalmazott és tudományosan alátámasztott. Ez a tudás ráébreszt, megtanít arra, mire képes a tested és elméd a természettel összehangolva.',
 ];
 
 export const AboutCommunitySection = () => {
@@ -19,7 +19,7 @@ export const AboutCommunitySection = () => {
 
   return (
     <section id="neked-kozosseg" className={styles.aboutCommunitySection}>
-      <h1>Neked szól ez a közösség, amennyiben:</h1>
+      <h1>Neked szól ez a közösség, amennyiben</h1>
       <div className={styles.textList}>
         {texts.map((text, index) => (
           <ul key={index}>

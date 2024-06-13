@@ -27,7 +27,7 @@ export const BundleSection = () => {
 
   return (
     <section id="csomagok" className={styles.bundleSection}>
-      <h1>Itt vannak a Bündlék, hogy miiii? A bündléééK? na neee </h1>
+      <h1>Elme Ereje Közösség Csomagok</h1>
       <div className={styles.productList}>
         {loading ? (
           <Loading />

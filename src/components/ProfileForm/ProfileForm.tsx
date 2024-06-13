@@ -60,13 +60,23 @@ export const ProfileForm = () => {
           ) : (
             <>
               <div className={styles.section}>
+                <div className={styles.profileDetails}>
+                  <div className={styles.row}>
+                    <span>Név:</span>
+                    <span>{session.user.name}</span>
+                  </div>
+                </div>
                 {isMember ? (
                   <div className={styles.detailContainer}>
-                    <div className={styles.roles}>
+                    {/*            <div className={styles.roles}>
                       <p>Jogusultságaid:&nbsp;</p>
                       <span>{roles.map((r) => roleMap[r]).join(', ')}</span>
-                    </div>
-                    <Link href="/#csomagok">Elérhető csomagok</Link>
+                    </div> */}
+                    <Link href="/#csomagok">
+                      {activePayments.length > 0
+                        ? 'További csomagokért'
+                        : 'Csatlakozom a közösséghez'}
+                    </Link>
                   </div>
                 ) : (
                   <div className={styles.detailContainer}>
@@ -84,7 +94,9 @@ export const ProfileForm = () => {
 
               <div className={styles.section}>
                 {(payments.length === 0 || areAllPaymentsCancelled) && (
-                  <p className={styles.announceTitle}>Nincs előfizetésed</p>
+                  <p className={styles.announceTitle}>
+                    Jelenleg nincs elérhető fizetésed
+                  </p>
                 )}
                 {activePayments.length > 0 && (
                   <div className={styles.contentWrapper}>
@@ -96,6 +108,12 @@ export const ProfileForm = () => {
                             Típus:&nbsp;
                             {p.type === 'payment' ? 'Egyszeri' : 'Előfizetés'}
                           </p>
+                        </div>
+                        <div className={styles.bundles}>
+                          <p>Csomag:&nbsp;</p>
+                          {p.products.map((product) => (
+                            <span key={product.id}>{product.name}</span>
+                          ))}
                         </div>
                         {p.type === 'subscription' && (
                           <>
@@ -111,18 +129,12 @@ export const ProfileForm = () => {
                             )}
                           </>
                         )}
-                        <div className={styles.bundles}>
-                          <p>Megvásárolt csomagok:&nbsp;</p>
-                          {p.products.map((product) => (
-                            <span key={product.id}>{product.name}</span>
-                          ))}
-                        </div>
-                        <div className={styles.rights}>
+                        {/*          <div className={styles.rights}>
                           <p>A következő jogokkal jár:&nbsp;</p>
                           {p.roles.map((role) => (
                             <span key={role.id}>{role.name}</span>
                           ))}
-                        </div>
+                        </div> */}
                       </div>
                     ))}
                   </div>
@@ -130,7 +142,11 @@ export const ProfileForm = () => {
                 {roleAddPendingPayments.length > 0 && (
                   <div className={styles.contentWrapper}>
                     <p className={styles.title}>
-                      Vannak nem aktivált tartalmaid
+                      Van előfizetésed, a lenti gombbal tudod aktiválni a
+                      discord elérést.
+                    </p>
+                    <p className={styles.description}>
+                      Ahol megtalálod a közösséget és a tartalmakat.
                     </p>
                     <Link href="/aktivalas">Tovább az aktiváláshoz</Link>
                   </div>

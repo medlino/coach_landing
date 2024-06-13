@@ -36,18 +36,22 @@ export const VerificationForm = () => {
         startStep={startStep}
         disableNext={!session || !isMember}
         stepsContent={[
-          <div key="login">
+          <div className={styles.loginContainer} key="login">
             <p>Kérlek először jelentkezz be a Discordon keresztül!</p>
             {session ? (
-              <p>Már be vagy jelentkezve</p>
+              <p>Már be vagy jelentkezve.</p>
             ) : (
-              <Button text="Bejelentkezés" onClick={signIn} />
+              <Button
+                className={styles.loginBtn}
+                text="Bejelentkezés"
+                onClick={signIn}
+              />
             )}
           </div>,
-          <div key="join">
+          <div className={styles.joinContainer} key="join">
             <p>Kérlek csatlakozz a discord közösségünkhöz!</p>
             {isMember ? (
-              <p>Már csatlakoztál a közösséghez</p>
+              <p>Már csatlakoztál a közösséghez.</p>
             ) : (
               <a href={inviteLink} target="_blank" rel="noopener noreferrer">
                 Csatlakozom a közösséghez

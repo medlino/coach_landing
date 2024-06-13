@@ -41,6 +41,7 @@ function Toaster() {
       draggable
       pauseOnHover
       theme="colored"
+      style={{ fontSize: 20 }}
     />
   );
 }

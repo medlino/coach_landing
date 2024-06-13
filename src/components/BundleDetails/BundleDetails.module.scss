@@ -19,12 +19,22 @@
     gap: 10px;
     .title {
       font-size: 24px;
+      a {
+        color:#2b8ef7;
+        background-color: transparent;
+        text-transform: lowercase;
+        padding: 0;
+        border: none;
+        text-decoration: underline;
+      }
     }
     .payment {
       display: flex;
       flex-direction: column;
+      align-items: center;
       border: 1px solid #ddd;
       padding: 10px;
+      width: 100%;
       .bundles {
         p {
           margin: 0;
@@ -36,9 +46,8 @@
         }
       }
       button {
-        max-width: 200px;
         font-size: 22px;
-        padding: 0px;
+        padding: 0px 24px;
         background-color: #78b8fc;
         border-radius: 0px;
         margin-top: 12px;

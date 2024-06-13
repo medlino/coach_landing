@@ -112,13 +112,12 @@ async function genPaymentData(
   return data;
 }
 
-function genEmail(data: any) {
-  //TODO mail
+function genEmail(email: string) {
   const msg = {
-    to: 'commonlevi.cl@gmail.com',
+    to: email,
     from: 'hellomedlino@gmail.com',
-    subject: 'Sending with Twilio SendGrid is Fun',
-    html: '<strong>and easy to do anywhere, even with Node.js <a href="http://localhost:3000/aktivalas/" target="_blank" rel="noopener noreferrer">Verify</a></strong>',
+    subject: 'Elme Ereje közösség - sikeres vásárlás!',
+    html: '<div><strong>Kedves Elme Ereje Tag, </strong></br></br><p>Gratulálunk a csatlakozáshoz, ezzel meghoztál egy fontos döntését. Minden, amit a közösségünkben találsz neked és érted készült. Mi azon dolgozunk, hogy a lehető legtöbb tudást átadjuk és a lehető leghasznosabb és izgalmasabb eseményeket biztosítsuk, melyek segítségével egy következő szintre tudod emelni az életed. </p></br></br><p>Kérlek nézd meg a következő videót, amelyben elmagyarázzuk a csatlakozás lépéseit! </p></br></br><a href="http://https://coach-landing-dlve-git-dev-devmedlinohus-projects.vercel.app/aktivalas/" target="_blank" rel="noopener noreferrer">Aktiválás</a></br></br><p>Köszönettel,</p><p>Dokik</p></div>',
   };
 
   return msg;
@@ -158,7 +157,7 @@ export async function POST(req: Request) {
 
       try {
         const data = await genPaymentData(stripe, session, paymentKey!);
-        const email = genEmail(data);
+        const email = genEmail(data.email!);
         await insertPayment(data);
 
         sgMail.setApiKey(sendGridApiKey!);
