@@ -2,6 +2,20 @@ import { authMiddleware } from '@/middlewares/auth';
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
+import { PaymentStatus } from '@/interfaces/payment';
+import clientPromise from '../../../lib/mongodb';
+
+async function cancelPayment(id: string) {
+  const client = await clientPromise;
+  const db = client.db();
+  const collection = db.collection('payments');
+  const filter = { subscription: id };
+  const updateDocument = {
+    $set: { status: PaymentStatus.CANCELED },
+  };
+  return collection.updateOne(filter, updateDocument);
+}
+
 export async function DELETE(req: NextRequest) {
   const stripeKey = process.env.STRIPE_SECRET_KEY;
 
@@ -17,6 +31,7 @@ export async function DELETE(req: NextRequest) {
     const { subscriptionId } = res;
 
     await stripe.subscriptions.cancel(subscriptionId as string);
+    await cancelPayment(subscriptionId as string);
 
     return NextResponse.json({});
   } catch (error) {

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
 import clientPromise from '../../../lib/mongodb';
-import { MPayment, PaymentStatus } from '@/interfaces/payment';
+import { MPayment } from '@/interfaces/payment';
 
 async function getPayment(id: string): Promise<MPayment | null> {
   const client = await clientPromise;
@@ -10,17 +10,6 @@ async function getPayment(id: string): Promise<MPayment | null> {
   const collection = db.collection('payments');
   const query = { subscription: id };
   return collection.findOne(query) as Promise<MPayment | null>;
-}
-
-async function cancelPayment(id: string) {
-  const client = await clientPromise;
-  const db = client.db();
-  const collection = db.collection('payments');
-  const filter = { subscription: id };
-  const updateDocument = {
-    $set: { status: PaymentStatus.CANCELED },
-  };
-  return collection.updateOne(filter, updateDocument);
 }
 
 export async function POST(req: Request) {
@@ -77,7 +66,6 @@ export async function POST(req: Request) {
             throw new Error(`Error: ${response.status} ${response.statusText}`);
           }
         });
-        await cancelPayment(session.id);
       } catch (error) {
         console.error(error);
         throw new Error(`Something went wrong! - ${error}`);
