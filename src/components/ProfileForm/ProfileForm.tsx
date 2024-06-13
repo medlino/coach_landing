@@ -7,22 +7,18 @@ import Link from 'next/link';
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
 import { cancelPayment } from '@/clientAPI/cancelPayment';
 import { PaymentStatus } from '@/interfaces/payment';
+import { useSuccessToast } from '@/hooks/useSuccessToast';
 
 import { Loading } from '../Loading/Loading';
 import { Button } from '../Button/Button';
 
 import styles from './ProfileForm.module.scss';
-import { useDebounce } from '@/hooks/useDebounce';
-import { current } from 'immer';
 
 export const ProfileForm = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const triggerSuccessToast = useSuccessToast('Sikeres leiratkozás!');
   const { session, isMember, payments, promiseLoading, sessionLoading } =
     useDiscordMember();
   const [cancelLoading, setCancelLoading] = useState(false);
-
-  const success = searchParams.get('success');
 
   const inviteLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
 
@@ -44,27 +40,11 @@ export const ProfileForm = () => {
     [payments]
   );
 
-  const toastSuccess = useDebounce(() => {
-    toast.success('Sikeres leiratkozás!');
-  }, 100);
-
-  useEffect(() => {
-    if (success) {
-      toastSuccess();
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.delete('success');
-      router.replace(currentUrl.href);
-    }
-  }, [success]);
-
   const handleCancelPayment = async (subscriptionId: string) => {
     try {
       setCancelLoading(true);
       await cancelPayment(subscriptionId);
-
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set('success', 'true');
-      window.location.href = currentUrl.href;
+      triggerSuccessToast();
     } catch (error) {
       toast.error('Hiba történt a leiratkozás során!');
     } finally {

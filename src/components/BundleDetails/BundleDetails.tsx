@@ -1,11 +1,9 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import clsx from 'clsx';
 
-import { useDebounce } from '@/hooks/useDebounce';
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 import { MPayment, PaymentStatus } from '@/interfaces/payment';
 
@@ -13,6 +11,7 @@ import { Loading } from '../Loading/Loading';
 import { Button } from '../Button/Button';
 
 import styles from './BundleDetails.module.scss';
+import { useSuccessToast } from '@/hooks/useSuccessToast';
 
 interface BundleDetailsProps {
   className?: string;
@@ -20,11 +19,10 @@ interface BundleDetailsProps {
 }
 
 export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+  const triggerSuccessToast = useSuccessToast(
+    'Sikeres aktiválás! A Discordon eléred a tartalmakat!'
+  );
   const [loading, setLoading] = useState(false);
-
-  const success = useMemo(() => searchParams.get('success'), [searchParams]);
 
   const roleAddPendingPayments = useMemo(
     () =>
@@ -34,27 +32,11 @@ export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
     [payments]
   );
 
-  const toastSuccess = useDebounce(() => {
-    toast.success('Sikeres aktiválás! A Discordon eléred a tartalmakat!');
-  }, 100);
-
-  useEffect(() => {
-    if (success) {
-      toastSuccess();
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.delete('success');
-      router.replace(currentUrl.href);
-    }
-  }, [success]);
-
   const handleSetDiscordRole = async (checkoutId: string) => {
     setLoading(true);
     try {
       await setDiscordRole(checkoutId);
-
-      const currentUrl = new URL(window.location.href);
-      currentUrl.searchParams.set('success', 'true');
-      window.location.href = currentUrl.href;
+      triggerSuccessToast();
     } catch (error) {
       toast.error(
         'Hiba történt az aktiválás során! Kérlek írj az info@medlino.hu címre!'
