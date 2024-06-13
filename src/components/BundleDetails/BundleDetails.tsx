@@ -1,29 +1,30 @@
-import { useMemo, useState } from 'react';
+'use client';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import clsx from 'clsx';
 
+import { useDebounce } from '@/hooks/useDebounce';
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 import { MPayment, PaymentStatus } from '@/interfaces/payment';
 
+import { Loading } from '../Loading/Loading';
 import { Button } from '../Button/Button';
 
 import styles from './BundleDetails.module.scss';
-import { roleMap } from '@/constants/roles';
-import { Loading } from '../Loading/Loading';
 
 interface BundleDetailsProps {
   className?: string;
   payments: MPayment[];
-  roles: string[];
 }
 
-export const BundleDetails = ({
-  className,
-  payments,
-  roles,
-}: BundleDetailsProps) => {
+export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
+
+  const success = useMemo(() => searchParams.get('success'), [searchParams]);
 
   const roleAddPendingPayments = useMemo(
     () =>
@@ -33,12 +34,27 @@ export const BundleDetails = ({
     [payments]
   );
 
+  const toastSuccess = useDebounce(() => {
+    toast.success('Sikeres aktiválás! A Discordon eléred a tartalmakat!');
+  }, 100);
+
+  useEffect(() => {
+    if (success) {
+      toastSuccess();
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.delete('success');
+      router.replace(currentUrl.href);
+    }
+  }, [success]);
+
   const handleSetDiscordRole = async (checkoutId: string) => {
     setLoading(true);
     try {
       await setDiscordRole(checkoutId);
-      window.location.reload();
-      toast.success('Sikeres aktiválás! A Discordon eléred a tartalmakat!');
+
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set('success', 'true');
+      window.location.href = currentUrl.href;
     } catch (error) {
       toast.error(
         'Hiba történt az aktiválás során! Kérlek írj az info@medlino.hu címre!'
@@ -50,11 +66,6 @@ export const BundleDetails = ({
 
   return (
     <div className={clsx(styles.bundleDetails, className)}>
-      {/*       <div className={styles.roles}>
-        <p>Jogosultságaid:&nbsp;</p>
-        <span>{roles.map((r) => roleMap[r]).join(', ')}</span>
-      </div> */}
-
       <div className={styles.paymentWrapper}>
         {roleAddPendingPayments.length === 0 && (
           <>
@@ -78,12 +89,6 @@ export const BundleDetails = ({
                     <span key={product.id}>{product.name}</span>
                   ))}
                 </div>
-                {/*               <div className={styles.rights}>
-                  <p>A következő jogokat fogod megkapni:&nbsp;</p>
-                  {p.roles.map((role) => (
-                    <span key={role.id}>{role.name}</span>
-                  ))}
-                </div> */}
                 {loading ? (
                   <Loading />
                 ) : (

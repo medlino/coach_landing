@@ -12,7 +12,7 @@ import { Loading } from '../Loading/Loading';
 import styles from './VerificationForm.module.scss';
 
 export const VerificationForm = () => {
-  const { session, isMember, roles, payments, sessionLoading, promiseLoading } =
+  const { session, isMember, payments, sessionLoading, promiseLoading } =
     useDiscordMember();
   const [stepLoading, setStepLoading] = useState(true);
   const [startStep, setStartStep] = useState(1);
@@ -72,9 +72,7 @@ export const VerificationForm = () => {
             ),
           },
           {
-            content: (
-              <BundleDetails key="bundles" payments={payments} roles={roles} />
-            ),
+            content: <BundleDetails key="bundles" payments={payments} />,
           },
         ]}
       />

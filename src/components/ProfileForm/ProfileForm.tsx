@@ -1,22 +1,28 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
 import { cancelPayment } from '@/clientAPI/cancelPayment';
-import { roleMap } from '@/constants/roles';
 import { PaymentStatus } from '@/interfaces/payment';
 
 import { Loading } from '../Loading/Loading';
 import { Button } from '../Button/Button';
 
 import styles from './ProfileForm.module.scss';
+import { useDebounce } from '@/hooks/useDebounce';
+import { current } from 'immer';
 
 export const ProfileForm = () => {
-  const { session, isMember, payments, roles, promiseLoading, sessionLoading } =
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { session, isMember, payments, promiseLoading, sessionLoading } =
     useDiscordMember();
   const [cancelLoading, setCancelLoading] = useState(false);
+
+  const success = searchParams.get('success');
 
   const inviteLink = process.env.NEXT_PUBLIC_DISCORD_INVITE_LINK;
 
@@ -38,11 +44,27 @@ export const ProfileForm = () => {
     [payments]
   );
 
+  const toastSuccess = useDebounce(() => {
+    toast.success('Sikeres leiratkozás!');
+  }, 100);
+
+  useEffect(() => {
+    if (success) {
+      toastSuccess();
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.delete('success');
+      router.replace(currentUrl.href);
+    }
+  }, [success]);
+
   const handleCancelPayment = async (subscriptionId: string) => {
     try {
       setCancelLoading(true);
       await cancelPayment(subscriptionId);
-      window.location.reload();
+
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set('success', 'true');
+      window.location.href = currentUrl.href;
     } catch (error) {
       toast.error('Hiba történt a leiratkozás során!');
     } finally {
@@ -68,15 +90,7 @@ export const ProfileForm = () => {
                 </div>
                 {isMember ? (
                   <div className={styles.detailContainer}>
-                    {/*            <div className={styles.roles}>
-                      <p>Jogusultságaid:&nbsp;</p>
-                      <span>{roles.map((r) => roleMap[r]).join(', ')}</span>
-                    </div> */}
-                    <Link href="/#csomagok">
-                      {activePayments.length > 0
-                        ? 'További csomagokért'
-                        : 'Csatlakozom a közösséghez'}
-                    </Link>
+                    <Link href="/#csomagok">Csomagok megtekintése</Link>
                   </div>
                 ) : (
                   <div className={styles.detailContainer}>
@@ -129,12 +143,6 @@ export const ProfileForm = () => {
                             )}
                           </>
                         )}
-                        {/*          <div className={styles.rights}>
-                          <p>A következő jogokkal jár:&nbsp;</p>
-                          {p.roles.map((role) => (
-                            <span key={role.id}>{role.name}</span>
-                          ))}
-                        </div> */}
                       </div>
                     ))}
                   </div>
@@ -151,31 +159,6 @@ export const ProfileForm = () => {
                     <Link href="/aktivalas">Tovább az aktiváláshoz</Link>
                   </div>
                 )}
-                {/*  {roleAddPendingPayments.length > 0 && (
-                  <div className={styles.contentWrapper}>
-                    <p className={styles.title}>Nem aktivált tartalmak</p>
-                    {roleAddPendingPayments.map((p) => (
-                      <div key={p.checkoutId} className={styles.payment}>
-                        <div className={styles.bundles}>
-                          <p>Megvásárolt csomagok:&nbsp;</p>
-                          {p.products.map((product) => (
-                            <span key={product.id}>{product.name}</span>
-                          ))}
-                        </div>
-                        <div className={styles.rights}>
-                          <p>A következő jogokat fogod megkapni:&nbsp;</p>
-                          {p.roles.map((role) => (
-                            <span key={role.id}>{role.name}</span>
-                          ))}
-                        </div>
-                        <Button
-                          text="Aktiválás"
-                          onClick={() => setDiscordRole(p.checkoutId)}
-                        />
-                      </div>
-                    ))}
-                  </div>
-                )} */}
               </div>
             </>
           )}
