@@ -18,7 +18,10 @@ export interface SanitizedPrice {
   currency: string;
   unit_amount: number;
   type: 'recurring' | 'one_time';
-  interval?: 'day' | 'week' | 'month' | 'year';
+  recurring?: {
+    interval: 'month' | 'year' | 'week' | 'day';
+    interval_count: number;
+  };
 }
 
 export interface SanitizedProduct {

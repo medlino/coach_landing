@@ -11,18 +11,41 @@
   padding: 1.5rem;
   width: 100%;
   margin: 0.5rem;
-  max-width: 28rem;
+  max-width: 24rem;
   color: #0c2e47;
   transition: 0.2s ease-in-out;
 
   h5 {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 400;
     margin-bottom: 12px;
     margin-top: 0;
   }
-  .price {
-    font-size: 2rem;
+  .intervalText {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin: 0;
+  }
+  .priceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  .padded {
+    margin-top: 12px;
+  }
+  .contentContainer {
+    span:first-of-type {
+      text-decoration: line-through;
+    }
+    span:nth-child(4) {
+      font-weight: 700;
+    }
+  }
+  .price, span {
+    font-size: 1.5rem;
     font-weight: 400;
     margin: 0;
   }
@@ -31,14 +54,18 @@
     margin: 0px;
   }
   ul {
+    border-top: 1px solid #0c2e4720;
+    border-bottom: 1px solid #0c2e4720;
     margin: 12px 0px 18px 0px;
     padding: 0;
+    padding-top: 12px;
+    padding-bottom: 12px;
     li {
       display: flex;
-      text-align: right;
-      gap: 8px;
+      flex-direction: column;
+      align-items: center;
       list-style-type: none;
-      margin: 8px 0px;
+      margin: 14px 0px;
       p {
         margin: 0px;
       }
@@ -56,6 +83,10 @@
   }
 
   @media (min-width: 768px) {
+    margin: 0;
     width: 33.333%;
+  }
+  @media (max-width: 768px) {
+    margin: 0;
   }
 }

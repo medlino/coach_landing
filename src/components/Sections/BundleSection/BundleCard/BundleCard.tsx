@@ -1,3 +1,6 @@
+import { useMemo } from 'react';
+import clsx from 'clsx';
+
 import { SanitizedPrice } from '@/interfaces/product';
 
 import { Button } from '@/components/Button/Button';
@@ -6,10 +9,15 @@ import styles from './BundleCard.module.scss';
 
 interface BundleCardProps {
   name: string;
-  price: SanitizedPrice;
+  price?: SanitizedPrice;
   features: Record<string, string>;
-  onClick: () => Promise<void>;
+  onClick?: () => Promise<void>;
 }
+
+const THREE_MONTHS_PRICE = 21592;
+const THREE_MONTHS_ORIGINAL_PRICE = 26991;
+const ONE_MONTH_PRICE = 6997;
+const ONE_MONTH_ORIGINAL_PRICE = 8997;
 
 export const BundleCard = ({
   name,
@@ -17,23 +25,61 @@ export const BundleCard = ({
   features,
   onClick,
 }: BundleCardProps) => {
+  const intervalText = useMemo(() => {
+    if (!price) return '';
+
+    if (price.recurring) {
+      if (price.recurring.interval === 'month') {
+        if (price.recurring.interval_count === 1) return 'Havi csomag';
+        if (price.recurring.interval_count === 3) return 'Negyedéves csomag';
+      }
+    }
+
+    return '';
+  }, [price]);
+
+  const amount = price && price.unit_amount / 100;
+
+  const originalPrice = useMemo(() => {
+    if (!price) return 0;
+    if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
+    if (amount === ONE_MONTH_PRICE) return ONE_MONTH_ORIGINAL_PRICE;
+  }, [price]);
+
   return (
     <div className={styles.bundleCard}>
       <h5>{name}</h5>
-      <p className={styles.price}>
-        {price && price.unit_amount / 100}
-        {price && price.currency.toLocaleUpperCase()}
-      </p>
-      <p>{price?.type === 'recurring' ? 'Havi' : 'Egyszeri'}</p>
+      <p className={styles.intervalText}>{intervalText}</p>
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>
-            <img src="./icons/check.svg" />
             <p>{v}</p>
           </li>
         ))}
       </ul>
-      <Button text="AKAROM, KELL!" onClick={onClick} />
+      {price && (
+        <div className={styles.priceContainer}>
+          {amount === THREE_MONTHS_PRICE && (
+            <span className={styles.discount}>
+              (<b>20%</b> kedvezmény)
+            </span>
+          )}
+          <div
+            className={clsx(
+              styles.contentContainer,
+              amount === ONE_MONTH_PRICE ? styles.padded : ''
+            )}
+          >
+            <span>{originalPrice}</span>
+            <span>HUF&nbsp;</span>
+            <span>helyett - </span>
+            <span className={styles.price}>{amount}</span>
+            <span>{price.currency.toLocaleUpperCase()}</span>
+          </div>
+        </div>
+      )}
+
+      {onClick && <Button text="CSATLAKOZOM " onClick={onClick} />}
     </div>
   );
 };

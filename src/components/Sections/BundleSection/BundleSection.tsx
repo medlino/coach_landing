@@ -25,6 +25,10 @@ export const BundleSection = () => {
       });
   }, []);
 
+  const orderedProducts = products.sort(
+    (a, b) => a.price.unit_amount - b.price.unit_amount
+  );
+
   return (
     <section id="csomagok" className={styles.bundleSection}>
       <h1>Elme Ereje Közösség Csomagok</h1>
@@ -47,6 +51,13 @@ export const BundleSection = () => {
                 }
               />
             ))}
+            <BundleCard
+              key="custom"
+              name="Egyéni ajánlatok cégeknek"
+              features={{
+                key1: 'Amennyiben egyéni ajánlatot szeretnél kérni, írj kérlek egy emailt az info@medlino.hu email címre.',
+              }}
+            />
           </>
         )}
       </div>
