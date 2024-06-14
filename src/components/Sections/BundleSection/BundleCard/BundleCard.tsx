@@ -49,7 +49,7 @@ export const BundleCard = ({
   return (
     <div className={styles.bundleCard}>
       <h5>{intervalText}</h5>
-      <p className={styles.name}>{name}</p>
+      {name.includes('Egyéni') && <p className={styles.name}>{name}</p>}
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>
@@ -61,7 +61,7 @@ export const BundleCard = ({
         <div className={styles.priceContainer}>
           {amount === THREE_MONTHS_PRICE && (
             <span className={styles.discount}>
-              (<b>20%</b> kedvezmény)
+              (<b>~20%</b> kedvezmény)
             </span>
           )}
           <div
@@ -71,10 +71,12 @@ export const BundleCard = ({
             )}
           >
             <span>{originalPrice}</span>
-            <span>HUF&nbsp;</span>
-            <span>helyett - </span>
-            <span className={styles.price}>{amount}</span>
-            <span>{price.currency.toLocaleUpperCase()}</span>
+            <span>&nbsp;HUF&nbsp;</span>
+            <span>helyett</span>
+            <p className={styles.price}>
+              <b>{amount}&nbsp;</b>
+              {price.currency.toLocaleUpperCase()}
+            </p>
           </div>
         </div>
       )}

@@ -96,10 +96,10 @@ async function genPaymentData(
     .flat()
     .filter((r) => r);
   if (!dupedRoles.length && process.env.ENV === 'dev') {
-    dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }]; // dev mock
+    dupedRoles = [{ id: '1229468577279770755', name: 'TAG' }]; // dev mock
   } else if (!dupedRoles.length && process.env.ENV === 'prod') {
     console.error('No roles found for product');
-    dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }]; // prod mock ()
+    dupedRoles = [{ id: '1229468577279770755', name: 'TAG' }]; // prod mock ()
   }
 
   const dedupedRoles = dedupArr(dupedRoles, 'id');
