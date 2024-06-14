@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { signIn } from 'next-auth/react';
 
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
@@ -72,7 +72,11 @@ export const VerificationForm = () => {
             ),
           },
           {
-            content: <BundleDetails key="bundles" payments={payments} />,
+            content: (
+              <Suspense>
+                <BundleDetails key="bundles" payments={payments} />
+              </Suspense>
+            ),
           },
         ]}
       />

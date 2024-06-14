@@ -6,12 +6,12 @@ import clsx from 'clsx';
 
 import { setDiscordRole } from '@/clientAPI/setDiscordRole';
 import { MPayment, PaymentStatus } from '@/interfaces/payment';
+import { useSuccessToast } from '@/hooks/useSuccessToast';
 
 import { Loading } from '../Loading/Loading';
 import { Button } from '../Button/Button';
 
 import styles from './BundleDetails.module.scss';
-import { useSuccessToast } from '@/hooks/useSuccessToast';
 
 interface BundleDetailsProps {
   className?: string;

@@ -1,6 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 
