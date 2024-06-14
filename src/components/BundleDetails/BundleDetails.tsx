@@ -78,7 +78,7 @@ export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
                             '- Havi csomag'}
                           {product.recurring.interval === 'month' &&
                             product.recurring.intervalCount === 3 &&
-                            ' - Negyedéves csomag'}
+                            '- Negyedéves csomag'}
                         </span>
                       )}
                     </Fragment>

@@ -48,8 +48,8 @@ export const BundleCard = ({
 
   return (
     <div className={styles.bundleCard}>
-      <h5>{name}</h5>
-      <p className={styles.intervalText}>{intervalText}</p>
+      <h5>{intervalText}</h5>
+      <p className={styles.name}>{name}</p>
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>
