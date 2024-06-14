@@ -70,7 +70,16 @@ export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
                   {p.products.map((product) => (
                     <Fragment key={product.id}>
                       <span>{product.name}</span>
-                      <span>{}</span>
+                      {product.recurring && (
+                        <span>
+                          {product.recurring.interval === 'month' &&
+                          product.recurring.interval_count === 1
+                            ? 'Havi csomag'
+                            : product.recurring.interval_count === 3
+                            ? 'Negyedéves csomag'
+                            : ''}
+                        </span>
+                      )}
                     </Fragment>
                   ))}
                 </div>

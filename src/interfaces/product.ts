@@ -6,6 +6,10 @@ export interface MProduct {
   type: string;
   desc: string;
   defaultPrice: string | null;
+  recurring?: {
+    interval: 'month' | 'year' | 'week' | 'day';
+    interval_count: number;
+  };
 }
 
 export interface Product extends Stripe.Product {

@@ -51,9 +51,15 @@ async function retrieveSubProductDetails(stripe: Stripe, subscription: string) {
     const sub = await stripe.subscriptions.retrieve(subscription);
     const items = sub.items.data;
 
-    const prices = {};
+    const prodRecurringMap: Record<
+      string,
+      { interval?: string; intervalCount?: number }
+    > = {};
     items.forEach((item) => {
-      console.log('DEBUG', JSON.stringify(item));
+      prodRecurringMap[item.price.product as string] = {
+        interval: item.price.recurring?.interval,
+        intervalCount: item.price.recurring?.interval_count,
+      };
       productPromises.push(
         stripe.products.retrieve(item.price.product as string)
       );
@@ -65,6 +71,7 @@ async function retrieveSubProductDetails(stripe: Stripe, subscription: string) {
       name: p.name,
       type: p.type,
       defaultPrice: p.default_price,
+      recurring: prodRecurringMap[p.id],
     }));
   } catch (error) {
     console.error('Error retrieving subscription product details:', error);
