@@ -32,6 +32,10 @@ export const BundleSection = () => {
   return (
     <section id="csomagok" className={styles.bundleSection}>
       <h1>Elme Ereje Közösség Csomagok</h1>
+      <h3>
+        Fontos, hogy azzal az email címmel vásárolj, amivel majd a Discordot is
+        használod!
+      </h3>
       <div className={styles.productList}>
         {loading ? (
           <Loading />
