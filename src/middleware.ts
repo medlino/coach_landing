@@ -6,7 +6,7 @@ export const config = {
 
 export async function middleware(req: NextRequest) {
   try {
-    const isInMaintenanceMode = true;
+    const isInMaintenanceMode = false;
 
     const hasMaintenanceBypass =
       req.nextUrl.search.includes('maintenance=false');
