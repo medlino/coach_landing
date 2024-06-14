@@ -79,4 +79,40 @@
     margin-bottom: 40px;
     font-size: 16px;
   }
+
+  @media screen and (max-width: 768px) {
+    min-width: unset;
+    padding: 20px 8px;
+    .stepIndicatorContainer {
+      justify-content: center;
+      .stepWrapper {
+        position: relative;
+        width: unset;
+      }
+      .current::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1.5px;
+        background-color: #78b8fc;
+        bottom: 14px;
+        left: 40px;
+      }
+      .current::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1.5px;
+        background-color: #78b8fc;
+        bottom: 14px;
+        right: 40px;
+      }
+      .notCurrent {
+        display: none;
+      }
+      .stepLine {
+        display: none;
+      }
+    }
+  }
 }

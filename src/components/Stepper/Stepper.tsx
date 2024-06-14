@@ -19,7 +19,8 @@ const StepIndicator: React.FC<StepIndicatorProps> = ({
           <div
             className={clsx(
               styles.stepNumber,
-              currentStep >= step ? styles.active : ''
+              currentStep >= step ? styles.active : styles.inactive,
+              currentStep === step ? styles.current : styles.notCurrent
             )}
           >
             {step}

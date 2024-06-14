@@ -17,4 +17,12 @@
       margin-bottom: 100px;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .contentWrapper {
+      .content {
+        margin-bottom: 0px;
+      }
+    }
+  }
 }

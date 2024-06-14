@@ -16,4 +16,11 @@
       margin-top: 100px;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    .content {
+      margin-left: 6px;
+      margin-right: 6px;
+    }
+  }
 }
