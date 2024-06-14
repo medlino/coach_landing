@@ -59,7 +59,9 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
         )}
       >
         <div className={styles.logo}>
-          <img src="/og-bg.png" alt="logo" />
+          <Link href="/">
+            <img src="/og-bg.png" alt="logo" />
+          </Link>
         </div>
         {session && (
           <div>
@@ -98,6 +100,12 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
             </Link>
             <Link href="/#garancia" onClick={toggleMenu}>
               Garancia
+            </Link>
+            <Link href="/profil" onClick={toggleMenu}>
+              Profilom
+            </Link>
+            <Link href="/aktivalas" onClick={toggleMenu}>
+              Aktiválás
             </Link>
           </nav>
 

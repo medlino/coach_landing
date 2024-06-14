@@ -69,10 +69,11 @@
   nav {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
-    margin-left: 20px;
 
     a {
+      font-family: var(--font-bellefair);
       color: white;
       font-size: 24px;
       text-decoration: none;
@@ -83,20 +84,15 @@
   }
 
   .actions {
-    margin-top: 2rem;
-    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    margin-top: 0.8rem;
     button {
-      cursor: pointer;
+      color: white;
       font-size: 24px;
-      background: white;
-      color: black;
-      border: none;
-      padding: 0.5rem 1rem;
-      width: 80%;
-
-      &:hover {
-        background: #ccc;
-      }
+      text-decoration: none;
+      background-color: transparent;
+      padding: 0;
     }
   }
 }
