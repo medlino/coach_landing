@@ -28,7 +28,7 @@ export async function POST(req: Request) {
       allow_promotion_codes: true,
       billing_address_collection: 'required',
       success_url: `${redirectUrl}?success=true`,
-      cancel_url: `${redirectUrl}?canceled=true`,
+      cancel_url: `${redirectUrl}?cancel=true`,
     });
 
     return NextResponse.json(session);
