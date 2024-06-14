@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: 20px;
   }
@@ -65,6 +64,11 @@
         font-size: 20px;
         a {
           font-size: 20px;
+        }
+      }
+      .payment {
+        .bundles {
+          justify-content: center;
         }
       }
     }
