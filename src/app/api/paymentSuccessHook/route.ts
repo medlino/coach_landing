@@ -51,7 +51,9 @@ async function retrieveSubProductDetails(stripe: Stripe, subscription: string) {
     const sub = await stripe.subscriptions.retrieve(subscription);
     const items = sub.items.data;
 
+    const prices = {};
     items.forEach((item) => {
+      console.log('DEBUG', JSON.stringify(item));
       productPromises.push(
         stripe.products.retrieve(item.price.product as string)
       );
@@ -89,7 +91,8 @@ async function genPaymentData(
   if (!dupedRoles.length && process.env.ENV === 'dev') {
     dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }]; // dev mock
   } else if (!dupedRoles.length && process.env.ENV === 'prod') {
-    throw new Error('No roles found for product');
+    console.error('No roles found for product');
+    dupedRoles = [{ id: '1229468577279770755', name: 'VIP' }]; // prod mock ()
   }
 
   const dedupedRoles = dedupArr(dupedRoles, 'id');

@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { toast } from 'react-toastify';
 import Link from 'next/link';
 import clsx from 'clsx';
@@ -68,7 +68,10 @@ export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
                 <div className={styles.bundles}>
                   <p>Megvásárolt csomag:&nbsp;</p>
                   {p.products.map((product) => (
-                    <span key={product.id}>{product.name}</span>
+                    <Fragment key={product.id}>
+                      <span>{product.name}</span>
+                      <span>{}</span>
+                    </Fragment>
                   ))}
                 </div>
                 {loading ? (

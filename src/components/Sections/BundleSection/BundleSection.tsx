@@ -37,7 +37,7 @@ export const BundleSection = () => {
           <Loading />
         ) : (
           <>
-            {products.map((product) => (
+            {orderedProducts.map((product) => (
               <BundleCard
                 key={product.id}
                 name={product.name}
