@@ -72,12 +72,13 @@ export const BundleDetails = ({ className, payments }: BundleDetailsProps) => {
                       <span>{product.name}</span>
                       {product.recurring && (
                         <span>
+                          &nbsp;
                           {product.recurring.interval === 'month' &&
-                          product.recurring.interval_count === 1
-                            ? 'Havi csomag'
-                            : product.recurring.interval_count === 3
-                            ? 'Negyedéves csomag'
-                            : ''}
+                            product.recurring.intervalCount === 1 &&
+                            '- Havi csomag'}
+                          {product.recurring.interval === 'month' &&
+                            product.recurring.intervalCount === 3 &&
+                            ' - Negyedéves csomag'}
                         </span>
                       )}
                     </Fragment>

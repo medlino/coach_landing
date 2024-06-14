@@ -100,6 +100,17 @@ export const ProfileForm = () => {
                           <p>
                             Típus:&nbsp;
                             {p.type === 'payment' ? 'Egyszeri' : 'Előfizetés'}
+                            {p.products[0]?.recurring && (
+                              <span>
+                                &nbsp;
+                                {p.products[0].recurring.interval === 'month' &&
+                                  p.products[0].recurring.intervalCount === 1 &&
+                                  '- Havi csomag'}
+                                {p.products[0].recurring.interval === 'month' &&
+                                  p.products[0].recurring.intervalCount === 3 &&
+                                  '- Negyedéves csomag'}
+                              </span>
+                            )}
                           </p>
                         </div>
                         <div className={styles.bundles}>

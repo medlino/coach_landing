@@ -8,7 +8,7 @@ export interface MProduct {
   defaultPrice: string | null;
   recurring?: {
     interval: 'month' | 'year' | 'week' | 'day';
-    interval_count: number;
+    intervalCount: number;
   };
 }
 
