@@ -67,6 +67,7 @@ export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
         <Link href="/#tartalom">Tartalom</Link>
         <Link href="/#csomagok">Csomagok</Link>
         <Link href="/#garancia">Garancia</Link>
+        <Link href="/#segitseg">Segítség</Link>
       </nav>
       <div className={styles.actions}>
         {!session ? (
