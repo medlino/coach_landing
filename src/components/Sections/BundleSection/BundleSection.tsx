@@ -55,15 +55,17 @@ export const BundleSection = () => {
                 }
               />
             ))}
-            <BundleCard
-              key="custom"
-              name="Egyéni ajánlatok cégeknek"
-              features={{
-                key1: 'Amennyiben egyéni ajánlatot szeretnél kérni, írj kérlek egy emailt az info@medlino.hu email címre.',
-              }}
-            />
           </>
         )}
+      </div>
+      <div className={styles.productList} style={{ marginTop: 0 }}>
+        <BundleCard
+          key="custom"
+          name="Egyéni ajánlatok cégeknek"
+          features={{
+            key1: 'Amennyiben egyéni ajánlatot szeretnél kérni, írj kérlek egy emailt az info@medlino.hu email címre.',
+          }}
+        />
       </div>
     </section>
   );
