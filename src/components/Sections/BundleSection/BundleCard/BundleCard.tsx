@@ -55,7 +55,6 @@ export const BundleCard = ({
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>
-            {!isUniqueCard && <img src="/icons/check.svg" alt="checkmark" />}
             <p>{v}</p>
           </li>
         ))}
