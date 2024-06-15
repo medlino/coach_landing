@@ -40,6 +40,8 @@ export const BundleCard = ({
 
   const amount = price && price.unit_amount / 100;
 
+  const isUniqueCard = useMemo(() => name.includes('Egyéni'), []);
+
   const originalPrice = useMemo(() => {
     if (!price) return 0;
     if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
@@ -49,10 +51,11 @@ export const BundleCard = ({
   return (
     <div className={styles.bundleCard}>
       <h5>{intervalText}</h5>
-      {name.includes('Egyéni') && <p className={styles.name}>{name}</p>}
+      {isUniqueCard && <p className={styles.name}>{name}</p>}
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>
+            {!isUniqueCard && <img src="/icons/check.svg" alt="checkmark" />}
             <p>{v}</p>
           </li>
         ))}

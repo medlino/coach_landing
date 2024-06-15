@@ -65,12 +65,14 @@
     padding-bottom: 12px;
     li {
       display: flex;
-      flex-direction: column;
+      justify-content: space-between;
       align-items: center;
       margin: 14px 0px;
       p {
+        font-family:Arial, Helvetica, sans-serif;
         margin: 0px;
-        font-size: 18px;
+        font-weight: 700;
+        font-size: 16px;
       }
     }
   }
