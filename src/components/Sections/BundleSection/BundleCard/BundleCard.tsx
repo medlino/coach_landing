@@ -42,6 +42,8 @@ export const BundleCard = ({
 
   const isUniqueCard = useMemo(() => name.includes('Egyéni'), []);
 
+  const isDiscounted = useMemo(() => amount === THREE_MONTHS_PRICE, [amount]);
+
   const originalPrice = useMemo(() => {
     if (!price) return 0;
     if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
@@ -72,13 +74,22 @@ export const BundleCard = ({
               amount === ONE_MONTH_PRICE ? styles.padded : ''
             )}
           >
-            <span>{originalPrice}</span>
-            <span>&nbsp;HUF&nbsp;</span>
-            <span>helyett</span>
-            <p className={styles.price}>
-              <b>{amount}&nbsp;</b>
-              {price.currency.toLocaleUpperCase()}
-            </p>
+            {isDiscounted ? (
+              <>
+                <span>{originalPrice}</span>
+                <span>&nbsp;HUF&nbsp;</span>
+                <span>helyett</span>
+                <p className={styles.price}>
+                  <b>{amount}&nbsp;</b>
+                  {price.currency.toLocaleUpperCase()}
+                </p>
+              </>
+            ) : (
+              <p className={styles.price}>
+                <b>{amount}&nbsp;</b>
+                {price.currency.toLocaleUpperCase()}
+              </p>
+            )}
           </div>
         </div>
       )}
