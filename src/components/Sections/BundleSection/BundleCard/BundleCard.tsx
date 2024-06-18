@@ -16,8 +16,7 @@ interface BundleCardProps {
 
 const THREE_MONTHS_PRICE = 21592;
 const THREE_MONTHS_ORIGINAL_PRICE = 26991;
-const ONE_MONTH_PRICE = 6997;
-const ONE_MONTH_ORIGINAL_PRICE = 8997;
+const ONE_MONTH_PRICE = 8997;
 
 export const BundleCard = ({
   name,
@@ -47,7 +46,6 @@ export const BundleCard = ({
   const originalPrice = useMemo(() => {
     if (!price) return 0;
     if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
-    if (amount === ONE_MONTH_PRICE) return ONE_MONTH_ORIGINAL_PRICE;
   }, [price]);
 
   return (
