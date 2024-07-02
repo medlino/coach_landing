@@ -15,9 +15,9 @@ interface BundleCardProps {
 }
 
 const THREE_MONTHS_PRICE = 21500;
-const THREE_MONTHS_ORIGINAL_PRICE = 26991;
-const ONE_MONTH_PRICE = 7190;
-const ONE_MONTH_ORIGINAL_PRICE = 8990;
+const THREE_MONTHS_ORIGINAL_PRICE = 27000;
+const ONE_MONTH_PRICE = 6990;
+const ONE_MONTH_ORIGINAL_PRICE = 9000;
 
 export const BundleCard = ({
   name,
