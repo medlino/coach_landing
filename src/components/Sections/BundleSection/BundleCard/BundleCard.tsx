@@ -14,9 +14,10 @@ interface BundleCardProps {
   onClick?: () => Promise<void>;
 }
 
-const THREE_MONTHS_PRICE = 21592;
+const THREE_MONTHS_PRICE = 21500;
 const THREE_MONTHS_ORIGINAL_PRICE = 26991;
-const ONE_MONTH_PRICE = 8997;
+const ONE_MONTH_PRICE = 7190;
+const ONE_MONTH_ORIGINAL_PRICE = 8990;
 
 export const BundleCard = ({
   name,
@@ -41,11 +42,10 @@ export const BundleCard = ({
 
   const isUniqueCard = useMemo(() => name.includes('Egyéni'), []);
 
-  const isDiscounted = useMemo(() => amount === THREE_MONTHS_PRICE, [amount]);
-
   const originalPrice = useMemo(() => {
     if (!price) return 0;
     if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
+    if (amount === ONE_MONTH_PRICE) return ONE_MONTH_ORIGINAL_PRICE;
   }, [price]);
 
   return (
@@ -61,33 +61,17 @@ export const BundleCard = ({
       </ul>
       {price && (
         <div className={styles.priceContainer}>
-          {amount === THREE_MONTHS_PRICE && (
-            <span className={styles.discount}>
-              (<b>~20%</b> kedvezmény)
-            </span>
-          )}
-          <div
-            className={clsx(
-              styles.contentContainer,
-              amount === ONE_MONTH_PRICE ? styles.padded : ''
-            )}
-          >
-            {isDiscounted ? (
-              <>
-                <span>{originalPrice}</span>
-                <span>&nbsp;HUF&nbsp;</span>
-                <span>helyett</span>
-                <p className={styles.price}>
-                  <b>{amount}&nbsp;</b>
-                  {price.currency.toLocaleUpperCase()}
-                </p>
-              </>
-            ) : (
-              <p className={styles.price}>
-                <b>{amount}&nbsp;</b>
-                {price.currency.toLocaleUpperCase()}
-              </p>
-            )}
+          <span className={styles.discount}>
+            (<b>~20%</b> kedvezmény)
+          </span>
+          <div className={clsx(styles.contentContainer)}>
+            <span>{originalPrice}</span>
+            <span>&nbsp;HUF&nbsp;</span>
+            <span>helyett</span>
+            <p className={styles.price}>
+              <b>{amount}&nbsp;</b>
+              {price.currency.toLocaleUpperCase()}
+            </p>
           </div>
         </div>
       )}
