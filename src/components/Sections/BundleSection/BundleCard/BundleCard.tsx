@@ -61,16 +61,43 @@ export const BundleCard = ({
       </ul>
       {price && (
         <div className={styles.priceContainer}>
-          <span className={styles.discount}>
-            (<b>~20%</b> kedvezmény)
-          </span>
           <div className={clsx(styles.contentContainer)}>
-            <span>{originalPrice}</span>
-            <span>&nbsp;HUF&nbsp;</span>
-            <span>helyett</span>
             <p className={styles.price}>
-              <b>{amount}&nbsp;</b>
-              {price.currency.toLocaleUpperCase()}
+              <span style={{ fontSize: '2.2rem' }}>{amount}</span>
+              <span style={{ fontSize: '1.9rem' }}>FT</span>
+            </p>
+            <span
+              style={{
+                color: 'grey',
+                textDecoration: 'line-through',
+                textDecorationThickness: '1px',
+                textDecorationColor: 'rgba(0, 0, 0, 0.4)',
+              }}
+            >
+              {originalPrice}
+            </span>
+            <span
+              style={{
+                color: 'grey',
+                textDecoration: 'line-through',
+                textDecorationThickness: '1px',
+                textDecorationColor: 'rgba(0, 0, 0, 0.4)',
+                fontSize: '1.3rem',
+              }}
+            >
+              FT
+            </span>
+            <p style={{ color: 'red', fontSize: '1.5rem' }}>20% kedvezmény</p>
+
+            <p
+              style={{
+                textDecoration: 'none',
+                fontSize: '0.7rem',
+                color: 'red',
+                marginTop: '0.5rem',
+              }}
+            >
+              A kedvezmény 2024.08.01-ig érvényes
             </p>
           </div>
         </div>

@@ -40,21 +40,12 @@
     font-weight: 400;
     margin: 0;
   }
-  .contentContainer {
-    span:first-of-type {
-      text-decoration: line-through;
-    }
-    span:nth-child(4) {
-      font-weight: 700;
-    }
-  }
   .price, span {
     font-size: 1.5rem;
     font-weight: 400;
     margin: 0;
   }
   .price {
-    color: rgb(9, 172, 9);
     font-size: 1.8rem;
   }
   p {
