@@ -30,7 +30,7 @@ export const AboutCommunitySection = () => {
           </ul>
         ))}
       </div>
-      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
+      {/* <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />{} */}
     </section>
   );
 };
