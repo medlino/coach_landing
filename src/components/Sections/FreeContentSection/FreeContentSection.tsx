@@ -9,7 +9,7 @@ export const FreeContentSection = () => {
     const pdfPath = 'docs/ingyenes_tartalom.pdf';
     const link = document.createElement('a');
     link.href = pdfPath;
-    link.download = 'elmeErejeTartalom.pdf';
+    link.download = 'ElmeErejeTartalom.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
