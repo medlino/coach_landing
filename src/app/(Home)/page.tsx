@@ -8,7 +8,7 @@ import {
   AboutCommunitySection,
   BundleSection,
   HelpSection,
-  FreeCourseSection,
+  FreeContentSection,
 } from '@/components/Sections';
 
 import styles from './page.module.scss';
@@ -21,7 +21,7 @@ export default async function Home() {
       <WhyUsSection />
       <WhatInProgSection />
       <AboutCommunitySection />
-      <FreeCourseSection />
+      <FreeContentSection />
       <BundleSection />
       <TestimonialSection />
       <AssuranceSection />

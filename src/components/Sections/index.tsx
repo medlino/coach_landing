@@ -7,4 +7,4 @@ export * from './BundleSection/BundleSection';
 export * from './AssuranceSection/AssuranceSection';
 export * from './AboutCommunitySection/AboutCommunitySection';
 export * from './HelpSection/HelpSection';
-export * from './FreeCourseSection/FreeCourseSection';
+export * from './FreeContentSection/FreeContentSection';

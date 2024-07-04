@@ -1,4 +1,4 @@
-.courseSection {
+.contentSection {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,6 +44,7 @@
     button {
       margin-top: 20px;
       margin-bottom: 20px;
+      font-size: 18px;
     }
   }
 }
