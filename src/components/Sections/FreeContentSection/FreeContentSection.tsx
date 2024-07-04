@@ -16,7 +16,7 @@ export const FreeContentSection = () => {
   };
 
   return (
-    <section id="ingyen-tartalom" className={styles.contentSection}>
+    <section id="ingyenes-tartalom" className={styles.contentSection}>
       <h1>Ingyenes tartalom</h1>
       <p className={styles.desc}>
         Ha kíváncsi vagy, hogy milyen kurzusokat kínál az Elme Ereje Közösség,
