@@ -8,7 +8,7 @@ import styles from './AboutProgSection.module.scss';
 
 const texts = [
   'a frusztrált, szorongással teli, lusta hétköznapokat szeretnéd produktív mindennapokká alakítani.',
-  'szeretnéd, hogy a hangulat ingadozásaidat egy kiegyensúlyozott érzelmi állapot váltsa fel.',
+  'szeretnéd, hogy a hangulatingadozásaidat egy kiegyensúlyozott érzelmi állapot váltsa fel.',
   'szeretnél a fejedben össze-vissza cikázó, téged emésztő gondolatok fölé kerekedni, előnyt kovácsolni belőlük, és visszaszerezni a kontrollt.',
   'szeretnél a feletted eluralkodó negatív érzelmek helyett egy rendszeresebb emelkedett érzelmi állapotot teremteni.',
 ];
