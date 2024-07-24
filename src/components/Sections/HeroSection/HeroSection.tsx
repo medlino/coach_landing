@@ -19,10 +19,9 @@ export const HeroSection = () => {
   return (
     <section className={styles.heroSection}>
       <div className={styles.titleWrapper}>
-        <h1 className={styles.title}>AZ ELME EREJE</h1>
         <h1 className={styles.subTitle}>
-          Hogyan teremts magadnak új életmódot 1 hónap alatt a tudomány és
-          spiritualitás tökéletes kombinációjával?
+          Teremts magadnak új életmódot a tudomány és spiritualitás
+          egyensúlyával
         </h1>
       </div>
       {clientSide ? (

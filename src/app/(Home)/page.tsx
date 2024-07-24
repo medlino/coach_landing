@@ -9,6 +9,8 @@ import {
   BundleSection,
   HelpSection,
   FreeContentSection,
+  SelectorSection,
+  WhyDifferent,
 } from '@/components/Sections';
 
 import styles from './page.module.scss';
@@ -18,13 +20,10 @@ export default async function Home() {
     <main className={styles.main}>
       <HeroSection />
       <AboutProgSection />
-      <WhyUsSection />
-      <WhatInProgSection />
-      <AboutCommunitySection />
-      <FreeContentSection />
+      <SelectorSection />
+      <WhyDifferent />
       <BundleSection />
       <TestimonialSection />
-      <AssuranceSection />
       <HelpSection />
     </main>
   );

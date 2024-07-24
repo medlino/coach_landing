@@ -1,8 +1,5 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-
-import { Button } from '../../Button/Button';
 import { InProgItem } from './InProgItem/InProgItem';
 
 import styles from './WhatInProg.module.scss';
@@ -74,8 +71,6 @@ const inProgItems = [
 ];
 
 export const WhatInProgSection = () => {
-  const router = useRouter();
-
   return (
     <section id="tartalom" className={styles.whatInProgSection}>
       <h1>Mit tartalmaz a program?</h1>
@@ -88,16 +83,11 @@ export const WhatInProgSection = () => {
         hogy túllépj a múltbeli tapasztalataid korlátain és szabadon alakítsd a
         saját jövőd.
       </p>
-      <p className={styles.timeText}>
-        A program időtartalma 4 hét, és a kurzus anyaga egy életre szólón a
-        tiéd.
-      </p>
       <div className={styles.inProgList}>
         {inProgItems.map((iP) => (
           <InProgItem key={iP.id} {...iP} />
         ))}
       </div>
-      {/* <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />{} */}
     </section>
   );
 };

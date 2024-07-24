@@ -8,3 +8,5 @@ export * from './AssuranceSection/AssuranceSection';
 export * from './AboutCommunitySection/AboutCommunitySection';
 export * from './HelpSection/HelpSection';
 export * from './FreeContentSection/FreeContentSection';
+export * from './SelectorSection/SelectorSection';
+export * from './WhyDifferent/WhyDifferent';
