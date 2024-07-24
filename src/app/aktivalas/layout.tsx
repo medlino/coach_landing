@@ -14,7 +14,7 @@ export default function VerifyLayout({
 }) {
   return (
     <div className={styles.verifyLayout}>
-      <Header className={styles.header} />
+      <Header />
       {children}
       <Footer />
       <SimpleToaster />

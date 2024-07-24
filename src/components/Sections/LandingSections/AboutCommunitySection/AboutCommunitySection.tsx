@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from '../../Button/Button';
+import { Button } from '../../../Button/Button';
 
 import { useRouter } from 'next/navigation';
 
@@ -30,7 +30,6 @@ export const AboutCommunitySection = () => {
           </ul>
         ))}
       </div>
-      {/* <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />{} */}
     </section>
   );
 };

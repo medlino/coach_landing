@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/Button/Button';
 
-import styles from './WhyDifferent.module.scss';
+import styles from './WhyDifferentSection.module.scss';
 
 const texts = [
   'Hiszünk abban, hogy a tudomány és a spiritualitás kéz a kézben járnak egymást segítve és alátámasztva.',
@@ -10,7 +10,7 @@ const texts = [
   'A mai online világban kevés az élőben történő kapcsolódás, így az online tér mellet minél több élő találkozót szervezünk, mert igazán csak élőben lehet kapcsolódni.',
 ];
 
-export const WhyDifferent = () => {
+export const WhyDifferentSection = () => {
   const handleDownloadPdf = () => {
     const pdfPath = 'docs/ingyenes_tartalom.pdf';
     const link = document.createElement('a');

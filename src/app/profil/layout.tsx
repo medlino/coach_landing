@@ -14,7 +14,7 @@ export default function ProfileLayout({
 }) {
   return (
     <div className={styles.profileLayout}>
-      <Header className={styles.header} />
+      <Header />
       {children}
       <Footer />
       <SimpleToaster />

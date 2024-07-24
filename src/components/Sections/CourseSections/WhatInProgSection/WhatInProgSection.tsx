@@ -2,7 +2,7 @@
 
 import { InProgItem } from './InProgItem/InProgItem';
 
-import styles from './WhatInProg.module.scss';
+import styles from './WhatInProgSection.module.scss';
 
 const inProgItems = [
   {

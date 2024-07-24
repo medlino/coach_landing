@@ -2,7 +2,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 
-import { Button } from '../../Button/Button';
+import { Button } from '../../../Button/Button';
 import { CategoryItem } from './CategoryItem/CategoryItem';
 
 import styles from './WhyUsSection.module.scss';
