@@ -63,11 +63,9 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
             <img src="/og-bg.png" alt="logo" />
           </Link>
         </div>
-        {session && (
-          <div>
-            <p>Isten hozott, {session.user?.name}!</p>
-          </div>
-        )}
+        <div>
+          <p>AZ ELME EREJE</p>
+        </div>
         <div className={styles.hamburger} onClick={toggleMenu}>
           ☰
         </div>
@@ -97,9 +95,6 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
             </Link>
             <Link href="/#csomagok" onClick={toggleMenu}>
               Csomagok
-            </Link>
-            <Link href="/#garancia" onClick={toggleMenu}>
-              Garancia
             </Link>
             <Link href="/profil" onClick={toggleMenu}>
               Profilom

@@ -6,49 +6,123 @@
   background: linear-gradient(90deg, #7d9faa, #14374d 94%);
   color: white;
   font-family: var(--font-bellefair);
-  padding: 40px 0px;
+  padding: 40px 0px 80px 0px;
 
 
   h1 {
     font-size: 50px;
-    margin-top: 28px;
-    margin-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 80px;
     font-weight: 400;
     font-family: var(--font-kanit);
     border-bottom: 2px solid white;
     padding-bottom: 12px;
   }
   .triangle {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    width: 500px;
+    height: 500px;
 
-    div {
-      display: flex;
-      gap: 30px;
+    img:nth-of-type(1) {
+      position: absolute;
+      height: 500px;
+      width: 500px;
+    }
+    img:nth-of-type(2) {
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      border-radius: 50px;
+      left: 50%;
+      top: 300px;
+      transform: translate(-50%,-50%);
+    }
+    button {
+      position: absolute;
+      font-size: 20px;
+      width: 140px;
+      padding: 20px 6px;
+      background-color: white;
+      border: 1px solid black;
+
+      &:hover {
+        background-color: rgb(228, 228, 228);
+      }
+    }
+    button:nth-of-type(1) {
+      top: -10px;
+      left: 50%;
+      transform: translate(-50%, 0);
+    }
+    button:nth-of-type(2) {
+      bottom: 0;
+      left: -60px;
+    }
+    button:nth-of-type(3) {
+      bottom: 0px;
+      right: -60px;
     }
   }
 
-  button {
-    margin-top: 60px;
-    margin-bottom: 40px;
-    width: 300px
-  }
+
 
   @media screen and (max-width: 768px) {
-    padding: 14px 0px;
+    padding: 24px 0px 50px 0px;
 
     h1 {
       text-align: center;
       font-size: 34px;
       line-height: 32px;
-      margin-bottom: 20px;
+      margin-bottom: 60px;
     }
-    button {
-      margin-top: 20px;
-      margin-bottom: 20px;
-      font-size: 18px;
+    .triangle {
+      width: 250px;
+      height: 250px;
+
+      img:nth-of-type(1) {
+        height: 250px;
+        width: 250px;
+      }
+      img:nth-of-type(2) {
+        height: 50px;
+        width: 50px;
+        top: 150px;
+      }
+      button {
+        font-size: 15px;
+        padding: 10px 6px;
+        width: 100px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 390px) {
+    padding: 14px 0px 50px 0px;
+
+    .triangle {
+      width: 210px;
+      height: 210px;
+
+      img:nth-of-type(1) {
+        height: 210px;
+        width: 210px;
+      }
+      img:nth-of-type(2) {
+        height: 46px;
+        width: 46px;
+        top: 130px;
+      }
+      button {
+        font-size: 14px;
+        padding: 0px 6px;
+        width: 100px;
+      }
+      button:nth-of-type(2) {
+        left: -40px;
+      }
+      button:nth-of-type(3) {
+        right: -40px;
+      }
     }
   }
 }
