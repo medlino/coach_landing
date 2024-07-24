@@ -20,18 +20,34 @@
     padding: 10px 0px;
     font-weight: 400;
   }
-  .title {
+  .titleWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0px 10px 0px;
+    background-color: rgba(255, 255, 255, 0.75);
     width: 100%;
-    font-size: 38px;
     margin-top: 0px;
     margin-bottom: 10px;
-    line-height: 50px;
-    text-align: center;
     font-family: var(--font-bellefair);
-    background-color: rgba(255, 255, 255, 0.75);
-    padding: 70px 0px 10px 0px;
-    font-weight: 400;
+    .title {
+      margin: 0px;
+      font-size: 38px;
+      line-height: 50px;
+      text-align: center;
+      font-weight: 400;
+    }
+    .subTitle {
+      margin: 0px;
+      font-size: 38px;
+      line-height: 50px;
+      text-align: center;
+      font-weight: 400;
+      max-width: 900px;
+    }
   }
+
   h5 {
     font-size: 22px;
     margin: 20px 0px;
@@ -60,10 +76,18 @@
       font-size: 30px;
       line-height: 30px;
     }
-    .title {
-      font-size: 30px;
-      line-height: 30px;
-      margin-bottom: 20px;
+    .titleWrapper {
+      .title {
+        font-size: 30px;
+        line-height: 30px;
+        margin-bottom: 4px;
+      }
+      .subTitle {
+        margin: 0px;
+        font-size: 25px;
+        line-height: 32px;
+        margin: 0px 4px
+      }
     }
   }
 }

@@ -7,11 +7,10 @@ import { useRouter } from 'next/navigation';
 import styles from './AboutProgSection.module.scss';
 
 const texts = [
-  'szeretnél egy szabadabb és biztonságosabb életet teremteni magadnak. ',
-  'szeretnéd, hogy az életed a kiteljesedésedről és a megbecsülésről szóljon.',
-  'a saját kezedbe szeretnéd venni az életed irányítását.',
-  'szeretnéd megvalósítani a benned rejlő potenciált.',
-  'kiváncsi vagy arra, hogy hogyan tudsz egy sikeres életet megteremteni a vizualizáció, a neurobiológia és a teremtés eszközeivel.',
+  'a frusztrált, szorongással teli, lusta hétköznapokat szeretnéd produktív mindennapokká alakítani.',
+  'szeretnéd, hogy a hangulatingadozásaidat egy kiegyensúlyozott érzelmi állapot váltsa fel.',
+  'szeretnél a fejedben össze-vissza cikázó, téged emésztő gondolatok fölé kerekedni, előnyt kovácsolni belőlük, és visszaszerezni a kontrollt.',
+  'szeretnél a feletted eluralkodó negatív érzelmek helyett egy rendszeresebb emelkedett érzelmi állapotot teremteni.',
 ];
 
 export const AboutProgSection = () => {
@@ -19,7 +18,7 @@ export const AboutProgSection = () => {
 
   return (
     <section id="neked-szolo-program" className={styles.aboutProgSection}>
-      <h1>Életre szóló program NEKED, ha</h1>
+      <h1>Neked szól a program ha:</h1>
       <div className={styles.textList}>
         {texts.map((text, index) => (
           <ul key={index}>

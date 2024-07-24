@@ -14,10 +14,10 @@ interface BundleCardProps {
   onClick?: () => Promise<void>;
 }
 
-const THREE_MONTHS_PRICE = 21592;
-const THREE_MONTHS_ORIGINAL_PRICE = 26991;
-const ONE_MONTH_PRICE = 6997;
-const ONE_MONTH_ORIGINAL_PRICE = 8997;
+const THREE_MONTHS_PRICE = 21500;
+const THREE_MONTHS_ORIGINAL_PRICE = 27000;
+const ONE_MONTH_PRICE = 6990;
+const ONE_MONTH_ORIGINAL_PRICE = 9000;
 
 export const BundleCard = ({
   name,
@@ -40,6 +40,8 @@ export const BundleCard = ({
 
   const amount = price && price.unit_amount / 100;
 
+  const isUniqueCard = useMemo(() => name.includes('Egyéni'), []);
+
   const originalPrice = useMemo(() => {
     if (!price) return 0;
     if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
@@ -49,7 +51,7 @@ export const BundleCard = ({
   return (
     <div className={styles.bundleCard}>
       <h5>{intervalText}</h5>
-      {name.includes('Egyéni') && <p className={styles.name}>{name}</p>}
+      {isUniqueCard && <p className={styles.name}>{name}</p>}
       <ul>
         {Object.entries(features).map(([k, v]) => (
           <li key={k}>
@@ -59,23 +61,43 @@ export const BundleCard = ({
       </ul>
       {price && (
         <div className={styles.priceContainer}>
-          {amount === THREE_MONTHS_PRICE && (
-            <span className={styles.discount}>
-              (<b>~20%</b> kedvezmény)
-            </span>
-          )}
-          <div
-            className={clsx(
-              styles.contentContainer,
-              amount === ONE_MONTH_PRICE ? styles.padded : ''
-            )}
-          >
-            <span>{originalPrice}</span>
-            <span>&nbsp;HUF&nbsp;</span>
-            <span>helyett</span>
+          <div className={clsx(styles.contentContainer)}>
             <p className={styles.price}>
-              <b>{amount}&nbsp;</b>
-              {price.currency.toLocaleUpperCase()}
+              <span style={{ fontSize: '2.2rem' }}>{amount}</span>
+              <span style={{ fontSize: '1.9rem' }}>FT</span>
+            </p>
+            <span
+              style={{
+                color: 'grey',
+                textDecoration: 'line-through',
+                textDecorationThickness: '1px',
+                textDecorationColor: 'rgba(0, 0, 0, 0.4)',
+              }}
+            >
+              {originalPrice}
+            </span>
+            <span
+              style={{
+                color: 'grey',
+                textDecoration: 'line-through',
+                textDecorationThickness: '1px',
+                textDecorationColor: 'rgba(0, 0, 0, 0.4)',
+                fontSize: '1.3rem',
+              }}
+            >
+              FT
+            </span>
+            <p style={{ color: 'red', fontSize: '1.5rem' }}>20% kedvezmény</p>
+
+            <p
+              style={{
+                textDecoration: 'none',
+                fontSize: '0.7rem',
+                color: 'red',
+                marginTop: '0.5rem',
+              }}
+            >
+              A kedvezmény 2024.08.01-ig érvényes
             </p>
           </div>
         </div>

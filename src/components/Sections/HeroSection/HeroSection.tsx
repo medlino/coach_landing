@@ -18,11 +18,13 @@ export const HeroSection = () => {
 
   return (
     <section className={styles.heroSection}>
-      <h1 className={styles.title}>
-        AZ ELME EREJE
-        <br />
-        Hogyan teremtsd meg saját sikered gondolataiddal és szokásaiddal?
-      </h1>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>AZ ELME EREJE</h1>
+        <h1 className={styles.subTitle}>
+          Hogyan teremts magadnak új életmódot 1 hónap alatt a tudomány és
+          spiritualitás tökéletes kombinációjával?
+        </h1>
+      </div>
       {clientSide ? (
         <iframe
           className="video"

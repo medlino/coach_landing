@@ -107,6 +107,9 @@ export const MobileHeader = ({ className }: MobileHeaderProps) => {
             <Link href="/aktivalas" onClick={toggleMenu}>
               Aktiválás
             </Link>
+            <Link href="/#segitseg" onClick={toggleMenu}>
+              Segítség
+            </Link>
           </nav>
 
           <div className={styles.actions}>

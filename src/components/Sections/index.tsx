@@ -6,3 +6,5 @@ export * from './WhatInProg/WhatInProg';
 export * from './BundleSection/BundleSection';
 export * from './AssuranceSection/AssuranceSection';
 export * from './AboutCommunitySection/AboutCommunitySection';
+export * from './HelpSection/HelpSection';
+export * from './FreeContentSection/FreeContentSection';
