@@ -21,7 +21,7 @@ export const WhyParticipateSection = () => {
         {listTexts.map((text, index) => (
           <ul key={index}>
             <div>
-              <img src="/icons/check.svg" alt="check" />
+              <img src="/icons/light-check.svg" alt="check" />
               <li>{text}</li>
             </div>
           </ul>

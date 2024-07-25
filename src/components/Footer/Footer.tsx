@@ -1,8 +1,14 @@
+import clsx from 'clsx';
+
 import styles from './Footer.module.scss';
 
-export const Footer = () => {
+interface FooterProps {
+  className?: string;
+}
+
+export const Footer = ({ className }: FooterProps) => {
   return (
-    <footer className={styles.footer}>
+    <footer className={clsx(className, styles.footer)}>
       <a href="/docs/aszf_v1.pdf" download>
         Felhasználási feltételek
       </a>

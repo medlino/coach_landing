@@ -26,11 +26,11 @@ export const RelaxHeroSection = () => {
           sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-presentation"
           src="https://www.youtube.com/embed/Sa4ZIS6YcXg"
           style={{
-            maxHeight: '500px',
+            minHeight: '500px',
             maxWidth: '800px',
             width: '100%',
             height: '100%',
-            border: '4px transparent solid',
+            border: '4px black solid',
             borderRadius: '10px',
           }}
         ></iframe>
@@ -40,11 +40,11 @@ export const RelaxHeroSection = () => {
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
-            maxHeight: '500px',
+            minHeight: '500px',
             maxWidth: '800px',
             width: '100%',
             height: '100%',
-            border: '4px white solid',
+            border: '4px black solid',
             borderRadius: '10px',
             marginTop: '20px',
             backgroundColor: 'rgba(255, 255, 255, 0.5)',

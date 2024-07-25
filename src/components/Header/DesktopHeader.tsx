@@ -68,17 +68,7 @@ export const DesktopHeader = ({ className }: DesktopHeaderProps) => {
         <Link href="/#csomagok">Csomagok</Link>
         <Link href="/#segitseg">Segítség</Link>
       </nav>
-      <div
-        style={{
-          color: 'white',
-          position: 'absolute',
-          left: '50%',
-          transform: 'translate(-50%, 0)',
-          fontSize: '32px',
-        }}
-      >
-        AZ ELME EREJE
-      </div>
+      <div className={styles.headerTitle}>AZ ELME EREJE</div>
       <div className={styles.actions}>
         {!session ? (
           <Button text="Bejelentkezés" onClick={() => signIn('discord')} />

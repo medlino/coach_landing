@@ -4,7 +4,7 @@ import styles from './HowItHelpsSection.module.scss';
 
 export const HowItHelpsSection = () => {
   return (
-    <section id="" className={styles.howItHelpsSection}>
+    <section id="hogyan-segit" className={styles.howItHelpsSection}>
       <h1>Hogyan segít egy elvonulás?</h1>
       <p>
         Az ember társas lény, mindenki jobb esetben a szüleitől tanulta meg a

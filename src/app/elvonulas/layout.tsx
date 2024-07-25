@@ -15,7 +15,7 @@ export default function RelaxLayout({
     <div className={styles.relaxLayout}>
       <Header />
       {children}
-      <Footer />
+      <Footer className={styles.relaxFooter} />
     </div>
   );
 }

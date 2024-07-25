@@ -28,10 +28,11 @@ export const HeroPromoSection = () => {
         ))}
       </div>
       <img
+        className={styles.arrowDown}
         src="/icons/arrow-down.svg"
         alt="arrow-down"
-        width={350}
-        height={350}
+        width={120}
+        height={120}
       />
       {followupTexts.map((text, index) => (
         <h2 key={index}>{text}</h2>
