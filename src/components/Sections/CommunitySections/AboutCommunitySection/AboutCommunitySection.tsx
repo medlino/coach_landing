@@ -1,9 +1,5 @@
 'use client';
 
-import { Button } from '../../../Button/Button';
-
-import { useRouter } from 'next/navigation';
-
 import styles from './AboutCommunitySection.module.scss';
 
 const texts = [
@@ -15,11 +11,12 @@ const texts = [
 ];
 
 export const AboutCommunitySection = () => {
-  const router = useRouter();
-
   return (
     <section id="neked-kozosseg" className={styles.aboutCommunitySection}>
-      <h1>Neked szól ez a közösség, amennyiben</h1>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.subTitle}>Közösség</h1>
+      </div>
+      <h2>Neked szól ez a közösség, amennyiben</h2>
       <div className={styles.textList}>
         {texts.map((text, index) => (
           <ul key={index}>

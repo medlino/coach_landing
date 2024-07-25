@@ -15,7 +15,7 @@ export default function CommunityLayout({
     <div className={styles.communityLayout}>
       <Header />
       {children}
-      <Footer />
+      <Footer className={styles.communityFooter} />
     </div>
   );
 }

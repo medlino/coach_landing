@@ -8,46 +8,64 @@
   font-family: var(--font-bellefair);
   padding: 40px 0px;
 
+  .introWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 5px 0px;
+    background: linear-gradient(90deg, #7d9faa, #14374d 94%);
+    font-family: var(--font-bellefair);
+    color: white;
+    padding: 40px 0px 80px 0px;
+    width: 100%;
+    p {
+      font-size: 32px;
+      max-width: 800px;
+    }
+  }
+
   h1 {
     font-size: 50px;
     margin-top: 28px;
     margin-bottom: 40px;
     font-weight: 400;
     font-family: var(--font-kanit);
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
     padding-bottom: 12px;
   }
-  .textList {
+
+  .contentList {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    ul {
-      list-style-type: none;
-      div {
-        display: flex;
-        gap: 10px;
-        align-items: center;
-        img {
-          width: 20px;
-          height: 20px;
-        }
-      }
-    }
-    li {
-      font-size: 30px;
-      max-width: 800px;
-      text-align: left;
-    }
-  }
-  button {
-    color: white;
-    background-color: rgba(20,55,77, 0.9);
+    gap: 100px;
+    width: 100%;
     margin-top: 60px;
     margin-bottom: 40px;
-    &:hover {
-      background-color: rgba(20,55,77, 1);
+    .content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      width: 100%;
+      h2 {
+        font-weight: 400;
+        margin: 0;
+        max-width: 600px;
+        text-align: center;
+      }
+    }
+  }
+
+  .closingDesc {
+    margin-top: 80px;
+    p {
+      font-size: 28px;
+      max-width: 800px;
+      text-align: center;
     }
   }
 
@@ -60,23 +78,31 @@
       line-height: 32px;
       margin-bottom: 20px;
     }
-    .textList {
-      ul {
-        padding-left: 8px;
-        div {
-          img {
-            width: 14px;
-            height: 14px;
-          }
-        }
-        li {
+    .introWrapper {
+      p {
+        font-size: 22px;
+      }
+    }
+    .contentList {
+      gap: 40px;
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        h2 {
           font-size: 22px;
+        }
+        img {
+          display: none;
         }
       }
     }
-    button {
-      margin-top: 20px;
-      margin-bottom: 20px;
+    .closingDesc {
+      margin-top: 0px;
+      p {
+        font-size: 22px;
+      }
     }
   }
 }
