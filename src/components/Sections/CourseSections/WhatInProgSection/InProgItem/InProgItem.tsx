@@ -10,6 +10,7 @@ interface InProgItemProps {
   imgSrc: string;
   title: string;
   desc: JSX.Element;
+  proofImg: JSX.Element;
 }
 
 export const InProgItem: FunctionComponent<InProgItemProps> = ({
@@ -17,6 +18,7 @@ export const InProgItem: FunctionComponent<InProgItemProps> = ({
   title,
   desc,
   imgSrc,
+  proofImg,
 }) => {
   return (
     <div className={clsx(styles.inProgItem, styles[id])}>
@@ -28,6 +30,7 @@ export const InProgItem: FunctionComponent<InProgItemProps> = ({
         </div>
         {desc}
       </div>
+      {proofImg}
     </div>
   );
 };

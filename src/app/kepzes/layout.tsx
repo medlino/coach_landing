@@ -15,7 +15,7 @@ export default function CourseLayout({
     <div className={styles.courseLayout}>
       <Header />
       {children}
-      <Footer />
+      <Footer className={styles.courseFooter} />
     </div>
   );
 }

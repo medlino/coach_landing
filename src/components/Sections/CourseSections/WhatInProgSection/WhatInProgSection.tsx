@@ -24,6 +24,9 @@ const inProgItems = [
         Hitrendszerek, korlátozó hiedelmek.
       </p>
     ),
+    proofImg: (
+      <img src="/in-prog-1.png" alt="in-prog-1" className={styles.proofImg1} />
+    ),
   },
   {
     id: 'creation',
@@ -43,6 +46,9 @@ const inProgItems = [
         megteremtéséhez?
         <br />A saját történeted megteremtése.
       </p>
+    ),
+    proofImg: (
+      <img src="/in-prog-2.png" alt="in-prog-2" className={styles.proofImg2} />
     ),
   },
   {
@@ -67,13 +73,16 @@ const inProgItems = [
         Mik a lelki és biológiai következményei ezeknek a szokásoknak?
       </p>
     ),
+    proofImg: (
+      <img src="/in-prog-3.png" alt="in-prog-3" className={styles.proofImg3} />
+    ),
   },
 ];
 
 export const WhatInProgSection = () => {
   return (
     <section id="tartalom" className={styles.whatInProgSection}>
-      <h1>Mit tartalmaz a program?</h1>
+      <h1>Miről lesz szó a képzésben?</h1>
       <p className={styles.mainDesc}>
         Amit a legkevesebben tudnak irányítani az az elme, viszont az egyetlen
         dolog, amit irányíthatsz, az az elméd. Megtanítunk az elméd

@@ -12,7 +12,10 @@ const listTexts = [
 export const AboutCourseSection = () => {
   return (
     <section id="kurzusrol" className={styles.aboutCourseSection}>
-      <h1>Ajánljuk számodra a képzést ha:</h1>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.subTitle}>Képzés</h1>
+      </div>
+      <h2>Ajánljuk számodra a képzést ha:</h2>
       <div className={styles.textList}>
         {listTexts.map((text, index) => (
           <ul key={index}>

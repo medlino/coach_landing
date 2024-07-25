@@ -1,4 +1,5 @@
 .inProgItem {
+  position: relative;
   display: flex;
   align-items: center;
   width: 100%;
@@ -7,6 +8,8 @@
   border-radius: 4px;
   margin-bottom: 12px;
   padding: 20px 24px 6px 24px;
+  margin-bottom: 450px;
+  margin-top: 20px;
 
   .desktopImg {
     height: 210px;
@@ -47,6 +50,8 @@
 
   @media screen and (max-width: 768px) {
     border: none;
+    margin-bottom: 0px;
+
     .textWrapper:nth-of-type(1) {
       margin: 0px;
     }
