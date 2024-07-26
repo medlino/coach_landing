@@ -9,15 +9,6 @@
   padding-bottom: 60px;
   padding-top: 20px;
 
-  h1 {
-    font-size: 50px;
-    margin-top: 28px;
-    margin-bottom: 40px;
-    font-weight: 400;
-    font-family: var(--font-kanit);
-    border-bottom: 2px solid black;
-    padding-bottom: 12px;
-  }
   .textList {
     display: flex;
     flex-direction: column;
@@ -25,7 +16,6 @@
     flex-wrap: wrap;
     gap: 12px;
     ul {
-      list-style-type: none;
       div {
         display: flex;
         gap: 10px;
@@ -54,12 +44,6 @@
   @media screen and (max-width: 768px) {
     padding: 14px 0px;
 
-    h1 {
-      text-align: center;
-      font-size: 34px;
-      line-height: 32px;
-      margin-bottom: 20px;
-    }
     .textList {
       ul {
         padding-left: 8px;

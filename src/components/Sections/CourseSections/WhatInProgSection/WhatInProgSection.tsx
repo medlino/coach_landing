@@ -1,5 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import { Button } from '@/components/Button/Button';
 import { InProgItem } from './InProgItem/InProgItem';
 
 import styles from './WhatInProgSection.module.scss';
@@ -80,23 +83,27 @@ const inProgItems = [
 ];
 
 export const WhatInProgSection = () => {
+  const router = useRouter();
+
   return (
     <section id="tartalom" className={styles.whatInProgSection}>
       <h1>Miről lesz szó a képzésben?</h1>
       <p className={styles.mainDesc}>
-        Amit a legkevesebben tudnak irányítani az az elme, viszont az egyetlen
-        dolog, amit irányíthatsz, az az elméd. Megtanítunk az elméd
-        átprogramozására, hogy hogyan alakíts ki új idegpályákat a céljaid
-        elérése érdekében. Amikor megérted az elméd működését, akkor lehetőséged
-        nyílik megteremteni azt a valóságot amire vágysz. Esélyt kapsz arra,
-        hogy túllépj a múltbeli tapasztalataid korlátain és szabadon alakítsd a
-        saját jövőd.
+        Az egyetlen dolog amit irányíthatsz az életben az az elméd és milyen
+        érdekes vagy inkább szomorú, hogy ez az amit a legkevesebben tudnak
+        irányítani, pedig igenis lehet. Megtanítunk az elméd átprogramozására,
+        hogy hogyan alakíts ki új idegpályákat a céljaid elérése érdekében.
+        Amikor megérted az elméd működését, akkor lehetőséged nyílik
+        megteremteni azt a valóságot amire vágysz. Esélyt kapsz arra, hogy
+        túllépj a múltbeli tapasztalataid korlátain és szabadon alakítsd a saját
+        jövőd.
       </p>
       <div className={styles.inProgList}>
         {inProgItems.map((iP) => (
           <InProgItem key={iP.id} {...iP} />
         ))}
       </div>
+      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
     </section>
   );
 };

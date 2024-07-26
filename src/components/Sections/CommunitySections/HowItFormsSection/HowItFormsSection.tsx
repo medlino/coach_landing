@@ -6,8 +6,8 @@ const contents = [
   {
     title:
       '4 óra esszenciális tudásanyag, ami az alapját adja a változásodnak. ',
-    content: (
-      <div>
+    content: (isLeft: boolean) => (
+      <div className={isLeft ? styles.left : ''}>
         <img src="/com-1.png" alt="com-1" />
       </div>
     ),
@@ -15,8 +15,8 @@ const contents = [
   {
     title:
       'Rendszeres online előadásokat, ahol felteheted kérdéseidet és megoszthatod tapasztalataidat.',
-    content: (
-      <div>
+    content: (isLeft: boolean) => (
+      <div className={isLeft ? styles.left : ''}>
         <img src="/com-2.png" alt="com-2" />
       </div>
     ),
@@ -24,8 +24,8 @@ const contents = [
   {
     title:
       'Mester vendég előadók, akik bölcsességükkel, tudásukkal, szakértelmükkel támogatják a közösséget. ',
-    content: (
-      <div>
+    content: (isLeft: boolean) => (
+      <div className={isLeft ? styles.left : ''}>
         <img src="/com-3.1.png" alt="com-3.1" />
         {/* <img src="/com-3.2.png" alt="com-3.2" />{} */}
       </div>
@@ -34,8 +34,8 @@ const contents = [
   {
     title:
       'ÉLŐ TALÁLKOZÓK Magyarország legszebb és legkülönlegesebb helyein, mert amit tanulsz azt 1 dolog ‘megérteni’ és nagyon más dolog megélni. Ezt élni érdemes.',
-    content: (
-      <div>
+    content: (isLeft: boolean) => (
+      <div className={isLeft ? styles.left : ''}>
         <img src="/com-4.png" alt="com-4" />
       </div>
     ),
@@ -56,19 +56,12 @@ export const HowItFormsSection = () => {
       </div>
 
       <div className={styles.contentList}>
-        {contents.map((content, index) =>
-          index % 2 === 0 ? (
-            <div key={index} className={styles.content}>
-              <h2>{content.title}</h2>
-              {content.content}
-            </div>
-          ) : (
-            <div key={index} className={styles.content}>
-              {content.content}
-              <h2>{content.title}</h2>
-            </div>
-          )
-        )}
+        {contents.map((content, index) => (
+          <div key={index} className={styles.content}>
+            <h2>{content.title}</h2>
+            {content.content(index % 2 === 0)}
+          </div>
+        ))}
       </div>
 
       <div className={styles.closingDesc}>

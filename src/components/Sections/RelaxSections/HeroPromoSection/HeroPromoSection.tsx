@@ -8,20 +8,13 @@ const listTexts = [
   'Emellett próbáluk odafigyelni az egészséges életmódra, táplálkozásra, mozgásra és a testli-lelki-szellemi egyensúlyra.',
 ];
 
-const followupTexts = [
-  'Mindemellett szeretnénk fejlődni, változni, életmódot váltani.',
-  'Rengeteg mindenre fókuszálunk egyszerre csak éppen magunkra nem, amiből minden más következik.',
-];
-
 export const HeroPromoSection = () => {
   return (
     <section id="hero-promo" className={styles.heroPromoSection}>
-      <h1>Neked szól ez a közösség, amennyiben</h1>
       <div className={styles.textList}>
         {listTexts.map((text, index) => (
           <ul key={index}>
             <div>
-              <img src="/icons/check.svg" alt="check" />
               <li>{text}</li>
             </div>
           </ul>
@@ -34,9 +27,10 @@ export const HeroPromoSection = () => {
         width={120}
         height={120}
       />
-      {followupTexts.map((text, index) => (
-        <h2 key={index}>{text}</h2>
-      ))}
+      <h2>
+        Rengeteg mindenre fókuszálunk egyszerre csak éppen magunkra nem,
+        mindemellett szeretnénk fejlődni, változni, életmódot váltani.
+      </h2>
     </section>
   );
 };

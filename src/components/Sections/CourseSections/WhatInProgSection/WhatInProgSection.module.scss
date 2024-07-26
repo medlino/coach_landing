@@ -45,6 +45,15 @@
     top: 500px;
     left: 60px;
   }
+  button {
+    color: white;
+    background-color: rgba(20,55,77, 0.9);
+    margin-top: 20px;
+    margin-bottom: 40px;
+    &:hover {
+      background-color: rgba(20,55,77, 1);
+    }
+  }
 
   @media screen and (max-width: 768px) {
     h1 {
@@ -61,6 +70,11 @@
     }
     .proofImg1, .proofImg2, .proofImg3 {
       display: none;
+    }
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 20px;
     }
   }
 }
