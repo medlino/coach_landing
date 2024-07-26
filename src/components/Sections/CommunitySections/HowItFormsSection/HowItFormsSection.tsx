@@ -1,5 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import { Button } from '@/components/Button/Button';
+
 import styles from './HowItFormsSection.module.scss';
 
 const contents = [
@@ -43,6 +47,8 @@ const contents = [
 ];
 
 export const HowItFormsSection = () => {
+  const router = useRouter();
+
   return (
     <section id="mikent-valosul-meg" className={styles.howItFormsSection}>
       <div className={styles.introWrapper}>
@@ -71,6 +77,7 @@ export const HowItFormsSection = () => {
         </p>
         <p>Azonos gondolkodású emberekkel való kapcsolódás a közösségben.</p>
       </div>
+      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
     </section>
   );
 };

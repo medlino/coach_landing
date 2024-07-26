@@ -35,7 +35,9 @@ export const HowItHelpsSection = () => {
         előrébb jutsz az életben, tehát csak döntés van. Bármit is lépsz hozd ki
         a legtöbbet a helyzetből mert minden rajtad múlik.
       </p>
-      <Button text="CSATLAKOZOM" onClick={() => router.push('/#csomagok')} />
+      <span>
+        Jelentkezni az alábbi email címen tudsz: hellomedlino@gmail.com
+      </span>
     </section>
   );
 };
