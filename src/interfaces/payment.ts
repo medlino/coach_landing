@@ -5,6 +5,7 @@ export enum PaymentStatus {
   ROLE_ADD_PENDING = 'role_add_pending',
   ACTIVE = 'active',
   CANCELED = 'canceled',
+  CANCELED_AT = 'canceled_at',
 }
 
 export interface MPayment {

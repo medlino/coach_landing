@@ -97,7 +97,7 @@ export const BundleCard = ({
                 marginTop: '0.5rem',
               }}
             >
-              A kedvezmény 2024.08.01-ig érvényes
+              A kedvezmény 2025.01.01-ig érvényes
             </p>
           </div>
         </div>

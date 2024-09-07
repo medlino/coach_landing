@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import Link from 'next/link';
 
 import { useDiscordMember } from '@/hooks/useDiscrodMember';
-import { cancelPayment } from '@/clientAPI/cancelPayment';
+import { cancelAtPayment } from '@/clientAPI/cancelAtPayment';
 import { PaymentStatus } from '@/interfaces/payment';
 import { useSuccessToast } from '@/hooks/useSuccessToast';
 
@@ -29,6 +29,14 @@ export const ProfileForm = () => {
     [payments]
   );
 
+  const canceledAtPayments = useMemo(
+    () =>
+      payments.filter(
+        (payment) => payment.status === PaymentStatus.CANCELED_AT
+      ),
+    [payments]
+  );
+
   const activePayments = useMemo(
     () => payments.filter((payment) => payment.status === PaymentStatus.ACTIVE),
     [payments]
@@ -42,7 +50,7 @@ export const ProfileForm = () => {
   const handleCancelPayment = async (subscriptionId: string) => {
     try {
       setCancelLoading(true);
-      await cancelPayment(subscriptionId);
+      await cancelAtPayment(subscriptionId);
       triggerSuccessToast();
     } catch (error) {
       toast.error('Hiba történt a leiratkozás során!');
@@ -133,6 +141,41 @@ export const ProfileForm = () => {
                             )}
                           </>
                         )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+                {canceledAtPayments.length > 0 && (
+                  <div className={styles.contentWrapper}>
+                    <p className={styles.title}>Lemondott tartalmak</p>
+                    {canceledAtPayments.map((p) => (
+                      <div key={p.checkoutId} className={styles.payment}>
+                        <div className={styles.type}>
+                          <p>
+                            Típus:&nbsp;
+                            {p.type === 'payment' ? 'Egyszeri' : 'Előfizetés'}
+                            {p.products[0]?.recurring && (
+                              <span>
+                                &nbsp;
+                                {p.products[0].recurring.interval === 'month' &&
+                                  p.products[0].recurring.intervalCount === 1 &&
+                                  '- Havi csomag'}
+                                {p.products[0].recurring.interval === 'month' &&
+                                  p.products[0].recurring.intervalCount === 3 &&
+                                  '- Negyedéves csomag'}
+                              </span>
+                            )}
+                          </p>
+                        </div>
+                        <div className={styles.bundles}>
+                          <p>Csomag:&nbsp;</p>
+                          {p.products.map((product) => (
+                            <span key={product.id}>{product.name}</span>
+                          ))}
+                        </div>
+                        <div className={styles.bundles}>
+                          <p>A következő fizetési időszak elején lejár</p>
+                        </div>
                       </div>
                     ))}
                   </div>

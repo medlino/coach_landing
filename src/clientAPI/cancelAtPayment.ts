@@ -1,7 +1,7 @@
-export async function cancelPayment(subscriptionId: string) {
+export async function cancelAtPayment(subscriptionId: string) {
   try {
-    const response = await fetch('/api/cancelPayment', {
-      method: 'DELETE',
+    const response = await fetch('/api/cancelAtPayment', {
+      method: 'PUT',
       body: JSON.stringify({ subscriptionId }),
     });
     if (!response.ok) {
