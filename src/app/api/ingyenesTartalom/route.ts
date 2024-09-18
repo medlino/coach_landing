@@ -16,7 +16,7 @@ export async function GET(_req: NextRequest) {
     return new NextResponse(fileBuffer, {
       headers: {
         'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename="your-pdf-file.pdf"',
+        'Content-Disposition': 'attachment; filename="ingyenes_tartalom.pdf"',
       },
     });
   } catch (error) {
