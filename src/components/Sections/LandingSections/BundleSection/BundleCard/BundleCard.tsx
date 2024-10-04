@@ -14,7 +14,7 @@ interface BundleCardProps {
   onClick?: () => Promise<void>;
 }
 
-const THREE_MONTHS_PRICE = 21500;
+const THREE_MONTHS_PRICE = 17200;
 const THREE_MONTHS_ORIGINAL_PRICE = 27000;
 const ONE_MONTH_PRICE = 6990;
 const ONE_MONTH_ORIGINAL_PRICE = 9000;
@@ -46,6 +46,12 @@ export const BundleCard = ({
     if (!price) return 0;
     if (amount === THREE_MONTHS_PRICE) return THREE_MONTHS_ORIGINAL_PRICE;
     if (amount === ONE_MONTH_PRICE) return ONE_MONTH_ORIGINAL_PRICE;
+  }, [price]);
+
+  const discount = useMemo(() => {
+    if (!price) return '';
+    if (amount === THREE_MONTHS_PRICE) return '35%';
+    if (amount === ONE_MONTH_PRICE) return '20%';
   }, [price]);
 
   return (
@@ -87,7 +93,9 @@ export const BundleCard = ({
             >
               FT
             </span>
-            <p style={{ color: 'red', fontSize: '1.5rem' }}>20% kedvezmény</p>
+            <p style={{ color: 'red', fontSize: '1.5rem' }}>
+              {discount} kedvezmény
+            </p>
 
             <p
               style={{
