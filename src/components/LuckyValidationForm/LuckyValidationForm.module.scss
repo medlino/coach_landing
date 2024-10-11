@@ -25,4 +25,25 @@
     font-size: 28px;
     margin: auto;
   }
+
+  @media screen and (max-width: 768px) {
+    min-width: 0px;
+    max-width: 300px;
+
+    h1 {
+      font-size: 20px;
+    }
+    input {
+      max-width: 200px;
+      margin: auto;
+    }
+    button {
+      padding: 10px 50px;
+      font-size: 20px;
+    }
+    span {
+      font-size: 20px;
+      margin-left: 58px;
+    }
+  }
 }

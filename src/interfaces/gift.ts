@@ -1,9 +1,10 @@
 export interface Gift {
-  id: string;
-  email: string;
+  qr_num: number;
+  qr_id: string;
   name: string;
-  description: string;
-  claimedAt: string;
-  createdAt: string;
   tier: number;
+  giftId: string;
+  claimedAt: null | string;
+  winnerId: null | string | string[];
+  winnerEmail: null | string | string[];
 }

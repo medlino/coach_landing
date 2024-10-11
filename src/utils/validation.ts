@@ -4,7 +4,7 @@ export const isValidEmail = (email: string) => emailRegex.test(email);
 
 const giftIdRegex = /^[A-Za-z0-9]{32}$/;
 
-export const isValidGiftId = (giftId: string | null) => {
+export const isValidQRId = (giftId: string | null) => {
   if (giftId === null) return false;
   return giftIdRegex.test(giftId);
 };
