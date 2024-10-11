@@ -242,7 +242,7 @@ export async function POST(req: Request) {
     }
 
     if (gift) {
-      await claimGift(gift, res.email.toLowerCase(), res.visitorId);
+      await claimGift(gift, res.email.trim().toLowerCase(), res.visitorId);
       const email = genEmail(res.email, gift);
       sgMail.setApiKey(sendGridApiKey!);
       await sgMail.send(email);
