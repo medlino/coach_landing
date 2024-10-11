@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { Header } from '@/components/Header/Header';
 import { Footer } from '@/components/Footer/Footer';
@@ -15,7 +15,7 @@ export default function ZsakbaLayout({
   return (
     <div className={styles.zsakbaLayout}>
       <Header />
-      {children}
+      <Suspense>{children}</Suspense>
       <Footer />
       <SimpleToaster />
     </div>
