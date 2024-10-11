@@ -144,14 +144,14 @@ function genEmail(email: string, gift: Gift) {
   if (gift.tier === 1) {
     const count = gift.winnerEmail?.length || 0;
 
-    if ((count === 0 || count % 2 === 0) && count < 10) {
+    if ((count === 0 || count % 2 === 0) && count < 100) {
       const obfuscatedCount = count * 100 + count * 3 + 7;
       promoCode = `ELMEEREJE${obfuscatedCount}`;
       template = emailMap.membership(promoCode);
+    } else {
+      promoCode = discount20;
+      template = emailMap.discount(promoCode);
     }
-
-    promoCode = discount20;
-    template = emailMap.discount(promoCode);
   }
 
   if (gift.tier === 2 || gift.tier === 3) {
@@ -228,13 +228,13 @@ export async function POST(req: Request) {
   }
 
   try {
-    const formattedEmail = res.email.trim().toLowerCase();
+    const email = res.email.trim().toLowerCase();
     const gifts = await getGifts();
 
     const { status, message, gift } = getEligibilityStatus({
       gifts,
       qrId: res.id,
-      email: formattedEmail,
+      email: res.email,
       visitorId: res.visitorId,
     });
 
@@ -243,8 +243,8 @@ export async function POST(req: Request) {
     }
 
     if (gift) {
-      await claimGift(gift, formattedEmail, res.visitorId);
-      const email = genEmail(formattedEmail, gift);
+      await claimGift(gift, res.email, res.visitorId);
+      const email = genEmail(res.email, gift);
       sgMail.setApiKey(sendGridApiKey!);
       await sgMail.send(email);
     }
