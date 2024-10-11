@@ -228,13 +228,13 @@ export async function POST(req: Request) {
   }
 
   try {
-    const email = res.email.trim().toLowerCase();
+    const formattedEmail = res.email.trim().toLowerCase();
     const gifts = await getGifts();
 
     const { status, message, gift } = getEligibilityStatus({
       gifts,
       qrId: res.id,
-      email: res.email,
+      email: formattedEmail,
       visitorId: res.visitorId,
     });
 
@@ -243,8 +243,8 @@ export async function POST(req: Request) {
     }
 
     if (gift) {
-      await claimGift(gift, res.email, res.visitorId);
-      const email = genEmail(res.email, gift);
+      await claimGift(gift, formattedEmail, res.visitorId);
+      const email = genEmail(formattedEmail, gift);
       sgMail.setApiKey(sendGridApiKey!);
       await sgMail.send(email);
     }
