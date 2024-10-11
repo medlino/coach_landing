@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 import { isValidEmail } from '@/utils/validation';
 import { getFingerPrint } from '@/clientAPI/getFingerPrint';
@@ -23,7 +24,6 @@ export const LuckyBagForm: React.FC<LuckyBagFormProps> = ({ qrId, gift }) => {
   const [email, setEmail] = useState<string>('');
   const [validationError, setValidationError] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
 
   useEffect(() => {
     getFingerPrint()
@@ -33,7 +33,7 @@ export const LuckyBagForm: React.FC<LuckyBagFormProps> = ({ qrId, gift }) => {
         }
       })
       .catch((error) => {
-        setError('Hiba történt az oldal betöltése közben!');
+        console.error(error);
       })
       .finally(() => {
         setLoading(false);
@@ -53,15 +53,38 @@ export const LuckyBagForm: React.FC<LuckyBagFormProps> = ({ qrId, gift }) => {
     }
 
     if (!qrId || !visitorId) {
-      setError('Hiányzó validációs adatok!');
+      toast.error('Hiányzó validációs adatok!');
       return;
     }
 
     setLoading(true);
     try {
       await sendGift(qrId, email, visitorId);
-    } catch (error) {
-      setError('Hiba történt az ajándék küldése közben!');
+      toast.success(
+        'Az ajándékot sikeresen elküldtük! Amennyiben nem találod az emailt, kérlek ellenőrizd a spam mappádat!'
+      );
+    } catch (error: any) {
+      console.log(error);
+      if (error.message.includes('1-')) {
+        toast.error(
+          'Az ELME 1. SZINT típusú ajándékot csak egyszer nyerheted meg!'
+        );
+        return;
+      }
+      if (error.message.includes('2-')) {
+        toast.error(
+          'ELME 1. SZINT-nél nagyobb típusú ajándékból csak egyet nyerhetsz meg!'
+        );
+        return;
+      }
+      if (error.message.includes('3-')) {
+        toast.error('Sajnos ezt az ajándékot már valaki más megnyerte!');
+        return;
+      }
+
+      toast.error(
+        'Hiba történt az ajándék küldése közben! Kérlünk próbáld újra!'
+      );
     } finally {
       setLoading(false);
     }
@@ -80,8 +103,7 @@ export const LuckyBagForm: React.FC<LuckyBagFormProps> = ({ qrId, gift }) => {
         onChange={handleChange}
         errorMessage="Hibás email!"
       />
-      <Button text="Küldés" onClick={handleRewardSend} />
-
+      <Button text="Küldés" onClick={handleRewardSend} loading={loading} />
       {/* <p>
         A csendben találod meg az igazi válaszokat, melyeket a zajos világ
         elrejt előled. Ahogy a víz tisztává válik, amikor megáll, úgy a lelked

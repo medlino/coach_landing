@@ -113,11 +113,14 @@ async function getGifts(): Promise<Gift[]> {
 
 async function claimGift(gift: Gift, winnerEmail: string, winnerId: string) {
   const newWinnerEmail = Array.isArray(gift.winnerEmail)
-    ? [...gift.winnerEmail].push(winnerEmail)
+    ? [...gift.winnerEmail, winnerEmail]
     : winnerEmail;
   const newWinnerId = Array.isArray(gift.winnerId)
-    ? [...gift.winnerId].push(winnerId)
+    ? [...gift.winnerId, winnerId]
     : winnerId;
+  const claimedAt = Array.isArray(gift.claimedAt)
+    ? [...gift.claimedAt, new Date().toISOString()]
+    : new Date().toISOString();
 
   const client = await clientPromise;
   const db = client.db();
@@ -127,7 +130,7 @@ async function claimGift(gift: Gift, winnerEmail: string, winnerId: string) {
     $set: {
       winnerEmail: newWinnerEmail,
       winnerId: newWinnerId,
-      claimedAt: new Date().toISOString(),
+      claimedAt,
     },
   };
   return collection.updateOne(filter, updateDocument);
@@ -220,7 +223,7 @@ export async function POST(req: Request) {
   }
 
   const res = await req.json();
-  if (!res.email || !res.id || res.visitorId || !isValidEmail(res.email)) {
+  if (!res.email || !res.id || !res.visitorId || !isValidEmail(res.email)) {
     throw new Error('Invalid request');
   }
 
@@ -235,7 +238,7 @@ export async function POST(req: Request) {
     });
 
     if (status !== 200) {
-      throw new Error(`${status}-${message}`);
+      return NextResponse.json({ message: `${status}-${message}` });
     }
 
     if (gift) {
@@ -244,9 +247,8 @@ export async function POST(req: Request) {
       sgMail.setApiKey(sendGridApiKey!);
       await sgMail.send(email);
     }
-  } catch (error) {
-    console.error(error);
-    throw new Error(`Something went wrong! - ${error}`);
+  } catch (error: any) {
+    throw new Error(`Something went wrong! - ${error.message}`);
   }
 
   return NextResponse.json({});

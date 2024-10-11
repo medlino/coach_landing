@@ -16,6 +16,6 @@ export async function getFingerPrint() {
     const result = await fpPromise.get();
     return result.visitorId;
   } catch (error) {
-    console.error('Something went wrong!', JSON.stringify(error));
+    console.error('Something went wrong!', error);
   }
 }

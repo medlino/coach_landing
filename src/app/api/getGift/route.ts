@@ -3,12 +3,12 @@ import { NextRequest, NextResponse } from 'next/server';
 import clientPromise from '../../../lib/mongodb';
 import { Gift } from '@/interfaces/gift';
 
-async function getGifts(qr_id: string): Promise<Gift[]> {
+async function getGifts(qr_id: string): Promise<Gift | null> {
   const client = await clientPromise;
   const db = client.db();
   const collection = db.collection<Gift>('gifts');
   const query = { qr_id };
-  return collection.find(query).toArray();
+  return collection.findOne(query);
 }
 
 export async function GET(req: NextRequest) {
@@ -21,11 +21,10 @@ export async function GET(req: NextRequest) {
 
   try {
     const gift = await getGifts(qr_id);
-    const firstAvailable = gift.find((g) => g.winnerId !== null);
 
     return NextResponse.json({
-      name: firstAvailable?.name,
-      giftId: firstAvailable?.giftId,
+      name: gift?.name,
+      giftId: gift?.giftId,
     });
   } catch (error) {
     console.error('Failed to fetch gift:', error);

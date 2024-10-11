@@ -8,11 +8,17 @@ export async function sendGift(
       method: 'POST',
       body: JSON.stringify({ email, visitorId, id: qr_id }),
     });
+
+    const error = await response.json();
+
+    if (error.message) {
+      throw new Error(error.message);
+    }
+
     if (!response.ok) {
-      throw new Error(`Error: ${JSON.stringify(response)}`);
+      throw new Error('Response is not ok');
     }
   } catch (error) {
-    console.error('Something went wrong!', JSON.stringify(error));
-    throw new Error('Something went wrong!');
+    throw new Error(`Something went wrong! - ${error}`);
   }
 }
