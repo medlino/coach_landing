@@ -29,7 +29,7 @@ const emailMap = {
 <section style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
   <h2>Kedves Nyertes,</h2>
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
-  <p>Szeretnénk felajánlani ezt a <strong>20%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
+  <p>Szeretnénk felajánlani ezt a <strong>50%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
   <p>Ez a képzés egy életmódváltó program része, amiben több mint 4 órányi kurzus anyag vár, ahol a tudomány és a spiritualitás találkozik.</p>
   <ul>
     <li>Olyan témákban adunk gyakorlatias tudást mint a teremtés - manifesztáció</li>
@@ -83,7 +83,7 @@ const emailMap = {
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük, ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
   <p><strong>Nyereményed:</strong> ${giftSpecificMessageMap[giftId]}</p>
   <p>Kérlek, küldd el válasz emailben a neved és a kísérőd nevét (amennyiben páros az ajándék), hogy ki tudjuk állítani az ajándékhoz tartozó utalványokat.</p>
-  <p>Valamint szeretnénk felajánlani egy <strong>20%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
+  <p>Valamint szeretnénk felajánlani egy <strong>50%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
   <p>Ez a képzés egy életmódváltó program része, amiben több mint 4 órányi kurzus anyag vár, ahol a tudomány és a spiritualitás találkozik.</p>
   <ul>
     <li>Olyan témákban adunk gyakorlatias tudást mint a teremtés - manifesztáció</li>
@@ -111,7 +111,7 @@ const emailMap = {
   <p>Gratulálunk! Megnyerted a főnyereményt <strong>300.000 Ft értékben</strong>, amely az <strong>Elme Ereje Elvonulás</strong>.</p>
   <p>3 nap, teljes befelé figyelés, test-lélek-szellem harmóniájának megteremtése a mentorálásunkkal, szállással és étkeztetéssel.</p>
   <p>Kérlek, küldd el válasz emailben a neved, és felvesszük veled a kapcsolatot.</p>
-  <p>Valamint szeretnénk felajánlani egy <strong>20%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
+  <p>Valamint szeretnénk felajánlani egy <strong>50%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
   <p>Ez a képzés egy életmódváltó program része, amiben több mint 4 órányi kurzus anyag vár, ahol a tudomány és a spiritualitás találkozik.</p>
   <ul>
     <li>Olyan témákban adunk gyakorlatias tudást mint a teremtés - manifesztáció</li>
