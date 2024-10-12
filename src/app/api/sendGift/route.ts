@@ -7,7 +7,7 @@ import { Gift } from '@/interfaces/gift';
 
 const giftSpecificMessageMap: Record<string, string> = {
   libriUtalvany:
-    'A tudás a tapasztalás előszobája. Nyereményed egy 15.000 Ft-os ajándékkártya, amelyet a Libri könyvesboltokban tudsz felhasználni!',
+    'A tudás a tapasztalás előszobája. Egy 15.000 Ft-os ajándékkártya, amelyet a Libri könyvesboltokban tudsz felhasználni!',
   bowenMasszazs: 'Egy órás masszázs.',
   fenymuzeum: 'Belépő a budapesti fénymúzeumba.',
   hangtal:
@@ -23,6 +23,7 @@ const giftSpecificMessageMap: Record<string, string> = {
 
 const emailMap = {
   discount: (promCode: string) => `
+Kód másolása
 <section style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
   <h2>Kedves Nyertes,</h2>
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
@@ -37,8 +38,15 @@ const emailMap = {
   </ul>
   <p>Ezekkel a technikákkal a kezedbe veheted életed területeinek irányítását, mert minden az elmédből ered.</p>
   <p>Ez egy zárt csoport is egyben, számos online és élő közösségi programmal, ahol az élőben való találkozókra nagy hangsúlyt fektetünk. Közös meditációk, hideg merülések és túrák keretein belül.</p>
+  <p><strong>Itt találod az októberi programokat:</strong></p>
+  <ul>
+    <li>Élő túra az apci tengerszemhez, hideg merülés a tóban, tábortűz, meditáció a Szurdokpüspöki táltos forrásnál.</li>
+    <li>Paksi András online előadása a hidegterápiáról és oxygen advantage-ről.</li>
+    <li>Dokik online előadása - Spiritualitás a hétköznapokban.</li>
+    <li>Dokik élő kötetlen beszélgetés.</li>
+  </ul>
   <p>A promóciós kódod: <strong>${promCode}</strong></p>
-  <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> gomb megnyomása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
+  <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> kiválasztása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
   <p>Üdvözlettel,<br><strong>Dokik</strong></p>
 </section>
   `,
@@ -56,8 +64,15 @@ const emailMap = {
   </ul>
   <p>Ezekkel a technikákkal a kezedbe veheted életed területeinek irányítását, mert minden az elmédből ered.</p>
   <p>Ez egy zárt csoport is egyben, számos online és élő közösségi programmal, ahol az élőben való találkozókra nagy hangsúlyt fektetünk. Közös meditációk, hideg merülések és túrák keretein belül.</p>
+  <p><strong>Itt találod az októberi programokat:</strong></p>
+  <ul>
+    <li>Élő túra az apci tengerszemhez, hideg merülés a tóban, tábortűz, meditáció a Szurdokpüspöki táltos forrásnál.</li>
+    <li>Paksi András online előadása a hidegterápiáról és oxygen advantage-ről.</li>
+    <li>Dokik online előadása - Spiritualitás a hétköznapokban.</li>
+    <li>Dokik élő kötetlen beszélgetés.</li>
+  </ul>
   <p>A promóciós kódod: <strong>${promCode}</strong></p>
-  <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> gomb megnyomása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
+  <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> kiválasztása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
   <p>Köszönettel,<br><strong>Dokik</strong></p>
 </section>`,
   tier2and3: (promCode: string, giftId: string) => `
@@ -65,7 +80,7 @@ const emailMap = {
   <h2>Kedves Nyertes,</h2>
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük, ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
   <p><strong>Nyereményed:</strong> ${giftSpecificMessageMap[giftId]}</p>
-  <p>Kérlek, küldd el válasz emailben a neved és a kísérőd nevét (amennyiben páros az ajándék), hogy ki tudjuk állítani az ajándékot.</p>
+  <p>Kérlek, küldd el válasz emailben a neved és a kísérőd nevét (amennyiben páros az ajándék), hogy ki tudjuk állítani az ajándékhoz tartozó utalványokat.</p>
   <p>Valamint szeretnénk felajánlani egy <strong>20%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
   <p>Ez a képzés egy életmódváltó program része, amiben több mint 4 órányi kurzus anyag vár, ahol a tudomány és a spiritualitás találkozik.</p>
   <ul>
@@ -76,6 +91,13 @@ const emailMap = {
     <li>Gondolkodásmód</li>
   </ul>
   <p>Ez egy zárt csoport is egyben, számos online és élő közösségi programmal, ahol az élőben való találkozókra nagy hangsúlyt fektetünk. Közös meditációk, hideg merülések és túrák keretein belül.</p>
+  <p><strong>Itt találod az októberi programokat:</strong></p>
+  <ul>
+    <li>Élő túra az apci tengerszemhez, hideg merülés a tóban, tábortűz, meditáció a Szurdokpüspöki táltos forrásnál.</li>
+    <li>Paksi András online előadása a hidegterápiáról és oxygen advantage-ről.</li>
+    <li>Dokik online előadása - Spiritualitás a hétköznapokban.</li>
+    <li>Dokik élő kötetlen beszélgetés.</li>
+  </ul>
   <p>A promóciós kódod: <strong>${promCode}</strong></p>
   <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> gomb megnyomása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
   <p>Üdvözlettel,<br><strong>Dokik</strong></p>
@@ -97,6 +119,13 @@ const emailMap = {
     <li>Gondolkodásmód</li>
   </ul>
   <p>Ez egy zárt csoport is egyben, számos online és élő közösségi programmal, ahol az élőben való találkozókra nagy hangsúlyt fektetünk. Közös meditációk, hideg merülések és túrák keretein belül.</p>
+  <p><strong>Itt találod az októberi programokat:</strong></p>
+  <ul>
+    <li>Élő túra az apci tengerszemhez, hideg merülés a tóban, tábortűz, meditáció a Szurdokpüspöki táltos forrásnál.</li>
+    <li>Paksi András online előadása a hidegterápiáról és oxygen advantage-ről.</li>
+    <li>Dokik online előadása - Spiritualitás a hétköznapokban.</li>
+    <li>Dokik élő kötetlen beszélgetés.</li>
+  </ul>
   <p>A promóciós kódod: <strong>${promCode}</strong></p>
   <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> gomb megnyomása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
   <p>Üdvözlettel,<br><strong>Dokik</strong></p>
