@@ -66,15 +66,11 @@ export const LuckyBagForm: React.FC<LuckyBagFormProps> = ({ qrId, gift }) => {
     } catch (error: any) {
       console.log(error);
       if (error.message.includes('1-')) {
-        toast.error(
-          'Az ELME 1. SZINT típusú ajándékot csak egyszer nyerheted meg!'
-        );
+        toast.error('Ezt a típusú ajándékot csak egyszer nyerheted meg!');
         return;
       }
       if (error.message.includes('2-')) {
-        toast.error(
-          'ELME 1. SZINT-nél nagyobb típusú ajándékból csak egyet nyerhetsz meg!'
-        );
+        toast.error('Ezt a típusú ajándékot csak egyszer nyerheted meg!');
         return;
       }
       if (error.message.includes('3-')) {
@@ -93,8 +89,8 @@ export const LuckyBagForm: React.FC<LuckyBagFormProps> = ({ qrId, gift }) => {
   return (
     <div className={styles.luckyBagForm}>
       <h1>
-        Gratulálunk, nyertél! Nyereméd a {gift.name} ajándékai közül való.
-        Kérlek add meg az email címed, hogy elküldhessük neked a nyereményt!
+        Kérlek add meg az email címed, hogy elküldhessük az esetleges
+        nyereményt.
       </h1>
       <TextInputField
         label="Email"
