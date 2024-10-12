@@ -7,23 +7,25 @@ import { Gift } from '@/interfaces/gift';
 
 const giftSpecificMessageMap: Record<string, string> = {
   libriUtalvany:
-    'A tudás a tapasztalás előszobája. Egy 15.000 Ft-os ajándékkártya, amelyet a Libri könyvesboltokban tudsz felhasználni!',
-  bowenMasszazs: 'Egy órás masszázs.',
-  fenymuzeum: 'Belépő a budapesti fénymúzeumba.',
+    'A tudás a tapasztalás előszobája. Nyereményed egy 15.000 Ft-os ajándékkártya, amelyet a Libri könyvesboltokban tudsz felhasználni!',
+  bowenMasszazs:
+    'Egy alkalmas utalvány Pető Csilla terapeutánál egy Bowen terápia kezelésre, amely a kötőszövetekben, izmokban kialakult blokkok oldását szolgálja',
+  fenymuzeum:
+    'Páros belépő a budapesti fénymúzeumba. Kérlek írj egy válasz e mailt nekünk, hogy a nyereményedet emailben küldeni tudjuk',
   hangtal:
-    'Páros(2db) belépő a világ legnagyobb tibeti hangtáljához Garábon, ahol részt vehettek egy hangfürdő terápián, Gercsényi Nikolett hanterapeuta óráján. Amennyiben Garábra nem tudsz elmenni, Nikolett Budapesten is tart órákat, tehát a fővárosban is beválthatod a nyereményed.',
-  kakao: 'Kakaó ceremónia.',
+    ' Páros(2db) belépő a világ legnagyobb tibeti hangtáljához Garábon, ahol részt vehettek egy hangfürdő terápián, Gercsényi Nikolett hanterapeuta óráján. Amennyiben Garábra nem tudsz elmenni, Nikolett Budapesten is tart órákat, tehát a fővárosban is beválthatod a nyereményed. Kérlek küldd el válasz emailben a neved és a kísérőd nevét, hogy ki tudjuk állítani az utalványt nektek.',
+  kakao:
+    'Kakaó szertartás a test - lélek - szellem harmóniájának megteremtéséért Sophia Shakti vezetésével!',
   dokisNap:
-    'Egy teljes nap a Dokikkal. Ott ahol te vagy? Utaztatjuk? Kajáltatjuk? Edzés, meditáció, hidegfürdő, személyes konzultáció? élményeket kell adni, és levideózzuk az egészet.',
+    'Egy teljes nap a Dokikkal a Balaton környékén, túra, meditáció, hidegfürdő, étkezés Neked és egy barátodnak!',
   spiriCsomag:
-    'Spirituális csomag 50.000 Ft értékben, füstölő, jóga matrac, meditációs párna, hogy meglegyen az eszköztárad a mindennapi gyakorláshoz',
+    'Spirituális csomag 50.000 Ft értékben, füstölő, jóga matrac, meditációs párna, hogy meglegyen az eszköztárad a mindennapi gyakorláshoz. Kérlek írj egy válasz e mailt, hogy a nyereményed átvételi részleteit meg tudjuk beszélni!',
   mandalaDaySpa:
     'Mandala Day Spa belépő és 50.000 Ft utalvány szabad felhasználásra a test - lélek- szellem harmóniájának ápolása érdekében.',
 };
 
 const emailMap = {
   discount: (promCode: string) => `
-Kód másolása
 <section style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
   <h2>Kedves Nyertes,</h2>
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
@@ -71,7 +73,7 @@ Kód másolása
     <li>Dokik online előadása - Spiritualitás a hétköznapokban.</li>
     <li>Dokik élő kötetlen beszélgetés.</li>
   </ul>
-  <p>A promóciós kódod: <strong>${promCode}</strong></p>
+  <p>A 100%-os promóciós kódod: <strong>${promCode}</strong></p>
   <p>Kérlek látogass el oldalunkra: <a href="https://elmeereje.hu/#csomagok" style="color: #1a73e8;">https://elmeereje.hu/#csomagok</a>, ahol a havi csomag <strong>csatlakozom</strong> kiválasztása után, a promóciós kód megadása opció alatt aktiválhatod nyereményed.</p>
   <p>Köszönettel,<br><strong>Dokik</strong></p>
 </section>`,
@@ -227,7 +229,7 @@ function getEligibilityStatus(params: {
   }
 
   const highTierGiftClaimedByYou = gifts.find(
-    (g) => g.winnerId === visitorId || g.winnerEmail === email
+    (g) => (g.winnerId === visitorId || g.winnerEmail === email) && g.tier !== 4
   );
   if (highTierGiftClaimedByYou) {
     return {
