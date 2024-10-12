@@ -29,6 +29,7 @@ const emailMap = {
 <section style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
   <h2>Kedves Nyertes,</h2>
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
+ <p>Fontos játékszabály, hogy a kettes és hármas Elme Ereje ajándékokból csak 1-et nyerhet 1 jelentkező, viszont a főnyereményre mindenkinek van esélye, függetlenül attól, hogy hány ajándékot nyert már eddig.</p>
   <p>Szeretnénk felajánlani ezt a <strong>50%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
   <p>Ez a képzés egy életmódváltó program része, amiben több mint 4 órányi kurzus anyag vár, ahol a tudomány és a spiritualitás találkozik.</p>
   <ul>
@@ -55,6 +56,7 @@ const emailMap = {
   membership: (promCode: string) => `
   <section style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
   <h2>Kedves Nyertes,</h2>
+   <p>Fontos játékszabály, hogy a kettes és hármas Elme Ereje ajándékokból csak 1-et nyerhet 1 jelentkező, viszont a főnyereményre mindenkinek van esélye, függetlenül attól, hogy hány ajándékot nyert már eddig.</p>
   <p>Szeretnénk megajándékozni egy havi tagsággal az <strong>Elme Ereje</strong> online programunkba.</p>
   <p>Ez a képzés egy életmódváltó program része, amiben több mint 4 órányi kurzus anyag vár, ahol a tudomány és a spiritualitás találkozik.</p>
   <ul>
@@ -81,6 +83,7 @@ const emailMap = {
 <section style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
   <h2>Kedves Nyertes,</h2>
   <p>Először is köszönjük, hogy kimozdultál és részt vettél ebben a játékban. Manapság kezd kiveszni a játékosság, a kaland az életünkből, de reméljük, ezzel a játékkal kicsit emlékeztettünk arra, hogy mennyire fontos a játék és a célhoz vezető út az életben.</p>
+   <p>Fontos játékszabály, hogy a kettes és hármas Elme Ereje ajándékokból csak 1-et nyerhet 1 jelentkező, viszont a főnyereményre mindenkinek van esélye, függetlenül attól, hogy hány ajándékot nyert már eddig.</p>
   <p><strong>Nyereményed:</strong> ${giftSpecificMessageMap[giftId]}</p>
   <p>Kérlek, küldd el válasz emailben a neved és a kísérőd nevét (amennyiben páros az ajándék), hogy ki tudjuk állítani az ajándékhoz tartozó utalványokat.</p>
   <p>Valamint szeretnénk felajánlani egy <strong>50%-os kedvezményt</strong>, amivel csatlakozhatsz az <strong>Elme Ereje Online</strong> képzéshez.</p>
