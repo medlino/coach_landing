@@ -11,6 +11,8 @@ export async function getFingerPrint() {
     const fpPromise = await FingerprintJS.load({
       apiKey: key,
       region: 'eu',
+      endpoint: 'https://metrics.elmeereje.hu',
+      scriptUrlPattern: `https://metrics.elmeereje.hu/web/v3/${key}/loader_v3.11.2.js`,
     });
 
     const result = await fpPromise.get();
