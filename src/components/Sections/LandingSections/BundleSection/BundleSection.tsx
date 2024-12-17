@@ -25,9 +25,9 @@ export const BundleSection = () => {
       });
   }, []);
 
-  const orderedProducts = products.sort(
-    (a, b) => a.price.unit_amount - b.price.unit_amount
-  );
+  const orderedProducts = products
+    .sort((a, b) => a.price.unit_amount - b.price.unit_amount)
+    .filter((product) => product.price.unit_amount / 100 < 50000);
 
   return (
     <section id="csomagok" className={styles.bundleSection}>

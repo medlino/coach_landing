@@ -108,7 +108,7 @@ export const BundleCard = ({
             <p
               style={{
                 textDecoration: 'none',
-                fontSize: '0.7rem',
+                fontSize: '1rem',
                 color: 'red',
                 marginTop: '0.5rem',
               }}
