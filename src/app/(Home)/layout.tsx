@@ -143,7 +143,9 @@ export default function HomeLayout({
       <Suspense>
         <Toaster />
       </Suspense>
-      <SuccessModal />
+      <Suspense>
+        <SuccessModal />
+      </Suspense>
       <Footer />
     </div>
   );
