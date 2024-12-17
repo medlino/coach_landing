@@ -27,13 +27,6 @@ const testimonials = [
     img: '/testimonials/t_test.png',
     desc: 'Rengeteget tanultam az agy működéséről, ami segített megérteni, hogy miként befolyásolják a gondolataim az életemet. Ez egy hatalmas dolog volt számomra, amiért először is nagyon hálás vagyok nektek srácok. Megtanultam pár trükköt, szokást, hogy újra formáljam a tudatomat. Ez segített abban, hogy jobban boldoguljak a munkahelyemen és az életem összes többi területén is.',
   },
-
-  {
-    name: 'Kecze Zsófia',
-    title: 'Művészeti menedzser, kurátor',
-    img: '/testimonials/zs_test.png',
-    desc: 'Szeretettel ajánlom ezt a programot azoknak, akik készek arra, hogy lépéseket tegyenek valódi önmaguk megismerése felé. Azoknak, akik elkezdtek feltenni maguknak nehéz kérdéseket, azoknak, akik ezekre keresik a válaszokat, és alig várják, hogy rátaláljanak. Sokszor nagyon nehéz, sokszor nagyon megpróbáltató, de annál izgalmasabb és kifizetődőbb. Köszönöm nektek, hogy a program segítségével nyerhettem bizonyosságot arról, hogy képes vagyok a változtatásra és ezáltal a változásra.',
-  },
   {
     name: 'Kovács Gergely',
     title: 'Brandomenal Media Ügyvezető',
