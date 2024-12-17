@@ -16,7 +16,7 @@ interface BundleCardProps {
 
 const THREE_MONTHS_PRICE = 17200;
 const THREE_MONTHS_ORIGINAL_PRICE = 27000;
-const ONE_MONTH_PRICE = 6990;
+const ONE_MONTH_PRICE = 4500;
 const ONE_MONTH_ORIGINAL_PRICE = 9000;
 
 export const BundleCard = ({
@@ -51,7 +51,15 @@ export const BundleCard = ({
   const discount = useMemo(() => {
     if (!price) return '';
     if (amount === THREE_MONTHS_PRICE) return '35%';
-    if (amount === ONE_MONTH_PRICE) return '20%';
+    if (amount === ONE_MONTH_PRICE) return '50%';
+  }, [price]);
+
+  const discountDescription = useMemo(() => {
+    if (!price) return '';
+    if (amount === THREE_MONTHS_PRICE)
+      return 'A kedvezmény 2025.01.01-ig érvényes';
+    if (amount === ONE_MONTH_PRICE)
+      return 'A kedvezmény 2024.12.24-ig érvényes';
   }, [price]);
 
   return (
@@ -105,7 +113,7 @@ export const BundleCard = ({
                 marginTop: '0.5rem',
               }}
             >
-              A kedvezmény 2025.01.01-ig érvényes
+              {discountDescription}
             </p>
           </div>
         </div>
