@@ -95,7 +95,7 @@ function SuccessModal() {
         </p>
         <p>
           <a
-            href="http://localhost:3000/profil/"
+            href="http://elmeereje.hu/profil/"
             target="_blank"
             rel="noopener noreferrer"
           >
