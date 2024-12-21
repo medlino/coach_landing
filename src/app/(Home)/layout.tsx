@@ -9,6 +9,7 @@ import { Footer } from '@/components/Footer/Footer';
 import { SimpleModal } from '@/components/SimpleModal/SimpleModal';
 
 import styles from './layout.module.scss';
+import { SnowEffect } from '@/components/SnowEffect/SnowEffect';
 
 function Toaster() {
   const router = useRouter();
@@ -138,6 +139,7 @@ export default function HomeLayout({
 }) {
   return (
     <div className={styles.homeLayout}>
+      <SnowEffect />
       <Header />
       {children}
       <Suspense>
