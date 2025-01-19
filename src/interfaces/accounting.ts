@@ -92,6 +92,7 @@ export interface NewClient {
   address: string;
   city: string;
   country: string;
+  country_id: number;
   currency: string;
   email: string;
   name: string;

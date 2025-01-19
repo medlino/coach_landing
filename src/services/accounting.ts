@@ -40,7 +40,7 @@ const getAuthHeaders = () => {
   )}&apikey=${ACCOUNTING_API_KEY}&company_id=${ACCOUNTING_COMPANY_ID}`;
 };
 
-async function getCountries(): Promise<Country[]> {
+export async function getCountries(): Promise<Country[]> {
   const { ACCOUNTING_URL } = getAccountingEnvs();
 
   try {
@@ -100,9 +100,6 @@ export async function createClient(newClient: NewClient): Promise<Client> {
   const { ACCOUNTING_URL } = getAccountingEnvs();
 
   try {
-    const countries = await getCountries();
-    const country = countries.find((c) => c.Country.name === newClient.country);
-
     const response = await fetch(`${ACCOUNTING_URL}/clients/create`, {
       method: 'POST',
       headers: {
@@ -110,7 +107,7 @@ export async function createClient(newClient: NewClient): Promise<Client> {
         Authorization: getAuthHeaders(),
       },
       body: JSON.stringify({
-        Client: { ...newClient, country_id: country?.Country.id },
+        Client: newClient,
       }),
     });
 
