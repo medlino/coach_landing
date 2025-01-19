@@ -1,91 +1,154 @@
-// import puppeteer, { Page } from 'puppeteer';/*  */
+import {
+  Client,
+  ClientData,
+  Country,
+  NewClient,
+  NewInvoice,
+} from '@/interfaces/accounting';
 
-const SITE_URL = 'https://www.turbofaktura.sk/';
+const getAccountingEnvs = () => {
+  const {
+    ACCOUNTING_EMAIL,
+    ACCOUNTING_API_KEY,
+    ACCOUNTING_COMPANY_ID,
+    ACCOUNTING_URL,
+  } = process.env;
 
-/* function buildFilterUrl(
-  baseUrl: string,
-  companyName: string,
-  streetName: string
-) {
-  const encodedCompanyName = encodeURIComponent(companyName);
-  const encodedStreetName = encodeURIComponent(streetName);
-
-  const filterUrl = `${baseUrl}?adresyGrid-polluted=1&adresyGrid-orderBy%5Bfirma%5D=0&adresyGrid-filters%5Bfirma%5D=${encodedCompanyName}&adresyGrid-filters%5Bulice%5D=${encodedStreetName}`;
-  return filterUrl;
-}
-
-async function auth(page: Page) {
-  const email = process.env.ACCOUNTING_EMAIL;
-  const pw = process.env.ACCOUNTING_PW;
-
-  if (!email || !pw) {
-    throw new Error('Invalid request!');
+  if (
+    !ACCOUNTING_EMAIL ||
+    !ACCOUNTING_API_KEY ||
+    !ACCOUNTING_COMPANY_ID ||
+    !ACCOUNTING_URL
+  ) {
+    throw new Error('Missing accounting environment variables');
   }
 
-  await page.goto(`${SITE_URL}/prihlaseni/`);
+  return {
+    ACCOUNTING_EMAIL,
+    ACCOUNTING_API_KEY,
+    ACCOUNTING_COMPANY_ID,
+    ACCOUNTING_URL,
+  };
+};
 
-  await page.type('input[name="email"]', email);
-  await page.type('input[name="password"]', pw);
+const getAuthHeaders = () => {
+  const { ACCOUNTING_EMAIL, ACCOUNTING_API_KEY, ACCOUNTING_COMPANY_ID } =
+    getAccountingEnvs();
 
-  await Promise.all([
-    page.click('input[type="submit"]'),
-    page.waitForNavigation(),
-  ]);
-}
+  return `SFAPI email=${encodeURIComponent(
+    ACCOUNTING_EMAIL
+  )}&apikey=${ACCOUNTING_API_KEY}&company_id=${ACCOUNTING_COMPANY_ID}`;
+};
 
-async function isAddressExist(
-  page: Page,
-  companyName: string,
-  streetName: string
-) {
-  const baseUrl = `${SITE_URL}/adresy/`;
-  const filterUrl = buildFilterUrl(baseUrl, companyName, streetName);
+async function getCountries(): Promise<Country[]> {
+  const { ACCOUNTING_URL } = getAccountingEnvs();
 
-  await page.goto(filterUrl);
+  try {
+    const response = await fetch(
+      `${ACCOUNTING_URL}/countries/index/view_full:1`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: getAuthHeaders(),
+        },
+      }
+    );
 
-  const result = await page.evaluate(() => {
-    const row = document.querySelector('.body-cell.body-cell-firma');
-    if (row) {
-      return row.textContent?.trim();
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return null;
-  });
 
-  return !!result;
-}
-
-async function createAddress(
-  page: Page,
-  { name, street, city, zipCode, email }: any
-) {
-  await page.goto(`${SITE_URL}/adresy/pridat-adresu`);
-
-  await page.select('select[name="typ"]', '1');
-  await page.type('input[name="firma"]', name);
-  await page.type('input[name="jmeno"]', name);
-  await page.type('input[name="ulice"]', street);
-  await page.type('input[name="psc"]', zipCode);
-  await page.type('input[name="mesto"]', city);
-  await page.select('select[name="staty_id"]', '234');
-  await page.type('input[name="email"]', email);
-
-  await Promise.all([
-    page.click('input[type="submit"][name="save"]'),
-    page.waitForNavigation(),
-  ]);
-}
-
-export async function handleAccounting({ companyName, streetName }: any) {
-  const browser = await puppeteer.launch({ headless: true });
-  const page = await browser.newPage();
-
-  await auth(page);
-  const isExists = await isAddressExist(page, companyName, streetName);
-
-  if (isExists) {
-  } else {
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data at getCountries:', error);
+    throw error;
   }
-
-  await browser.close();
 }
- */
+
+export async function getClientList(filter?: string): Promise<ClientData[]> {
+  const { ACCOUNTING_URL } = getAccountingEnvs();
+
+  try {
+    const baseUrl = `${ACCOUNTING_URL}/clients/index.json`;
+    const url = filter
+      ? `${baseUrl}/search:${Buffer.from(filter, 'utf-8').toString('base64')}`
+      : baseUrl;
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: getAuthHeaders(),
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching data at getClientList:', error);
+    throw error;
+  }
+}
+
+export async function createClient(newClient: NewClient): Promise<Client> {
+  const { ACCOUNTING_URL } = getAccountingEnvs();
+
+  try {
+    const countries = await getCountries();
+    const country = countries.find((c) => c.Country.name === newClient.country);
+
+    const response = await fetch(`${ACCOUNTING_URL}/clients/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: getAuthHeaders(),
+      },
+      body: JSON.stringify({
+        Client: { ...newClient, country_id: country?.Country.id },
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const {
+      data: { Client },
+    } = await response.json();
+    return Client;
+  } catch (error) {
+    console.error('Error at creating a new Client:', error);
+    throw error;
+  }
+}
+
+export async function createInvoice(invoice: NewInvoice): Promise<any> {
+  const { ACCOUNTING_URL } = getAccountingEnvs();
+
+  try {
+    const response = await fetch(`${ACCOUNTING_URL}/invoices/create`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: getAuthHeaders(),
+      },
+      body: JSON.stringify(invoice),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error at creating a new Invoice:', error);
+    throw error;
+  }
+}
