@@ -2,6 +2,7 @@ import {
   getCountries,
   createClient,
   createInvoice,
+  fetchExchnageRate,
 } from '@/services/accounting';
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
@@ -70,6 +71,11 @@ export async function POST(req: Request) {
         };
 
         const client = await createClient(newClient);
+        const priceInEUR = await fetchExchnageRate(
+          'EUR',
+          'HUF',
+          session.amount_paid
+        );
 
         const nowDate = getCurrentDate();
         const newInvoice = {
@@ -79,13 +85,14 @@ export async function POST(req: Request) {
             delivery: nowDate,
             due: nowDate,
             already_paid: 1,
-            comment: 'TODO: Add comment',
+            comment: `Nie som platcom DPH ${session.amount_paid} HUF, ${priceInEUR} EUR 2122268643`,
           },
           InvoiceItem: [
             {
               name: 'Mentális egészségügyi képzés - Tréning v oblasti duševného zdravia',
               tax: 27,
-              unit_price: session.amount_paid,
+              quantity: 1,
+              unit_price: priceInEUR,
             },
           ],
           Client: {

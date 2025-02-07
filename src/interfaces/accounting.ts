@@ -113,6 +113,7 @@ export interface NewInvoice {
     name: string;
     tax: number;
     unit_price: number;
+    quantity: number;
   }[];
   Client: {
     name: string;
@@ -122,5 +123,17 @@ export interface NewInvoice {
     email: string;
     country_id: string;
     city: string;
+  };
+}
+
+export interface ExchangeRateResponse {
+  success: boolean;
+  terms: string;
+  privacy: string;
+  timestamp: number;
+  date: string;
+  base: string;
+  rates: {
+    HUF: number;
   };
 }

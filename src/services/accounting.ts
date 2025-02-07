@@ -1,10 +1,11 @@
 import {
+  NewClient,
   Client,
   ClientData,
   Country,
-  NewClient,
   NewInvoice,
-} from '@/interfaces/accounting';
+  ExchangeRateResponse,
+} from '../interfaces/accounting';
 
 const getAccountingEnvs = () => {
   const {
@@ -12,13 +13,15 @@ const getAccountingEnvs = () => {
     ACCOUNTING_API_KEY,
     ACCOUNTING_COMPANY_ID,
     ACCOUNTING_URL,
+    ACCOUNTING_EXCHANGE_API_ID,
   } = process.env;
 
   if (
     !ACCOUNTING_EMAIL ||
     !ACCOUNTING_API_KEY ||
     !ACCOUNTING_COMPANY_ID ||
-    !ACCOUNTING_URL
+    !ACCOUNTING_URL ||
+    !ACCOUNTING_EXCHANGE_API_ID
   ) {
     throw new Error('Missing accounting environment variables');
   }
@@ -28,6 +31,7 @@ const getAccountingEnvs = () => {
     ACCOUNTING_API_KEY,
     ACCOUNTING_COMPANY_ID,
     ACCOUNTING_URL,
+    ACCOUNTING_EXCHANGE_API_ID,
   };
 };
 
@@ -144,6 +148,38 @@ export async function createInvoice(invoice: NewInvoice): Promise<any> {
 
     const data = await response.json();
     return data;
+  } catch (error) {
+    console.error('Error at creating a new Invoice:', error);
+    throw error;
+  }
+}
+
+// TODO: separate envs...
+export async function fetchExchnageRate(
+  from: string,
+  to: string,
+  value: number
+): Promise<any> {
+  const { ACCOUNTING_EXCHANGE_API_ID } = getAccountingEnvs();
+
+  try {
+    const response = await fetch(
+      `https://api.fxratesapi.com/latest?base=${from}&currencies=${to}&resolution=1m&amount=1&places=6&format=json`,
+      {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${ACCOUNTING_EXCHANGE_API_ID}`,
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data: ExchangeRateResponse = await response.json();
+    return (value / data.rates.HUF).toFixed(2);
   } catch (error) {
     console.error('Error at creating a new Invoice:', error);
     throw error;
