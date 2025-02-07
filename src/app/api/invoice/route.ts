@@ -88,7 +88,9 @@ export async function POST(req: Request) {
             delivery: nowDate,
             due: nowDate,
             already_paid: 1,
-            comment: `Nie som platcom DPH ${session.amount_paid} HUF, ${priceInEUR} EUR 2122268643`,
+            comment: `Nie som platcom DPH ${
+              session.amount_paid / 100
+            } HUF, ${priceInEUR} EUR 2122268643`,
           },
           InvoiceItem: [
             {
