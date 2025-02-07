@@ -50,7 +50,9 @@ export async function POST(req: Request) {
             !session.customer_address?.postal_code ||
             !session.customer_address?.city)
         ) {
-          throw new Error(`Missing address data! ${session.customer_address}`);
+          throw new Error(
+            `Missing address data! ${JSON.stringify(session.customer_address)}`
+          );
         }
 
         const country = countries.find(
