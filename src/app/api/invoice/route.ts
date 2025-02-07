@@ -74,7 +74,7 @@ export async function POST(req: Request) {
         const priceInEUR = await fetchExchnageRate(
           'EUR',
           'HUF',
-          session.amount_paid
+          session.amount_paid / 100
         );
 
         const nowDate = getCurrentDate();
