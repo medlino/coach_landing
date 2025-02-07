@@ -46,10 +46,11 @@ export async function POST(req: Request) {
         if (
           ENV === 'prod' &&
           (!session.customer_address?.line1 ||
-            !session.customer_address.country ||
-            session.customer_address.postal_code)
+            !session.customer_address?.country ||
+            !session.customer_address?.postal_code ||
+            !session.customer_address?.city)
         ) {
-          throw new Error('Missing address data!');
+          throw new Error(`Missing address data! ${session.customer_address}`);
         }
 
         const country = countries.find(
