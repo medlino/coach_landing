@@ -14,10 +14,10 @@ interface BundleCardProps {
   onClick?: () => Promise<void>;
 }
 
-const THREE_MONTHS_PRICE = 17200;
-const THREE_MONTHS_ORIGINAL_PRICE = 27000;
-const ONE_MONTH_PRICE = 4500;
-const ONE_MONTH_ORIGINAL_PRICE = 9000;
+const THREE_MONTHS_PRICE = 21500;
+const THREE_MONTHS_ORIGINAL_PRICE = 21500;
+const ONE_MONTH_PRICE = 8990;
+const ONE_MONTH_ORIGINAL_PRICE = 8990;
 
 export const BundleCard = ({
   name,
@@ -80,7 +80,7 @@ export const BundleCard = ({
               <span style={{ fontSize: '2.2rem' }}>{amount}</span>
               <span style={{ fontSize: '1.9rem' }}>FT</span>
             </p>
-            <span
+            {/* <span
               style={{
                 color: 'grey',
                 textDecoration: 'line-through',
@@ -114,7 +114,7 @@ export const BundleCard = ({
               }}
             >
               {discountDescription}
-            </p>
+            </p> */}
           </div>
         </div>
       )}
